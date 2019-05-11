@@ -1,0 +1,58 @@
+﻿  MiniginPCH.cpp
+  BaseShape.cpp
+  ColliderComponent.cpp
+  CollisionManager.cpp
+  Font.cpp
+  GameObject.cpp
+  GameScene.cpp
+  Gamepad.cpp
+  InputComponent.cpp
+  InputManager.cpp
+  LevelColliderComponent.cpp
+  Log.cpp
+  Minigin.cpp
+  MusicManager.cpp
+  PoolManager.cpp
+  Quad.cpp
+  RenderComponent.cpp
+  Renderer.cpp
+  ResourceManager.cpp
+  RotationComponent.cpp
+  SVGParser.cpp
+  Compiling...
+  ScaleComponent.cpp
+  SceneManager.cpp
+  SoundComponent.cpp
+  SoundEffect.cpp
+  SoundStream.cpp
+  SpriteComponent.cpp
+  TextComponent.cpp
+  Texture2D.cpp
+  Time.cpp
+  TimerComponent.cpp
+  TransformComponent.cpp
+  TranslationComponent.cpp
+  Minigin.vcxproj -> C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Release\Minigin.lib
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2\lib\x64\SDL2.dll
+  1 File(s) copied
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libjpeg-9.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libpng16-16.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libtiff-5.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libwebp-7.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\SDL2_image.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\zlib1.dll
+  6 File(s) copied
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\libfreetype-6.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll
+  2 File(s) copied
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libFLAC-8.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libmikmod-2.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libmodplug-1.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libogg-0.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libvorbis-0.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libvorbisfile-3.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\SDL2_mixer.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\smpeg2.dll
+  8 File(s) copied
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL_gfx\lib\sdlgfx.dll
+  1 File(s) copied

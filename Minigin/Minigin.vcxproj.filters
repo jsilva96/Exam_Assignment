@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Engine Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Engine Files\Components">
+      <UniqueIdentifier>{72e6d25f-6128-4939-8caa-27a51e34858f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Files\Audio">
+      <UniqueIdentifier>{33006b32-b878-4899-bfe7-fe1861c71ee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Files\Scenegraph">
+      <UniqueIdentifier>{fb80e9a7-307a-498a-a316-643a123f1b6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Files\Input">
+      <UniqueIdentifier>{64d87383-0286-4905-9599-632cf55f0f08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Files\Scenegraph\Shapes">
+      <UniqueIdentifier>{19f32521-4cb8-4783-80ca-46134daa4d42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Files\Pools">
+      <UniqueIdentifier>{4b3b1695-d2f5-40ef-9885-8344f018a9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Files\Structs">
+      <UniqueIdentifier>{22403b36-e313-46ed-a83d-e0b2a0b5dbdc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniginPCH.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SomeStructs.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TextComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundStream.h">
+      <Filter>Engine Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEffect.h">
+      <Filter>Engine Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicManager.h">
+      <Filter>Engine Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Engine Files\Scenegraph</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Engine Files\Scenegraph</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Engine Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseShape.h">
+      <Filter>Engine Files\Scenegraph\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Quad.h">
+      <Filter>Engine Files\Scenegraph\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes.h">
+      <Filter>Engine Files\Scenegraph\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Engine Files\Scenegraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SVGParser.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelColliderComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Engine Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>Engine Files\Scenegraph</Filter>
+    </ClInclude>
+    <ClInclude Include="BasePool.h">
+      <Filter>Engine Files\Pools</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectPool.h">
+      <Filter>Engine Files\Pools</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolManager.h">
+      <Filter>Engine Files\Pools</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMovementComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslationComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RotationComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerComponent.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamepad.h">
+      <Filter>Engine Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Minigin.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="RenderComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TextComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundStream.cpp">
+      <Filter>Engine Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEffect.cpp">
+      <Filter>Engine Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicManager.cpp">
+      <Filter>Engine Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Engine Files\Scenegraph</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Engine Files\Scenegraph</Filter>
+    </ClCompile>
+    <ClCompile Include="InputComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniginPCH.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseShape.cpp">
+      <Filter>Engine Files\Scenegraph\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Quad.cpp">
+      <Filter>Engine Files\Scenegraph\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Engine Files\Scenegraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SVGParser.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelColliderComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Engine Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolManager.cpp">
+      <Filter>Engine Files\Pools</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslationComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RotationComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ScaleComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerComponent.cpp">
+      <Filter>Engine Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamepad.cpp">
+      <Filter>Engine Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Minigin.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Engine Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

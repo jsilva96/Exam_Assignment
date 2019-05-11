@@ -1,0 +1,52 @@
+ENGINE REMARKS
+
+This .txt is meant to clarify some changes I added to the engine:
+
+-BASE OBJECT
+This simple object is the parent of GameObject, BaseComponent, GameScene, 
+SoundEffect, SoundStream, Command and Gamepad. As such, all classes that inherit
+from the ones I mentioned, will be grandchildren of BaseObject, and so on.
+BaseObject is used for two reasons: So we know which objects are Usable, and it
+allows the creation of ObjectPools as I'll explain next.
+
+-POOL MANAGER
+The PoolManager is a singleton, holding all of the object pools created during 
+the program. When you retrieve an object, the PoolManager will get the 
+corresponding pool(if one doesn't exist, the Manager will create one) and
+will return a previously used object if the pool is has any, otherwise a new object
+will be created. It will also make the object Usable. When you return an object
+to the PoolManager, it will find the corresponding pool and insert it back,reseting 
+the object and making it unUsable. Only in the ObjectPool can BaseObject objects 
+turn Usable and unUsable.The PoolManager can only create ObjectPools of 
+BaseObject-inherited classes, otherwise a compiler error will occur and the 
+program won't start. To PoolManager negates the need to use the new or 
+delete operators. It creates everything and when the program closes, all objects 
+are return and destroyed.
+
+-COLLISION MANAGER
+The Collision Manager now divides the screen into a series of quadrants. 
+Any colliders within a quadrant will be placed in a vector assigned to that
+specific quadrant. All colliders in that vector will then test for collision
+amongst themselves and so on for all quadrants.
+
+-INPUT
+Not many changes where added here. A Gamepad class now exists which holds all the
+data from a specific controller, such as the analog sticks' direction. It can also
+assign a new controller while running if one is detected.
+
+-SMALLER NOTES
+->The m_RunOnce in SpriteComponent will ensure the sprite disappears after 
+it reaches its final frame.
+
+->TranslationComponent will make an object move in a specific direction when it's
+told(m_IsMoving) or countinuosly. Same goes for the Scaling and Rotation. These
+components are meant to be used only for objects that move at runtime. Setting
+objects to specific positions in the screen while starting the program is a job
+for the TransformComponent.
+
+
+---------------------------------------------------------------------------------
+
+The game is already set to 2 players: one Bomberman and one enemy. Both can be
+controlled using a controlller or the keyboard. Bomberman uses the arrow keys
+and the enemy WASD.
