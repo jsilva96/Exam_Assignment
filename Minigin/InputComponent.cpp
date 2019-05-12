@@ -14,6 +14,21 @@ InputComponent::InputComponent()
 }
 InputComponent::~InputComponent()
 {
+	for (std::pair<const InputOptions, std::vector<Command*>>& p : m_pCommands)
+	{
+		for (Command* pC : p.second) DeleteCheck(pC);
+	}
+	DeleteCheck(m_pGamepad);
+
+	m_pCommands.clear();
+}
+void* InputComponent::operator new(size_t nBytes)
+{
+	return PoolManager::GetInstance().RetrieveObject<InputComponent>();
+}
+void InputComponent::operator delete(void* ptrDelete)
+{
+	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
 }
 void InputComponent::Initialize()
 {
@@ -44,18 +59,6 @@ void InputComponent::UpdateKeyboard()
 }
 void InputComponent::Render() const
 {
-}
-void InputComponent::Reset()
-{
-	BaseComponent::Reset();
-
-	for (std::pair<const InputOptions, std::vector<Command*>>& p : m_pCommands)
-	{
-		for (Command* pC : p.second) PoolManager::GetInstance().ReturnObject(pC);
-	}
-	PoolManager::GetInstance().ReturnObject(m_pGamepad);
-
-	m_pCommands.clear();
 }
 void InputComponent::CheckInput()
 {

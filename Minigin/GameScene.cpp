@@ -19,14 +19,6 @@ GameScene::~GameScene()
 
 	m_pObjects.clear();
 }
-void GameScene::Reset()
-{
-	for (GameObject* pObj : m_pObjects) delete pObj;
-
-	m_pObjects.clear();
-
-	m_Name.clear();
-}
 void GameScene::RootInitialize()
 {
 	Initialize();

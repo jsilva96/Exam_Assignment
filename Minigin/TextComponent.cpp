@@ -19,11 +19,11 @@ TextComponent::TextComponent()
 }
 TextComponent::~TextComponent()
 {
+	m_Color = { 1, 1,1, 1 };
+	m_Text.clear();
 }
-
-void* TextComponent::operator new(size_t nBytes)
+void* TextComponent::operator new(size_t)
 {
-	UNREFERENCED_PARAMETER(nBytes);
 	return PoolManager::GetInstance().RetrieveObject<TextComponent>();
 }
 void TextComponent::operator delete(void* ptrDelete)
@@ -61,15 +61,8 @@ void TextComponent::Render() const
 	{
 	//	Point2f p = m_pGameObject->GetTransform()->GetPosition();
 	//	dae::Renderer::GetInstance().RenderTexture(*m_Texture, p.x, p.y);
-		dae::Renderer::GetInstance().RenderTexture(*m_Texture, m_pGameObject->GetTransform()->GetTransformInfo(), m_DrawRect);
+		dae::Renderer::GetInstance().RenderTexture(*m_Texture, GetGameObject()->GetTransform()->GetTransformInfo(), m_DrawRect);
 	}
-}
-void TextComponent::Reset()
-{
-	RenderComponent::Reset();
-
-	m_Color = { 0, 0, 0, 1 };
-	m_Text.clear();
 }
 void TextComponent::SetText(const std::string& text)
 {

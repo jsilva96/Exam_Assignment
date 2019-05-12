@@ -34,9 +34,17 @@ public:
 		if (m_NextIndex < m_ObjectList.size())
 		{
 			pOb = m_ObjectList[m_NextIndex];
-			++m_NextIndex;
+
+			for (size_t i = 0; i < m_ObjectList.size(); ++i)
+			{
+				if (!static_cast<BaseObject>(m_ObjectList[i]).IsUsable() && (pOb != m_ObjectList[i]))
+				{
+					m_NextIndex = i;
+					break;
+				}
+			}
 		}
-		if (!pOb)throw std::exception("Pool is full");
+		else pOb = malloc(sizeof(T));
 
 		return pOb;
 	}
@@ -45,16 +53,16 @@ private:
 	unsigned int m_NextIndex;
 
 	friend class PoolManager;
-	void ReturnObject(BaseObject* pObj)
+	void ReturnObject(BaseObject* pObj) override
 	{
-		pObj->Reset();
+		if(std::find(m_ObjectList.begin(), m_ObjectList.end(),pObj) == m_ObjectList.end()) free(pObj);
 	}
 
 
 	ObjectPool(const ObjectPool&) = delete;
-	ObjectPool(const ObjectPool&&) = delete;
+	ObjectPool(ObjectPool&&) noexcept = delete;
 
 	ObjectPool& operator=(const ObjectPool&) = delete;
-	ObjectPool& operator=(const ObjectPool&&) = delete;
+	ObjectPool& operator=(ObjectPool&&) noexcept = delete;
 };
 

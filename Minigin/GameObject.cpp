@@ -62,12 +62,6 @@ void GameObject::RootRender() const
 	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable()) pObj->RootRender();
 	for (BaseComponent* pC : m_pComponents) if (pC->IsUsable()) pC->Render();
 }
-void GameObject::Reset()
-{
-	DeleteCheck(m_pComponents);
-	DeleteCheck(m_pChildren);
-}
-
 void GameObject::OnCollide(GameObject*)
 {
 }

@@ -8,11 +8,10 @@ TransformComponent::TransformComponent()
 }
 TransformComponent::~TransformComponent()
 {
+	m_TransformInfo.Reset();
 }
-
-void* TransformComponent::operator new(size_t nBytes)
+void* TransformComponent::operator new(size_t)
 {
-	UNREFERENCED_PARAMETER(nBytes);
 	return PoolManager::GetInstance().RetrieveObject<TransformComponent>();
 }
 void TransformComponent::operator delete(void* ptrDelete)
@@ -32,16 +31,10 @@ Point2f TransformComponent::GetPosition() const
 {
 	return m_TransformInfo.translation;
 }
-void TransformComponent::Reset()
-{
-	BaseComponent::Reset();
-	m_TransformInfo.Reset();
-}
 void TransformComponent::SetPosition(const Point2f& pos)
 {
 	m_TransformInfo.translation = pos;
 }
-
 float TransformComponent::GetRotation() const
 {
 	return m_TransformInfo.rotation;
@@ -77,7 +70,6 @@ void TransformComponent::ResetPivot()
 {
 	m_TransformInfo.isPivotMiddle = true;
 }
-
 const TransformInfo TransformComponent::GetTransformInfo() const
 {
 	return m_TransformInfo;

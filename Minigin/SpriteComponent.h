@@ -74,9 +74,7 @@ public:
 	void Update() override;
 	void Render() const override;
 
-	void Reset() override;
-
-	void SetTexture(const string& filename);
+	void SetTexture(const string& filename) override;
 	void StopTimer(bool b = true);
 	void SetDesc(const SpriteDesc& desc);
 
@@ -95,10 +93,10 @@ protected:
 	unsigned int m_RunCount;
 private:
 
-	SpriteComponent(const SpriteComponent& obj) = delete;
-	SpriteComponent(const SpriteComponent&& obj) = delete;
+	SpriteComponent(const SpriteComponent&) = delete;
+	SpriteComponent(SpriteComponent&&) noexcept = delete;
 
-	SpriteComponent& operator=(const SpriteComponent& obj) = delete;
-	SpriteComponent& operator=(const SpriteComponent&& obj) = delete;
+	SpriteComponent& operator=(const SpriteComponent&) = delete;
+	SpriteComponent& operator=(SpriteComponent&&) noexcept = delete;
 };
 

@@ -12,41 +12,41 @@ TranslationComponent::TranslationComponent()
 }
 TranslationComponent::~TranslationComponent()
 {
+	m_Dir = { 0.0f, 0.0f };
+	m_Speed = 0.0f;
+}
+void* TranslationComponent::operator new(size_t nBytes)
+{
+	return PoolManager::GetInstance().RetrieveObject<TranslationComponent>();
+}
+void TranslationComponent::operator delete(void* ptrDelete)
+{
+	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
 }
 void TranslationComponent::Initialize()
 {
-	m_PrevPos = m_pGameObject->GetTransform()->GetPosition();
+	m_PrevPos = GetGameObject()->GetTransform()->GetPosition();
 }
 void TranslationComponent::Update()
 {
 	if (!m_IsMoving) return;
 
-	float elapsedSecs{};
+	float elapsedSecs{ 1.0f };
 	
 	if (m_IsTimeDependent) elapsedSecs = Time::GetInstance().GetElapsedSecs();
-	else elapsedSecs = 1.0f;
 
-	Vector2f v{};
-	v = m_Dir * m_Speed;
-	v *= elapsedSecs;
+	Vector2f v{ m_Dir * m_Speed *elapsedSecs };
 
-	m_PrevPos = m_pGameObject->GetTransform()->GetPosition();
+	m_PrevPos = GetGameObject()->GetTransform()->GetPosition();
 	Point2f p{ m_PrevPos }; 
 	p += v;
 
-	m_pGameObject->GetTransform()->SetPosition(p);
+	GetGameObject()->GetTransform()->SetPosition(p);
 
 	if (!m_IsContinuous) m_IsMoving = false;
 }
 void TranslationComponent::Render() const
 {
-}
-void TranslationComponent::Reset()
-{
-	BaseMovementComponent::Reset();
-
-	m_Dir = { 0.0f, 0.0f };
-	m_Speed = 0.0f;
 }
 void TranslationComponent::SetDirection(const Vector2f & v)
 {
@@ -66,9 +66,8 @@ float TranslationComponent::GetSpeed() const
 }
 void TranslationComponent::MoveBack()
 {
-	m_pGameObject->GetTransform()->SetPosition(m_PrevPos);
+	GetGameObject()->GetTransform()->SetPosition(m_PrevPos);
 }
-
 bool TranslationComponent::GetIsMoving() const
 {
 	return m_IsMoving;

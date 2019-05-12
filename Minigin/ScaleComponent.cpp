@@ -2,12 +2,18 @@
 #include "ScaleComponent.h"
 #include "TransformComponent.h"
 
-ScaleComponent::ScaleComponent()
-	:m_Scale{ 1.0f, 1.0f }
-{
-}
 ScaleComponent::~ScaleComponent()
 {
+	m_Scale = { 1.0f, 1.0f };
+}
+
+void* ScaleComponent::operator new(size_t)
+{
+	return PoolManager::GetInstance().RetrieveObject<ScaleComponent>();
+}
+void ScaleComponent::operator delete(void* ptrDelete)
+{
+	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
 }
 void ScaleComponent::Initialize()
 {
@@ -16,26 +22,18 @@ void ScaleComponent::Update()
 {
 	if (!m_IsMoving) return;
 
-	float elapsedSecs{};
-
+	float elapsedSecs{ 1.0f };
 	if (m_IsTimeDependent) elapsedSecs = Time::GetInstance().GetElapsedSecs();
-	else elapsedSecs = 1.0f;
 
-	Point2f s = m_pGameObject->GetTransform()->GetScale();
+	Point2f s = GetGameObject()->GetTransform()->GetScale();
 	s += (m_Scale * elapsedSecs);
 
-	m_pGameObject->GetTransform()->SetScale(s);
+	GetGameObject()->GetTransform()->SetScale(s);
 
 	if (!m_IsContinuous) m_IsMoving = false;
 }
 void ScaleComponent::Render() const
 {
-}
-void ScaleComponent::Reset()
-{
-	BaseMovementComponent::Reset();
-
-	m_Scale = { 1.0f, 1.0f };
 }
 void ScaleComponent::SetScale(const Point2f & s)
 {

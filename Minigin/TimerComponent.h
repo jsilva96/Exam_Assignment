@@ -12,11 +12,12 @@ public:
 	TimerComponent();
 	virtual ~TimerComponent();
 
+	void* operator new(size_t nBytes);
+	void  operator delete(void* ptrDelete);
+
 	void Initialize() override;
 	void Update() override;
 	void Render() const override;
-
-	void Reset() override;
 
 	void SetTimer(float inSeconds);
 	
@@ -35,9 +36,9 @@ private:
 	TimerState m_State;
 
 	TimerComponent(const TimerComponent&) = delete;
-	TimerComponent(const TimerComponent&&) = delete;
+	TimerComponent(const TimerComponent&&) noexcept = delete;
 
 	TimerComponent& operator=(const TimerComponent&) = delete;
-	TimerComponent& operator=(const TimerComponent&&) = delete;
+	TimerComponent& operator=(const TimerComponent&&) noexcept = delete;
 };
 

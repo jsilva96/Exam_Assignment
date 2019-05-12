@@ -36,13 +36,15 @@ class InputComponent : public BaseComponent
 {
 public:
 	InputComponent();
-	~InputComponent();
+	virtual ~InputComponent();
+
+	void* operator new(size_t nBytes);
+	void  operator delete(void* ptrDelete);
 
 	void Initialize() override;
 	void Update() override;
 	void Render() const override;
 
-	void Reset() override;
 	void CheckInput();
 
 	void AddCommand(Command* pCommand, InputOptions button);
@@ -57,10 +59,10 @@ private:
 	void UpdateGamepad();
 	void UpdateKeyboard();
 
-	InputComponent(const InputComponent& obj) = delete;
-	InputComponent(const InputComponent&& obj) = delete;
+	InputComponent(const InputComponent&) = delete;
+	InputComponent(InputComponent&&) noexcept = delete;
 
-	InputComponent& operator=(const InputComponent& obj) = delete;
-	InputComponent& operator=(const InputComponent&& obj) = delete;
+	InputComponent& operator=(const InputComponent&) = delete;
+	InputComponent& operator=(InputComponent&&) noexcept = delete;
 };
 

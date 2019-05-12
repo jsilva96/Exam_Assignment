@@ -14,8 +14,21 @@ ColliderComponent::ColliderComponent()
 	:ColliderComponent(Rectf{})
 {
 }
+
+void* ColliderComponent::operator new(size_t nBytes)
+{
+	return PoolManager::GetInstance().RetrieveObject<ColliderComponent>();
+}
+void ColliderComponent::operator delete(void* ptrDelete)
+{
+	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+}
 ColliderComponent::~ColliderComponent()
 {
+	for (std::pair<const CollisionGroup, bool> & p : m_CollisionGroup) p.second = false;
+
+	m_IsStatic = false;
+	m_Rect = {};
 }
 void ColliderComponent::Initialize()
 {
@@ -23,21 +36,13 @@ void ColliderComponent::Initialize()
 }
 void ColliderComponent::Update()
 {
-	m_Rect.leftBottom = m_pGameObject->GetTransform()->GetPosition();
+	m_Rect.leftBottom = GetGameObject()->GetTransform()->GetPosition();
 }
 void ColliderComponent::Render() const
 {
 	//	Color4f c{ 1.0f, 1.0f, 1.0f, 0.1f };
 
 //	dae::Renderer::GetInstance().RenderRect(m_Rect, c);
-}
-void ColliderComponent::Reset()
-{
-	BaseComponent::Reset();
-	for (std::pair<const CollisionGroup, bool> & p : m_CollisionGroup) p.second = false;
-
-	m_IsStatic = false;
-	m_Rect = {};
 }
 void ColliderComponent::SetCollisionGroup(CollisionGroup group, bool b)
 {

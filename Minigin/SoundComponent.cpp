@@ -4,8 +4,6 @@
 #include "MusicManager.h"
 #include "ResourceManager.h"
 
-typedef std::pair<const std::string, SoundEffect*> soundString;
-
 SoundComponent::SoundComponent()
 	:m_IsVolumeChanged{ false },
     m_Volume(25)
@@ -13,8 +11,17 @@ SoundComponent::SoundComponent()
 }
 SoundComponent::~SoundComponent()
 {
+	m_Volume = 25.0f;
+	m_IsVolumeChanged = false;
 }
-
+void* SoundComponent::operator new(size_t)
+{
+	return PoolManager::GetInstance().RetrieveObject<SoundComponent>();
+}
+void SoundComponent::operator delete(void* ptrDelete)
+{
+	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+}
 void SoundComponent::Initialize() 
 {
 }
@@ -23,10 +30,6 @@ void SoundComponent::Update()
 }
 void SoundComponent::Render() const 
 {
-}
-void SoundComponent::Reset()
-{
-	BaseComponent::Reset();
 }
 void SoundComponent::Play(unsigned int index, int loops)
 {

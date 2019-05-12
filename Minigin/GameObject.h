@@ -20,7 +20,6 @@ public:
 	virtual void Initialize(){};
 	virtual void Update(){};
 	virtual void Render() const{};
-	void Reset() override;
 	
 	virtual void OnCollide(GameObject* pObj);
 	virtual void OnLevelCollide(HitInfo info);

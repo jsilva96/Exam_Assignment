@@ -1,5 +1,4 @@
 #pragma once
-
 #include "MiniginPCH.h"
 #include "CollisionManager.h"
 #include "LevelColliderComponent.h"

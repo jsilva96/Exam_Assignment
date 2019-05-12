@@ -7,18 +7,18 @@ public:
 	{
 		
 	}
-	virtual ~BaseObject() = default;
+	virtual ~BaseObject()
+	{
+		m_IsUsable = false;
+	}
 
-	virtual void Reset() = 0;
 	bool IsUsable() const { return m_IsUsable; }
 
 	BaseObject(const BaseObject&) = delete;
-	BaseObject(const BaseObject&&) noexcept = delete;
+	BaseObject(BaseObject&&) noexcept = delete;
 
 	BaseObject& operator=(const BaseObject&) = delete;
-	BaseObject& operator=(const BaseObject&&) noexcept = delete;
-protected:
-
+	BaseObject& operator=(BaseObject&&) noexcept = delete;
 private:
 	bool m_IsUsable;
 

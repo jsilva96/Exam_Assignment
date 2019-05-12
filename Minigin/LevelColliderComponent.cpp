@@ -9,6 +9,9 @@ LevelColliderComponent::LevelColliderComponent()
 }
 LevelColliderComponent::~LevelColliderComponent()
 {
+	for (std::vector<Point2f>& p : m_Verts) p.clear();
+
+	m_Verts.clear();
 }
 void LevelColliderComponent::Initialize()
 {
@@ -19,14 +22,6 @@ void LevelColliderComponent::Update()
 }
 void LevelColliderComponent::Render() const
 {
-}
-void LevelColliderComponent::Reset()
-{
-	ColliderComponent::Reset();
-
-	for (std::vector<Point2f>& p : m_Verts) p.clear();
-	
-	m_Verts.clear();
 }
 void LevelColliderComponent::AddVerts(const std::vector<Point2f>& verts)
 {

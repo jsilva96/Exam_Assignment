@@ -13,8 +13,6 @@ public:
 	void Update() override;
 	void Render() const override;
 
-	void Reset() override;
-
 	void AddVerts(const std::vector<Point2f>& verts);
 	const std::vector<std::vector<Point2f>>& GetVerts() const;
 
@@ -26,11 +24,11 @@ private:
 
 	std::vector<std::vector<Point2f>> m_Verts;
 
-	LevelColliderComponent(const LevelColliderComponent& obj) = delete;
-	LevelColliderComponent(const LevelColliderComponent&& obj) = delete;
+	LevelColliderComponent(const LevelColliderComponent&) = delete;
+	LevelColliderComponent(LevelColliderComponent&&) noexcept = delete;
 
-	LevelColliderComponent& operator=(const LevelColliderComponent& obj) = delete;
-	LevelColliderComponent& operator=(const LevelColliderComponent&& obj) = delete;
+	LevelColliderComponent& operator=(const LevelColliderComponent&) = delete;
+	LevelColliderComponent& operator=(LevelColliderComponent&&) noexcept = delete;
 
 };
 

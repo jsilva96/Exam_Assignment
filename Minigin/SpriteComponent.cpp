@@ -20,8 +20,15 @@ SpriteComponent::SpriteComponent()
 }
 SpriteComponent::~SpriteComponent()
 {
-}
+	m_CurrFrame = 0;
+	m_CountRuns = false;
+	m_Timer = 0.0f;
+	m_StopTimer = false;
+	m_IsActive = true;
 
+	m_SpriteInfo.Reset();
+
+}
 void* SpriteComponent::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<SpriteComponent>();
@@ -116,14 +123,6 @@ void SpriteComponent::Render() const
 }
 void SpriteComponent::Reset()
 {
-	RenderComponent::Reset();
-
-	m_CurrFrame = 0;
-	m_CountRuns = false;
-//	m_SpriteInfo.Reset();
-	m_Timer = 0.0f;
-	m_StopTimer = false;
-	m_IsActive = true;
 }
 void SpriteComponent::SetTexture(const string& filename)
 {

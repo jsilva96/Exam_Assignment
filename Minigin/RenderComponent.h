@@ -24,9 +24,7 @@ public:
 	void Update() override;
 	void Render()const override;
 
-	void Reset() override;
-
-	void SetTexture(const string& filename);
+	virtual void SetTexture(const string& filename);
 	void SetActive(bool b);
 	bool IsActive() const;
 	dae::Texture2D* GetTexture() const;
@@ -38,10 +36,10 @@ protected:
 	bool m_IsActive = true;
 private:
 
-	RenderComponent(const RenderComponent& obj) = delete;
-	RenderComponent(const RenderComponent&& obj) = delete;
+	RenderComponent(const RenderComponent&) = delete;
+	RenderComponent(RenderComponent&&) noexcept = delete;
 
-	RenderComponent& operator=(const RenderComponent& obj) = delete;
-	RenderComponent& operator=(const RenderComponent&& obj) = delete;
+	RenderComponent& operator=(const RenderComponent&) = delete;
+	RenderComponent& operator=(RenderComponent&&) noexcept = delete;
 };
 

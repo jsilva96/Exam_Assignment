@@ -24,19 +24,20 @@ public:
 	ColliderComponent(const Rectf& rect);
 	ColliderComponent();
 
+	void* operator new(size_t nBytes);
+	void  operator delete(void* ptrDelete);
+
 	virtual ~ColliderComponent();
 
 	void Initialize() override;
 	void Update() override;
 	void Render() const override;
 
-	void Reset() override;
-
 	void SetCollisionGroup(CollisionGroup group, bool b = true);
 
 	virtual void HandleCollision(ColliderComponent* pComp) 
 	{
-		m_pGameObject->OnCollide(pComp->m_pGameObject);
+		GetGameObject()->OnCollide(pComp->GetGameObject());
 	};
 
 	Rectf GetRectf() const;
@@ -58,9 +59,9 @@ private:
 	friend class CollisionManager;
 	bool IsStatic() const { return m_IsStatic; }
 
-	ColliderComponent(const ColliderComponent& obj) = delete;
-	ColliderComponent(const ColliderComponent&& obj) = delete;
+	ColliderComponent(const ColliderComponent&) = delete;
+	ColliderComponent(ColliderComponent&&) noexcept = delete;
 
-	ColliderComponent& operator=(const ColliderComponent& obj) = delete;
-	ColliderComponent& operator=(const ColliderComponent&& obj) = delete;
+	ColliderComponent& operator=(const ColliderComponent&) = delete;
+	ColliderComponent& operator=(ColliderComponent&&) noexcept = delete;
 };

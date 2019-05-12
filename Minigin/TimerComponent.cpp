@@ -11,6 +11,17 @@ TimerComponent::TimerComponent()
 }
 TimerComponent::~TimerComponent()
 {
+	m_State = TimerComponent::RUNNING;
+	m_Timer = 0.0f;
+}
+
+void* TimerComponent::operator new(size_t)
+{
+	return PoolManager::GetInstance().RetrieveObject<TimerComponent>();
+}
+void TimerComponent::operator delete(void* ptrDelete)
+{
+	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
 }
 void TimerComponent::Initialize()
 {
@@ -25,13 +36,6 @@ void TimerComponent::Update()
 }
 void TimerComponent::Render() const
 {
-}
-void TimerComponent::Reset()
-{
-	BaseComponent::Reset();
-
-	m_State = TimerComponent::RUNNING;
-	m_Timer = 0.0f;
 }
 void TimerComponent::SetTimer(float inSeconds)
 {

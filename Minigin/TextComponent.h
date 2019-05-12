@@ -20,8 +20,6 @@ public:
 	void Update() override;
 	void Render() const override;
 
-	void Reset() override;
-
 	void SetText(const std::string& text);
 	void SetFont(const std::string& path, unsigned int size);
 	void SetColor(const Color4f& color);
@@ -33,10 +31,10 @@ private:
 
 	SDL_Color ToSDLColor(const Color4f& c) const;
 
-	TextComponent(const TextComponent& obj) = delete;
-	TextComponent(const TextComponent&& obj) = delete;
+	TextComponent(const TextComponent&) = delete;
+	TextComponent(TextComponent&&) noexcept = delete;
 
-	TextComponent& operator=(const TextComponent& obj) = delete;
-	TextComponent& operator=(const TextComponent&& obj) = delete;
+	TextComponent& operator=(const TextComponent&) = delete;
+	TextComponent& operator=(TextComponent&&) noexcept = delete;
 };
 

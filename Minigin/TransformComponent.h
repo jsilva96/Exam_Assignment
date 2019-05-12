@@ -14,8 +14,6 @@ public:
 	void Update() override;
 	void Render() const override;
 
-	void Reset() override;
-
 	void SetPosition(const Point2f& pos);
 	Point2f GetPosition() const;
 
@@ -36,9 +34,10 @@ public:
 private:
 	TransformInfo m_TransformInfo;
 
-	TransformComponent(const TransformComponent& obj) = delete;
-	TransformComponent(const TransformComponent&& obj) = delete;
-	TransformComponent& operator=(const TransformComponent& obj) = delete;
-	TransformComponent& operator=(const TransformComponent&& obj) = delete;
+	TransformComponent(const TransformComponent&) = delete;
+	TransformComponent(TransformComponent&&) noexcept = delete;
+
+	TransformComponent& operator=(const TransformComponent&) = delete;
+	TransformComponent& operator=(TransformComponent&&) noexcept = delete;
 };
 

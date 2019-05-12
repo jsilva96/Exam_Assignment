@@ -8,19 +8,16 @@
 
 RenderComponent::RenderComponent()
 	:m_Texture{ nullptr }
-//	m_DrawRect{ nullptr }
 {
 }
 RenderComponent::~RenderComponent()
 {
-//	delete m_DrawRect;
-//	m_DrawRect = nullptr;
+	m_IsActive = true;
 	DeleteCheck(m_Texture);
 }
 
-void* RenderComponent::operator new(size_t nBytes)
+void* RenderComponent::operator new(size_t)
 {
-	UNREFERENCED_PARAMETER(nBytes);
 	return PoolManager::GetInstance().RetrieveObject<RenderComponent>();
 }
 void RenderComponent::operator delete(void* ptrDelete)
@@ -31,12 +28,12 @@ void RenderComponent::Initialize()
 {
 //	m_DrawRect = new Rectf();
 
-	m_DrawRect.leftBottom = m_pGameObject->GetTransform()->GetPosition();
+	m_DrawRect.leftBottom = GetGameObject()->GetTransform()->GetPosition();
 }
 void RenderComponent::Update()
 {
 //	if (!m_IsActive) return;
-	m_DrawRect.leftBottom = m_pGameObject->GetTransform()->GetPosition();
+	m_DrawRect.leftBottom = GetGameObject()->GetTransform()->GetPosition();
 }
 void RenderComponent::Render() const
 {
@@ -46,17 +43,8 @@ void RenderComponent::Render() const
 
 	if (m_Texture && m_IsActive)
 	{
-		dae::Renderer::GetInstance().RenderTexture(*m_Texture, m_pGameObject->GetTransform()->GetTransformInfo(), m_DrawRect);
+		dae::Renderer::GetInstance().RenderTexture(*m_Texture, GetGameObject()->GetTransform()->GetTransformInfo(), m_DrawRect);
 	}
-}
-void RenderComponent::Reset()
-{
-	BaseComponent::Reset();
-
-	m_IsActive = true;
-
-//	delete m_DrawRect;
-//	m_DrawRect = nullptr;
 }
 void RenderComponent::SetTexture(const string& filepath)
 {

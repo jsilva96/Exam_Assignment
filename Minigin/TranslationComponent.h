@@ -6,11 +6,12 @@ public:
 	TranslationComponent();
 	virtual ~TranslationComponent();
 
+	void* operator new(size_t nBytes);
+	void  operator delete(void* ptrDelete);
+
 	void Initialize() override;
 	void Update() override;
 	void Render()const override;
-
-	void Reset() override;
 
 	void SetDirection(const Vector2f& v);
 	Vector2f GetDirection() const;
@@ -29,9 +30,9 @@ private:
 	Point2f m_PrevPos;
 
 	TranslationComponent(const TranslationComponent&) = delete;
-	TranslationComponent(const TranslationComponent&&) = delete;
+	TranslationComponent(const TranslationComponent&&) noexcept = delete;
 
 	TranslationComponent& operator=(const TranslationComponent&) = delete;
-	TranslationComponent& operator=(const TranslationComponent&&) = delete;
+	TranslationComponent& operator=(const TranslationComponent&&) noexcept = delete;
 };
 
