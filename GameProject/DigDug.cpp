@@ -45,6 +45,9 @@ void DigDug::Update()
 		m_pPooka->GetComponent<SpriteDescSwitchComponent>()->SetDesc(m_Sprite);
 		timer->RestartTimer();
 	}
+
+
+	//TEST!!!!
 }
 void DigDug::Render() const
 {
