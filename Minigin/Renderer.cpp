@@ -53,6 +53,9 @@ void dae::Renderer::RenderTexture(const Texture2D& texture, const float x, const
 	dst.y = static_cast<int>(y);
 
 	SDL_QueryTexture(texture.GetSDLTexture(), nullptr, nullptr, &dst.w, &dst.h);
+	dst.w *= int(info.scale.x);
+	dst.h *= int(info.scale.y);
+
 
 	dst.y = (int)m_HeightOffset - dst.y - dst.h;
 

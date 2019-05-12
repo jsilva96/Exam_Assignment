@@ -8,7 +8,9 @@
 int main()
 {
 	auto engine = new Minigin();
-	engine->Initialize(225, 272);
+
+	float scale = 3.0f;
+	engine->Initialize(225 * scale, 272 * scale);
 	engine->AddGameScene(new DigDug());
 
 	engine->RunGame();

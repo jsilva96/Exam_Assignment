@@ -40,17 +40,14 @@ public:
 private:
 	void InitializeLevel();
 	void InitializePlayer();
-	void InitializePooka();
-	void InitializeFygar();
+	void InitializeEnemyManager();
 
 
 	TimerComponent* timer;
 	unsigned int m_Sprite = 0;
 
 	GameObject* m_pPlayer = nullptr;
-	GameObject* m_pPooka = nullptr;
-	GameObject* m_pFygar = nullptr;
-
+	GameObject* m_EnemyManager = nullptr;
 
 	DigDug(const DigDug& obj) = delete;
 	DigDug(DigDug&& obj) noexcept = delete;

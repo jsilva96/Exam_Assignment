@@ -40,6 +40,10 @@ void RenderComponent::Update()
 }
 void RenderComponent::Render() const
 {
+	/*Rectf tempRect = m_DrawRect;
+	tempRect.width *= GetGameObject()->GetTransform()->GetScale().x;
+	tempRect.height *= GetGameObject()->GetTransform()->GetScale().y;*/
+
 	if (m_Texture && m_IsActive)
 	{
 		dae::Renderer::GetInstance().RenderTexture(*m_Texture, m_pGameObject->GetTransform()->GetTransformInfo(), m_DrawRect);
