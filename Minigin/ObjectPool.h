@@ -44,7 +44,7 @@ public:
 				}
 			}
 		}
-		//else pOb = malloc(sizeof(T));
+		else pOb = static_cast<T*>(malloc(sizeof(T)));
 
 		return pOb;
 	}

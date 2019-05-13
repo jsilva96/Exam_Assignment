@@ -18,6 +18,7 @@ enum class CollisionGroup
 };
 
 class GameObject;
+class BaseCollisionHandler;
 class ColliderComponent : public BaseComponent
 {
 public:
@@ -35,10 +36,7 @@ public:
 
 	void SetCollisionGroup(CollisionGroup group, bool b = true);
 
-	virtual void HandleCollision(ColliderComponent* pComp) 
-	{
-		GetGameObject()->OnCollide(pComp->GetGameObject());
-	};
+	virtual void HandleCollision(ColliderComponent* pComp, bool isColliding);
 
 	Rectf GetRectf() const;
 	void SetRectf(const Rectf& rect)
@@ -55,6 +53,11 @@ private:
 	Rectf m_Rect;
 	std::map<CollisionGroup, bool> m_CollisionGroup;
 	bool m_IsStatic;
+
+	std::vector<ColliderComponent*> m_pCurrentCollisions;
+	std::vector<ColliderComponent*> m_pPrevCurrentCollisions;
+
+	BaseCollisionHandler* m_pHandler;
 
 	friend class CollisionManager;
 	bool IsStatic() const { return m_IsStatic; }

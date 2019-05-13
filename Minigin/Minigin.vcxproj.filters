@@ -167,6 +167,9 @@
     <ClInclude Include="TextureManager.h">
       <Filter>Engine Files</Filter>
     </ClInclude>
+    <ClInclude Include="BaseCollisionHandler.h">
+      <Filter>Engine Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RenderComponent.cpp">
@@ -270,6 +273,9 @@
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
       <Filter>Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCollisionHandler.cpp">
+      <Filter>Engine Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

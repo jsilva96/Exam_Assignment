@@ -211,6 +211,7 @@ xcopy "$(SolutionDir)3rdParty\SDL_gfx\lib\*.dll" "$(OutputPath)" /R /Y</Command>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BaseCollisionHandler.h" />
     <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BasePool.h" />
@@ -258,6 +259,7 @@ xcopy "$(SolutionDir)3rdParty\SDL_gfx\lib\*.dll" "$(OutputPath)" /R /Y</Command>
     <ClInclude Include="TranslationComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseCollisionHandler.cpp" />
     <ClCompile Include="BaseShape.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="CollisionManager.cpp" />

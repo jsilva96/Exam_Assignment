@@ -44,11 +44,10 @@ void CollisionManager::Update()
 			{
 				if (CanCollide(pC->GetCollisionGroups(), pC2->GetCollisionGroups()))
 				{
-					if (CheckForCollision(pC2, pC))
-					{
-						pC2->HandleCollision(pC);
-						pC->HandleCollision(pC2);
-					}
+					bool isColliding = CheckForCollision(pC2, pC);
+					
+					pC2->HandleCollision(pC, isColliding);
+					pC->HandleCollision(pC2, isColliding);
 				}
 			}
 		}
@@ -73,20 +72,19 @@ void CollisionManager::CheckQuadrantCollisions(std::vector<ColliderComponent*>& 
 	auto lambda = [&](ColliderComponent* pC1)
 	{
 		if (*(colliders.end() - 1) == pC1) return;
-		bool b = false;
+		bool isCfound = false;
 		
 		for (ColliderComponent* pC : colliders)
 		{
-			if (!b) b = !b && (pC == pC1);
+			if (!isCfound) isCfound = !isCfound && (pC == pC1);
 			else
 			{
 				if (CanCollide(pC1->GetCollisionGroups(), pC->GetCollisionGroups()))
 				{
-					if (CheckForCollision(pC1, pC))
-					{
-						pC->HandleCollision(pC1);
-						pC1->HandleCollision(pC);
-					}
+					bool isColliding = CheckForCollision(pC1, pC);
+
+					pC->HandleCollision(pC1, isColliding);
+					pC1->HandleCollision(pC, isColliding);
 				}
 			}
 		}
