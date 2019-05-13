@@ -9,7 +9,7 @@ int main()
 {
 	auto engine = new Minigin();
 
-	float scale = 3.0f;
+	int scale = 3;
 	engine->Initialize(225 * scale, 272 * scale);
 	engine->AddGameScene(new DigDug());
 

@@ -15,7 +15,7 @@ ColliderComponent::ColliderComponent()
 {
 }
 
-void* ColliderComponent::operator new(size_t nBytes)
+void* ColliderComponent::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<ColliderComponent>();
 }

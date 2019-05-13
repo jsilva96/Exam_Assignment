@@ -35,7 +35,6 @@ public:
 	void Initialize() override;
 	void Update() override;
 	void Render() const override;
-	void Reset() override;
 
 private:
 	void InitializeLevel();

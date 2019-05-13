@@ -22,7 +22,7 @@ InputComponent::~InputComponent()
 
 	m_pCommands.clear();
 }
-void* InputComponent::operator new(size_t nBytes)
+void* InputComponent::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<InputComponent>();
 }
@@ -37,7 +37,7 @@ void InputComponent::Initialize()
 
 	InputManager::GetInstance().AddInputComponent(this);
 
-	for (std::pair<const InputOptions, std::vector<Command*>>& p : m_pCommands) for (Command* pC : p.second) pC->SetGameObject(m_pGameObject);
+	for (std::pair<const InputOptions, std::vector<Command*>>& p : m_pCommands) for (Command* pC : p.second) pC->SetGameObject(GetGameObject());
 }
 void InputComponent::Update()
 {
@@ -67,7 +67,7 @@ void InputComponent::CheckInput()
 }
 void InputComponent::AddCommand(Command* pCommand, InputOptions button)
 {
-	if (AddCheck(m_pCommands[button], pCommand)) pCommand->SetGameObject(m_pGameObject);
+	if (AddCheck(m_pCommands[button], pCommand)) pCommand->SetGameObject(GetGameObject());
 }
 Gamepad* InputComponent::GetGamepad() const
 {

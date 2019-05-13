@@ -41,9 +41,6 @@ void DigDug::Update()
 void DigDug::Render() const
 {
 }
-void DigDug::Reset()
-{
-}
 void DigDug::InitializeLevel()
 {
 	auto go = new GameObject();

@@ -16,7 +16,6 @@ public:
 	void Initialize() override;
 	void Update() override;
 	void Render() const override;
-	void Reset() override;
 
 	void AddDesc(const SpriteDesc& desc);
 	void SetDesc(int index);

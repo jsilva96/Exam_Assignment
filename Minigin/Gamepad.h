@@ -21,8 +21,6 @@ public:
 	Gamepad();
 	virtual ~Gamepad();
 
-	void Reset() override;
-
 	void CheckController();
 
 	bool IsPressed(WORD button) const;
@@ -66,9 +64,9 @@ private:
 	void AssignInput(InputComponent* pComp);
 	
 	Gamepad(const Gamepad&) = delete;
-	Gamepad(const Gamepad&&) = delete;
+	Gamepad(const Gamepad&&) noexcept = delete;
 
 	Gamepad& operator=(const Gamepad&) = delete;
-	Gamepad& operator=(const Gamepad&&) = delete;
+	Gamepad& operator=(const Gamepad&&) noexcept = delete;
 };
 

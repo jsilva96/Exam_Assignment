@@ -41,11 +41,11 @@ private:
 	std::string m_Name;
 
 	bool m_IsPaused;
-	GameScene(const GameScene& obj) = delete;
-	GameScene(const GameScene&& obj) = delete;
+	GameScene(const GameScene&) = delete;
+	GameScene(GameScene&&) noexcept = delete;
 
-	GameScene& operator=(const GameScene& obj) = delete;
-	GameScene& operator=(const GameScene&& obj) = delete;
+	GameScene& operator=(const GameScene&) = delete;
+	GameScene& operator=(GameScene&&) noexcept = delete;
 
 };
 

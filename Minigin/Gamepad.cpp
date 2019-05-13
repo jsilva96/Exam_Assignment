@@ -12,9 +12,6 @@ Gamepad::Gamepad()
 }
 Gamepad::~Gamepad()
 {
-}
-void Gamepad::Reset()
-{
 	m_pInput = nullptr;
 
 	m_LeftTriggerPress = 0.0f;

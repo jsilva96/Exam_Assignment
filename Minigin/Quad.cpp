@@ -19,7 +19,3 @@ void Quad::Render() const
 void Quad::Update()
 {
 }
-void Quad::Reset()
-{
-	BaseShape::Reset();
-}

@@ -37,14 +37,14 @@ public:
 
 			for (size_t i = 0; i < m_ObjectList.size(); ++i)
 			{
-				if (!static_cast<BaseObject>(m_ObjectList[i]).IsUsable() && (pOb != m_ObjectList[i]))
+				if (!static_cast<BaseObject*>(m_ObjectList[i])->IsUsable() && (pOb != m_ObjectList[i]))
 				{
-					m_NextIndex = i;
+					m_NextIndex = (unsigned int)i;
 					break;
 				}
 			}
 		}
-		else pOb = malloc(sizeof(T));
+		//else pOb = malloc(sizeof(T));
 
 		return pOb;
 	}

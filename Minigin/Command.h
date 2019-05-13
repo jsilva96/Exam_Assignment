@@ -8,30 +8,28 @@ public:
 		:m_Event{ event }
 	{
 	}
-	virtual ~Command() {};
+	virtual ~Command()
+	{
+		m_pGameObject = nullptr;
+	};
 
 	virtual void Execute() = 0;
 	void SetGameObject(GameObject* pObject) 
 	{
 		m_pGameObject = pObject; 
 	};
-	
+
 	std::string GetEvent() { return m_Event; };
 
-	void Reset() override
-	{
-		m_pGameObject = nullptr;
-	}
-
-protected:
+	protected:
 	std::string m_Event;
 	GameObject* m_pGameObject;
 
 private:
-	Command(const Command& obj) = delete;
-	Command(const Command&& obj) = delete;
+	Command(const Command&) = delete;
+	Command(Command&&) noexcept = delete;
 
-	Command& operator=(const Command& obj) = delete;
-	Command& operator=(const Command&& obj) = delete;
+	Command& operator=(Command&) = delete;
+	Command& operator=(Command&&) noexcept = delete;
 };
 

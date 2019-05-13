@@ -41,11 +41,6 @@ bool SoundStream::IsPlaying( )
 {
 	return Mix_PlayingMusic( ) == 0 ? false : true;
 }
-void SoundStream::Reset()
-{
-	Mix_FreeMusic(m_pMixMusic);
-	m_pMixMusic = nullptr;
-}
 Mix_Music* SoundStream::GetMusic() const
 {
 	return m_pMixMusic;

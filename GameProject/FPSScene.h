@@ -18,11 +18,6 @@ public:
 	{
 		
 	}
-	void Reset() override
-	{
-		
-	}
-
 	FPSScene(const FPSScene& obj) = delete;
 	FPSScene(FPSScene&& obj) noexcept = delete;
 

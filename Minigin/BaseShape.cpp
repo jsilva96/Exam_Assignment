@@ -11,6 +11,8 @@ BaseShape::BaseShape(unsigned int nrOfVerts)
 }
 BaseShape::~BaseShape()
 {
+	m_Verts.clear();
+	m_Length = 1.0f;
 }
 void BaseShape::Initialize()
 {
@@ -37,13 +39,6 @@ void BaseShape::Update()
 void BaseShape::Render() const
 {
 	dae::Renderer::GetInstance().RenderShape(m_Verts, m_Color);
-}
-void BaseShape::Reset()
-{
-	GameObject::Reset();
-
-	m_Verts.clear();
-	m_Length = 1.0f;
 }
 void BaseShape::SetLength(float length)
 {

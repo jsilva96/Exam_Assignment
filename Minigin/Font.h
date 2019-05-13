@@ -14,10 +14,11 @@ namespace dae
 		TTF_Font* mFont;
 		unsigned int mSize;
 
-		Font(const Font& obj) = delete;
-		Font(const Font&& obj) = delete;
-		Font& operator=(const Font& obj) = delete;
-		Font& operator=(const Font&& obj) = delete;
+		Font(const Font&) = delete;
+		Font(Font&&) noexcept = delete;
+		
+		Font& operator=(const Font&) = delete;
+		Font& operator=(Font&&) noexcept = delete;
 	};
 
 }

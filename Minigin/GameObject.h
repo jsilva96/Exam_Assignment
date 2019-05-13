@@ -56,10 +56,10 @@ protected:
 	std::vector<GameObject*> m_pChildren;
 
 private:
-	GameObject(const GameObject& other) = delete;
-	GameObject(const GameObject&& other) = delete;
+	GameObject(const GameObject&) = delete;
+	GameObject(GameObject&&) noexcept = delete;
 
-	GameObject& operator=(const GameObject& other) = delete;
-	GameObject& operator=(const GameObject&& other) = delete;
+	GameObject& operator=(const GameObject&) = delete;
+	GameObject& operator=(GameObject&&) noexcept = delete;
 
 };

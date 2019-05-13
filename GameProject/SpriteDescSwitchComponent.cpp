@@ -23,9 +23,6 @@ void SpriteDescSwitchComponent::Update()
 void SpriteDescSwitchComponent::Render() const
 {
 }
-void SpriteDescSwitchComponent::Reset()
-{
-}
 void SpriteDescSwitchComponent::AddDesc(const SpriteDesc& desc)
 {
 	AddCheck(m_SpriteDesc, desc);

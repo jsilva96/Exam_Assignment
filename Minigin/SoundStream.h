@@ -19,8 +19,6 @@ public:
 	
 	static bool IsPlaying( );
 
-	void Reset() override;
-
 	Mix_Music* GetMusic() const;
 private:
 	Mix_Music *m_pMixMusic;

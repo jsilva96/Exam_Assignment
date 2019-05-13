@@ -15,7 +15,7 @@ TranslationComponent::~TranslationComponent()
 	m_Dir = { 0.0f, 0.0f };
 	m_Speed = 0.0f;
 }
-void* TranslationComponent::operator new(size_t nBytes)
+void* TranslationComponent::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<TranslationComponent>();
 }

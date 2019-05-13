@@ -24,9 +24,10 @@ namespace dae
 		float m_Heigth;
 		unsigned int m_ID;
 		
-		Texture2D(const Texture2D &) = delete;
-		Texture2D(Texture2D &&) = delete;
-		Texture2D & operator= (const Texture2D &) = delete;
-		Texture2D & operator= (const Texture2D &&) = delete;
+		Texture2D(const Texture2D&) = delete;
+		Texture2D(Texture2D&&) noexcept = delete;
+
+		Texture2D& operator=(const Texture2D&) = delete;
+		Texture2D& operator=(Texture2D&&) noexcept = delete;
 	};
 }

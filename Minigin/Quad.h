@@ -4,19 +4,19 @@ class Quad : public BaseShape
 {
 public:
 	Quad();
-	virtual ~Quad() {};
+	virtual ~Quad() = default;
 
 	void Initialize() override;
 	void Render() const override;
 	void Update() override;
-	void Reset() override;
-private:
+
+	private:
 	Rectf m_Rect;
 
-	Quad(const Quad& obj) = delete;
-	Quad(const Quad&& obj) = delete;
+	Quad(const Quad&) = delete;
+	Quad(Quad&&) noexcept = delete;
 
-	Quad& operator=(const Quad& obj) = delete;
-	Quad& operator=(const Quad&& obj) = delete;
+	Quad& operator=(const Quad&) = delete;
+	Quad& operator=(Quad&&) noexcept = delete;
 };
 

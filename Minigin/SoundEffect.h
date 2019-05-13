@@ -18,8 +18,6 @@ public:
 	static void StopAll( );
 	static void PauseAll( );
 	static void ResumeAll( );
-
-	void Reset() override;
 private:
 	Mix_Chunk* m_pMixChunk;
 

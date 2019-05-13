@@ -20,9 +20,8 @@ GameObject::~GameObject()
 	DeleteCheck(m_pChildren);
 }
 
-void* GameObject::operator new(size_t nBytes)
+void* GameObject::operator new(size_t)
 {
-	UNREFERENCED_PARAMETER(nBytes);
 	return PoolManager::GetInstance().RetrieveObject<GameObject>();
 }
 void GameObject::operator delete(void* ptrDelete)
@@ -92,14 +91,3 @@ void GameObject::AddChild(GameObject * pObj)
 {
 	AddCheck(m_pChildren, pObj);
 }
-//template <class T>
-//T* GameObject::GetComponent()
-//{
-//	const type_info& ti = typeid(T);
-//	for (BaseComponent* component : m_pComponents)
-//	{
-//		if (component && typeid(*component) == ti) return static_cast<T*>(component);
-//	}
-//
-//	return nullptr;
-//}

@@ -11,7 +11,7 @@ SoundComponent::SoundComponent()
 }
 SoundComponent::~SoundComponent()
 {
-	m_Volume = 25.0f;
+	m_Volume = 25;
 	m_IsVolumeChanged = false;
 }
 void* SoundComponent::operator new(size_t)

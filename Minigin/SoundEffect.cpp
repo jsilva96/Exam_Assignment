@@ -44,8 +44,3 @@ void SoundEffect::ResumeAll( )
 {
 	Mix_Resume( -1 );
 }
-void SoundEffect::Reset()
-{
-	Mix_FreeChunk(m_pMixChunk);
-	m_pMixChunk = nullptr;
-}
