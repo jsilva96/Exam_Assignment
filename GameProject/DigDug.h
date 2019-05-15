@@ -36,6 +36,12 @@ public:
 	void Update() override;
 	void Render() const override;
 
+	DigDug(const DigDug& obj) = delete;
+	DigDug(DigDug&& obj) noexcept = delete;
+
+	DigDug& operator=(const DigDug& obj) = delete;
+	DigDug& operator=(DigDug&& obj) noexcept = delete;
+
 private:
 	void InitializeLevel();
 	void InitializePlayer();
@@ -47,11 +53,5 @@ private:
 
 	GameObject* m_pPlayer = nullptr;
 	GameObject* m_EnemyManager = nullptr;
-
-	DigDug(const DigDug& obj) = delete;
-	DigDug(DigDug&& obj) noexcept = delete;
-
-	DigDug& operator=(const DigDug& obj) = delete;
-	DigDug& operator=(DigDug&& obj) noexcept = delete;
 };
 

@@ -36,6 +36,9 @@
     <ClInclude Include="EnemyManager.h">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="FPSDisplayComponent.h">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -54,6 +57,9 @@
       <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="EnemyManager.cpp">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSDisplayComponent.cpp">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
   </ItemGroup>

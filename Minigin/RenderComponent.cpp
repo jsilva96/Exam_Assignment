@@ -61,7 +61,14 @@ bool RenderComponent::IsActive() const
 {
 	return m_IsActive;
 }
-dae::Texture2D* RenderComponent::GetTexture() const
+
+float RenderComponent::GetTextureHeight() const
 {
-	return &(*m_Texture);
+	if (!m_Texture) throw std::exception("RenderComponent::GetTextureHeight->Texture is nullptr\n");
+	return m_Texture->GetHeight();
+}
+float RenderComponent::GetTextureWidth() const
+{
+	if (!m_Texture) throw std::exception("RenderComponent::GetTextureWidth->Texture is nullptr\n");
+	return m_Texture->GetWidth();
 }

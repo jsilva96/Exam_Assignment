@@ -175,6 +175,7 @@
   <ItemGroup>
     <ClInclude Include="DigDug.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="FPSDisplayComponent.h" />
     <ClInclude Include="FPSScene.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SpriteDescSwitchComponent.h" />
@@ -182,6 +183,7 @@
   <ItemGroup>
     <ClCompile Include="DigDug.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="FPSDisplayComponent.cpp" />
     <ClCompile Include="FPSScene.cpp" />
     <ClCompile Include="GameProject.cpp" />
     <ClCompile Include="pch.cpp">

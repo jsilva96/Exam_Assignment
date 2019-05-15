@@ -27,8 +27,9 @@ public:
 	virtual void SetTexture(const string& filename);
 	void SetActive(bool b);
 	bool IsActive() const;
-	dae::Texture2D* GetTexture() const;
 
+	float GetTextureHeight() const;
+	float GetTextureWidth() const;
 protected:
 	dae::Texture2D* m_Texture;
 	Rectf m_DrawRect;

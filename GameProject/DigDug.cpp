@@ -11,6 +11,8 @@
 #include "TimerComponent.h"
 #include <iostream>
 #include "EnemyManager.h"
+#include "FPSDisplayComponent.h"
+#include "TextComponent.h"
 
 DigDug::DigDug()
 {
@@ -31,6 +33,7 @@ void DigDug::operator delete(void* ptrDelete)
 void DigDug::Initialize()
 {
 	InitializeLevel();
+
 //	InitializePlayer();
 //	InitializeFygar();
 //	InitializePooka();
@@ -50,6 +53,20 @@ void DigDug::InitializeLevel()
 
 	go->GetTransform()->SetScale(3.0f);
 	go->AddComponent(r);
+
+	Add(go);
+
+	go = new GameObject();
+	auto fps = new FPSDisplayComponent();
+	auto t = new TextComponent();
+
+	fps->SetTextComponent(t);
+
+	go->AddComponent(t);
+	go->AddComponent(fps);
+
+	t->SetFont("Lingua.otf", 25);
+	t->SetColor({ 0.0f, 1.0f, 0.0f, 1.0f });
 
 	Add(go);
 }

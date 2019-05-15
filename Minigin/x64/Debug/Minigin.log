@@ -2,41 +2,11 @@
   BaseCollisionHandler.cpp
   BaseShape.cpp
   ColliderComponent.cpp
-c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\collidercomponent.cpp(76): error C3867: 'std::vector<ColliderComponent *,std::allocator<_Ty>>::end': non-standard syntax; use '&' to create a pointer to member
-          with
-          [
-              _Ty=ColliderComponent *
-          ]
-c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\collidercomponent.cpp(76): error C2678: binary '!=': no operator found which takes a left-hand operand of type 'const _InIt' (or there is no acceptable conversion)
-          with
-          [
-              _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<ColliderComponent *>>>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\vector(168): note: could be 'bool std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>::operator !=(const std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> &) const'
-          with
-          [
-              _Ty=ColliderComponent *
-          ]
-  c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\somestructs.h(216): note: or       'bool operator !=(const Vector2f &,const Vector2f &)'
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\shared\guiddef.h(197): note: or       'bool operator !=(const GUID &,const GUID &)'
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\exception(336): note: or       'bool std::operator !=(const std::exception_ptr &,const std::exception_ptr &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\exception(341): note: or       'bool std::operator !=(std::nullptr_t,const std::exception_ptr &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\exception(346): note: or       'bool std::operator !=(const std::exception_ptr &,std::nullptr_t) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\system_error(291): note: or       'bool std::operator !=(const std::error_code &,const std::error_code &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\system_error(296): note: or       'bool std::operator !=(const std::error_code &,const std::error_condition &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\system_error(301): note: or       'bool std::operator !=(const std::error_condition &,const std::error_code &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\system_error(306): note: or       'bool std::operator !=(const std::error_condition &,const std::error_condition &) noexcept' [found using argument-dependent lookup]
-  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\thread(213): note: or       'bool std::operator !=(std::thread::id,std::thread::id) noexcept' [found using argument-dependent lookup]
-  c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\collidercomponent.cpp(76): note: while trying to match the argument list '(const _InIt, overloaded-function)'
-          with
-          [
-              _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<ColliderComponent *>>>
-          ]
   CollisionManager.cpp
   Font.cpp
   GameObject.cpp
-  Gamepad.cpp
   GameScene.cpp
+  Gamepad.cpp
   InputComponent.cpp
   InputManager.cpp
   LevelColliderComponent.cpp
@@ -51,13 +21,13 @@ c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\m
   RotationComponent.cpp
   Generating Code...
   Compiling...
+  SVGParser.cpp
   ScaleComponent.cpp
   SceneManager.cpp
   SoundComponent.cpp
   SoundEffect.cpp
   SoundStream.cpp
   SpriteComponent.cpp
-  SVGParser.cpp
   TextComponent.cpp
   Texture2D.cpp
   TextureManager.cpp
@@ -66,3 +36,27 @@ c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\m
   TransformComponent.cpp
   TranslationComponent.cpp
   Generating Code...
+  Minigin.vcxproj -> C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Debug\Minigin.lib
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2\lib\x64\SDL2.dll
+  1 File(s) copied
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libjpeg-9.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libpng16-16.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libtiff-5.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\libwebp-7.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\SDL2_image.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_image\lib\x64\zlib1.dll
+  6 File(s) copied
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\libfreetype-6.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll
+  2 File(s) copied
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libFLAC-8.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libmikmod-2.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libmodplug-1.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libogg-0.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libvorbis-0.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\libvorbisfile-3.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\SDL2_mixer.dll
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2_mixer-2.0.1\lib\x64\smpeg2.dll
+  8 File(s) copied
+  C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL_gfx\lib\sdlgfx.dll
+  1 File(s) copied

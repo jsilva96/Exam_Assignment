@@ -42,13 +42,12 @@ void FPSScene::Initialize()
 	m_pDAEText->AddComponent(r);
 
 	auto windowRect = dae::Renderer::GetInstance().GetWindowDims();
-	auto text = r->GetTexture();
 
 	auto wHalfWidth = windowRect.width / 2;
 	auto wHalfHeight = windowRect.width / 2;
 
-	auto tHalfWidth = text->GetWidth() / 2;
-	auto tHalfHeight = text->GetHeight() / 2;
+	auto tHalfWidth = r->GetTextureWidth() / 2;
+	auto tHalfHeight = r->GetTextureHeight() / 2;
 
 	m_pDAEText->GetTransform()->SetPosition({ wHalfWidth - tHalfWidth, wHalfHeight - tHalfHeight });
 
