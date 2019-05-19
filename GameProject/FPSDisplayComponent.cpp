@@ -21,7 +21,7 @@ void FPSDisplayComponent::Update()
 {
 	if (m_pText)
 	{
-		m_pText->SetText("Test");
+		m_pText->SetText(to_string(Time::GetInstance().GetFPS()));
 	}
 }
 void FPSDisplayComponent::Render() const

@@ -260,6 +260,7 @@ xcopy "$(SolutionDir)3rdParty\SDL_gfx\lib\*.dll" "$(OutputPath)" /R /Y</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseCollisionHandler.cpp" />
+    <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BaseShape.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="CollisionManager.cpp" />

@@ -277,5 +277,8 @@
     <ClCompile Include="BaseCollisionHandler.cpp">
       <Filter>Engine Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="BaseObject.cpp">
+      <Filter>Engine Files\Scenegraph</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,12 +1,13 @@
 ﻿  MiniginPCH.cpp
   BaseCollisionHandler.cpp
+  BaseObject.cpp
   BaseShape.cpp
   ColliderComponent.cpp
   CollisionManager.cpp
   Font.cpp
   GameObject.cpp
-  GameScene.cpp
   Gamepad.cpp
+  GameScene.cpp
   InputComponent.cpp
   InputManager.cpp
   LevelColliderComponent.cpp
@@ -18,16 +19,16 @@
   RenderComponent.cpp
   Renderer.cpp
   ResourceManager.cpp
-  RotationComponent.cpp
   Generating Code...
   Compiling...
-  SVGParser.cpp
+  RotationComponent.cpp
   ScaleComponent.cpp
   SceneManager.cpp
   SoundComponent.cpp
   SoundEffect.cpp
   SoundStream.cpp
   SpriteComponent.cpp
+  SVGParser.cpp
   TextComponent.cpp
   Texture2D.cpp
   TextureManager.cpp

@@ -46,6 +46,7 @@ private:
 	void InitializeLevel();
 	void InitializePlayer();
 	void InitializeEnemyManager();
+	void InitializeBlocks();
 
 
 	TimerComponent* timer;

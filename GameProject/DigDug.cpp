@@ -33,7 +33,7 @@ void DigDug::operator delete(void* ptrDelete)
 void DigDug::Initialize()
 {
 	InitializeLevel();
-
+	InitializeBlocks();
 //	InitializePlayer();
 //	InitializeFygar();
 //	InitializePooka();
@@ -51,7 +51,7 @@ void DigDug::InitializeLevel()
 	auto r = new RenderComponent();
 	r->SetTexture("Levels/DigDug/Level1.png");
 
-	go->GetTransform()->SetScale(3.0f);
+	go->GetTransform()->SetScale(2.0f);
 	go->AddComponent(r);
 
 	Add(go);
@@ -122,6 +122,18 @@ void DigDug::InitializeEnemyManager()
 	auto go = new GameObject();
 
 	auto r = new EnemyManager();
+	go->AddComponent(r);
+
+	Add(go);
+}
+
+void DigDug::InitializeBlocks()
+{
+	auto go = new GameObject();
+
+	auto r = new RenderComponent();
+	r->SetTexture("Textures/DigDug/Black_Sprite.png");
+
 	go->AddComponent(r);
 
 	Add(go);
