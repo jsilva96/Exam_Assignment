@@ -10,6 +10,8 @@ public:
 
 	virtual void ReturnObject(BaseObject*) = 0;
 
+	virtual void FindNewIndex() = 0;
+
 protected:
 	std::string m_TypeName;
 
@@ -18,9 +20,9 @@ protected:
 
 private:
 	BasePool(const BasePool&) = delete;
-	BasePool(const BasePool&&) = delete;
+	BasePool(BasePool&&) noexcept = delete;
 
 	BasePool& operator=(const BasePool&) = delete;
-	BasePool& operator=(const BasePool&&) = delete;
+	BasePool& operator=(BasePool&&) noexcept = delete;
 };
 

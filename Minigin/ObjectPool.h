@@ -10,7 +10,7 @@ class ObjectPool : public BasePool
 {
 public:
 	ObjectPool()
-		:m_NextIndex()
+		:m_NextIndex(),m_IsPoolFull(false)
 	{
 		const type_info& ti = typeid(T);
 		m_TypeName = ti.name();
@@ -20,6 +20,7 @@ public:
 		for (size_t i = 0; i < 100; ++i)
 		{
 			m_ObjectList.push_back(&tempPool[i]);
+			m_ActiveObjects.push_back(false);
 		}
 	}
 	virtual ~ObjectPool()
@@ -28,36 +29,45 @@ public:
 	}
 
 	T* RetrieveObject()
-	{		
+	{
 		T* pOb = nullptr;
 
-		if (m_NextIndex < m_ObjectList.size())
+		if (!m_IsPoolFull)
 		{
 			pOb = m_ObjectList[m_NextIndex];
-
-			for (size_t i = 0; i < m_ObjectList.size(); ++i)
-			{
-				if (!static_cast<BaseObject*>(m_ObjectList[i])->IsUsable() && (pOb != m_ObjectList[i]))
-				{
-					m_NextIndex = (unsigned int)i;
-					break;
-				}
-			}
+			m_ActiveObjects[m_NextIndex] = true;
+			FindNewIndex();
 		}
 		else pOb = static_cast<T*>(malloc(sizeof(T)));
 
 		return pOb;
 	}
+	void FindNewIndex() override
+	{
+		const auto it = std::find_if(m_ActiveObjects.begin(), m_ActiveObjects.end(), [](bool b) {return !b; });
+
+		m_IsPoolFull = it == m_ActiveObjects.end();
+		
+		if(!m_IsPoolFull) m_NextIndex = (unsigned int)std::distance(m_ActiveObjects.begin(), it);
+	}
 private:
 	std::vector<T*> m_ObjectList;
+	std::vector<bool> m_ActiveObjects;
 	unsigned int m_NextIndex;
+	bool m_IsPoolFull;
 
 	friend class PoolManager;
 	void ReturnObject(BaseObject* pObj) override
 	{
-		if(std::find(m_ObjectList.begin(), m_ObjectList.end(),pObj) == m_ObjectList.end()) free(pObj);
+		const auto it = std::find(m_ObjectList.begin(), m_ObjectList.end(), pObj);
+		if (it == m_ObjectList.end()) free(pObj);
+		else if (m_IsPoolFull)
+		{
+			m_NextIndex = (unsigned int)std::distance(m_ObjectList.begin(), it);
+			m_ActiveObjects[m_NextIndex] = false;
+			m_IsPoolFull = false;
+		}
 	}
-
 
 	ObjectPool(const ObjectPool&) = delete;
 	ObjectPool(ObjectPool&&) noexcept = delete;

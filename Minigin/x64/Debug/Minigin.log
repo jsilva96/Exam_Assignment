@@ -6,8 +6,8 @@
   CollisionManager.cpp
   Font.cpp
   GameObject.cpp
-  Gamepad.cpp
   GameScene.cpp
+  Gamepad.cpp
   InputComponent.cpp
   InputManager.cpp
   LevelColliderComponent.cpp
@@ -22,13 +22,13 @@
   Generating Code...
   Compiling...
   RotationComponent.cpp
+  SVGParser.cpp
   ScaleComponent.cpp
   SceneManager.cpp
   SoundComponent.cpp
   SoundEffect.cpp
   SoundStream.cpp
   SpriteComponent.cpp
-  SVGParser.cpp
   TextComponent.cpp
   Texture2D.cpp
   TextureManager.cpp
