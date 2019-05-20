@@ -8,7 +8,7 @@
 bool operator<(InputOptions obj1, InputOptions obj2) { return obj1.controller < obj2.controller; };
 
 InputComponent::InputComponent()
-	:m_pGamepad{ PoolManager::GetInstance().RetrieveObject<Gamepad>() }
+	:m_pGamepad{ new Gamepad() }
 {
 	
 }
@@ -54,7 +54,7 @@ void InputComponent::UpdateKeyboard()
 {
 	for (std::pair<const InputOptions, std::vector<Command*>>& p : m_pCommands)
 	{
-		if (CheckKeyboard(p.first.keyboard)) for (Command* pC : p.second)  pC->Execute();
+		if (CheckKeyboard(static_cast<UINT8>(p.first.keyboard))) for (Command* pC : p.second)  pC->Execute();
 	}
 }
 void InputComponent::Render() const
@@ -73,9 +73,9 @@ Gamepad* InputComponent::GetGamepad() const
 {
 	return m_pGamepad;
 }
-bool InputComponent::CheckKeyboard(SDL_Scancode scan)
+bool InputComponent::CheckKeyboard(UINT8 scan)
 {
 	const Uint8 *pStates = SDL_GetKeyboardState(nullptr);
 
-	return pStates[scan];
+	return pStates[static_cast<Uint8>(scan)];
 }

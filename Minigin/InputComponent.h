@@ -24,10 +24,18 @@ enum class ControllerButton
 	StartButton = XINPUT_GAMEPAD_START,
 	SelectButton = XINPUT_GAMEPAD_BACK,
 };
+enum class KeyboardButton : UINT8
+{
+	Right = 79,
+	Left = 80,
+	Down = 81,
+	Up = 82,
+};
+
 struct InputOptions
 {
 	ControllerButton controller;
-	SDL_Scancode keyboard;
+	KeyboardButton keyboard;
 };
 class Command;
 class Gamepad;
@@ -54,7 +62,7 @@ private:
 	std::map<InputOptions ,std::vector<Command*>> m_pCommands;
 	Gamepad* m_pGamepad;
 
-	bool CheckKeyboard(SDL_Scancode scan);
+	bool CheckKeyboard(UINT8 scan);
 	
 	void UpdateGamepad();
 	void UpdateKeyboard();

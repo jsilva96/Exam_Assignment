@@ -53,6 +53,16 @@ void Gamepad::CheckController()
 		else UpdateValues();
 	}
 }
+
+void* Gamepad::operator new(size_t)
+{
+	return PoolManager::GetInstance().RetrieveObject<Gamepad>();
+}
+void Gamepad::operator delete(void* ptrDelete)
+{
+	PoolManager::GetInstance().ReturnObject<Gamepad>(static_cast<BaseObject*>(ptrDelete));
+}
+
 void Gamepad::AssignInput(InputComponent * pComp)
 {
 	m_pInput = pComp;

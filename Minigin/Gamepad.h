@@ -23,6 +23,9 @@ public:
 
 	void CheckController();
 
+	void* operator new(size_t nBytes);
+	void  operator delete(void* ptrDelete);
+
 	bool IsPressed(WORD button) const;
 
 	void UpdateValues();

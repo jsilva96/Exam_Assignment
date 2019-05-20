@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Game Files\Components">
       <UniqueIdentifier>{2ace4e56-5def-44aa-bc9b-0ee5a838cad0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game Files\Commands">
+      <UniqueIdentifier>{eb7f82de-8bd8-431e-8800-7beaab5b726b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -44,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="PlayerMovementComponent.h">
       <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovementCommand.h">
+      <Filter>Source Files\Game Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +79,9 @@
     </ClCompile>
     <ClCompile Include="PlayerMovementComponent.cpp">
       <Filter>Source Files\Game Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMovementCommand.cpp">
+      <Filter>Source Files\Game Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

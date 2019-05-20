@@ -15,6 +15,10 @@
 #include "TextComponent.h"
 #include "BlockManager.h"
 
+#include "InputComponent.h"
+#include "PlayerMovementComponent.h"
+#include "TranslationComponent.h"
+
 DigDug::DigDug()
 {
 }
@@ -102,6 +106,19 @@ void DigDug::InitializePlayer()
 
 	m_pPlayer->SetPosition(30.0f, 30.0f);
 	m_pPlayer->GetTransform()->SetScale(3.0f);
+
+
+	//PLAYER MOVEMENT COMPONENT
+	auto movCmp = new PlayerMovementComponent(10.0f);
+	auto input = new InputComponent();
+	auto trans = new TranslationComponent();
+
+	movCmp->SetInputComponent(input);
+	movCmp->SetTranslationComponent(trans);
+
+	m_pPlayer->AddComponent(input);
+	m_pPlayer->AddComponent(trans);
+	m_pPlayer->AddComponent(movCmp);
 
 	Add(m_pPlayer);
 }
