@@ -21,6 +21,7 @@ TextComponent::~TextComponent()
 {
 	m_Color = { 1, 1,1, 1 };
 	m_Text.clear();
+	SDL_DestroyTexture(m_Texture->GetSDLTexture());
 }
 void* TextComponent::operator new(size_t)
 {
@@ -28,7 +29,7 @@ void* TextComponent::operator new(size_t)
 }
 void TextComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<TextComponent>(static_cast<BaseObject*>(ptrDelete));
 }
 void TextComponent::Initialize()
 {

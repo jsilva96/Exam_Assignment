@@ -2,7 +2,7 @@
 #include <string>
 #include "BaseObject.h"
 
-class SoundEffect  :  public BaseObject
+class SoundEffect final :  public BaseObject
 {
 public:
 	SoundEffect(Mix_Chunk* pChunk);

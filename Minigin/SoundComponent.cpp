@@ -20,7 +20,7 @@ void* SoundComponent::operator new(size_t)
 }
 void SoundComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<SoundComponent>(static_cast<BaseObject*>(ptrDelete));
 }
 void SoundComponent::Initialize() 
 {

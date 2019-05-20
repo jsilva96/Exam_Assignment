@@ -8,6 +8,9 @@ public:
 	BaseCollisionHandler();
 	virtual ~BaseCollisionHandler();
 
+	void* operator new(size_t nBytes);
+	void  operator delete(void* ptrDelete);
+
 	void Initialize() override{}
 	void Update() override{};
 	void Render() const override{};

@@ -21,7 +21,7 @@ void* TranslationComponent::operator new(size_t)
 }
 void TranslationComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<TranslationComponent>(static_cast<BaseObject*>(ptrDelete));
 }
 void TranslationComponent::Initialize()
 {

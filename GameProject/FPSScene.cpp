@@ -21,7 +21,7 @@ void* FPSScene::operator new(size_t nBytes)
 }
 void FPSScene::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().DeleteObject<FPSScene>(static_cast<FPSScene*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<FPSScene>(static_cast<FPSScene*>(ptrDelete));
 }
 void FPSScene::Initialize()
 {

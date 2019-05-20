@@ -22,7 +22,7 @@ void* RenderComponent::operator new(size_t)
 }
 void RenderComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().DeleteObject<RenderComponent>(static_cast<RenderComponent*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<RenderComponent>(static_cast<RenderComponent*>(ptrDelete));
 }
 void RenderComponent::Initialize()
 {

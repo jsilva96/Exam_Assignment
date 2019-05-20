@@ -11,7 +11,7 @@ void* SpriteDescSwitchComponent::operator new(size_t)
 }
 void SpriteDescSwitchComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<SpriteDescSwitchComponent>(static_cast<BaseObject*>(ptrDelete));
 }
 void SpriteDescSwitchComponent::Initialize()
 {

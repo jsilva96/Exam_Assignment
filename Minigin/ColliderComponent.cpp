@@ -23,7 +23,7 @@ void* ColliderComponent::operator new(size_t)
 }
 void ColliderComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<ColliderComponent>(static_cast<BaseObject*>(ptrDelete));
 }
 ColliderComponent::~ColliderComponent()
 {

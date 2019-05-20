@@ -13,9 +13,9 @@ MusicManager::MusicManager()
 }
 MusicManager::~MusicManager()
 {
-	for (auto stream : m_SoundStreams) PoolManager::GetInstance().ReturnObject(stream.second);
+	for (auto stream : m_SoundStreams) PoolManager::GetInstance().ReturnObject<SoundStream>(stream.second);
 
-	for (auto effect : m_SoundEffects) PoolManager::GetInstance().ReturnObject(effect.second);
+	for (auto effect : m_SoundEffects) PoolManager::GetInstance().ReturnObject<SoundEffect>(effect.second);
 }
 MusicManager& MusicManager::GetInstance()
 {

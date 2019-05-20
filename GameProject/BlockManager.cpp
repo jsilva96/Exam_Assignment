@@ -17,7 +17,7 @@ void* BlockManager::operator new(size_t nBytes)
 }
 void BlockManager::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<BlockManager>(static_cast<BaseObject*>(ptrDelete));
 }
 void BlockManager::Initialize()
 {

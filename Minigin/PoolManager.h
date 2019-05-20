@@ -28,10 +28,9 @@ public:
 
 		return static_cast<T*>(pObj);
 	}
-	void ReturnObject(BaseObject*);
 
 	template<class T>
-	void DeleteObject(BaseObject* pObj)
+	void ReturnObject(BaseObject* pObj)
 	{
 		const type_info& ti = typeid(T);
 

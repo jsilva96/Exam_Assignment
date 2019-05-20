@@ -35,7 +35,7 @@ void* SpriteComponent::operator new(size_t)
 }
 void SpriteComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<SpriteComponent>(static_cast<BaseObject*>(ptrDelete));
 }
 void SpriteComponent::Initialize()
 {

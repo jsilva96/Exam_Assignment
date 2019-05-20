@@ -26,7 +26,7 @@ void* GameObject::operator new(size_t)
 }
 void GameObject::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().DeleteObject<GameObject>(static_cast<GameObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<GameObject>(static_cast<GameObject*>(ptrDelete));
 }
 
 void GameObject::RootInitialize()
