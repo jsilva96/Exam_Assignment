@@ -66,7 +66,7 @@ void TextComponent::Render() const
 	{
 	//	Point2f p = m_pGameObject->GetTransform()->GetPosition();
 	//	dae::Renderer::GetInstance().RenderTexture(*m_Texture, p.x, p.y);
-		dae::Renderer::GetInstance().RenderTexture(*m_Texture, GetGameObject()->GetTransform()->GetTransformInfo(), m_DrawRect);
+		dae::Renderer::GetInstance().RenderTexture(*m_Texture, GetGameObject()->GetTransform()->GetTransformInfo(), m_DrawRect, m_IsFlippedV, m_IsFlippedH);
 	}
 }
 void TextComponent::SetText(const std::string& text)

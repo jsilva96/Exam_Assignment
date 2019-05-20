@@ -2,7 +2,6 @@
 #include "Renderer.h"
 
 #include <gl/GLU.h>
-
 #include "SceneManager.h"
 #include "Texture2D.h"
 #include "SomeStructs.h"
@@ -41,12 +40,12 @@ void dae::Renderer::Destroy()
 	}
 }
 
-void dae::Renderer::RenderTexture(const Texture2D& texture, const TransformInfo& info, const Rectf& dstRect) const
+void dae::Renderer::RenderTexture(const Texture2D& texture, const TransformInfo& info, const Rectf& dstRect, bool isFlippedH, bool isFlippedV) const
 {
-	RenderTexture(texture, dstRect.leftBottom.x, dstRect.leftBottom.y, info);
+	RenderTexture(texture, dstRect.leftBottom.x, dstRect.leftBottom.y, info, isFlippedH, isFlippedV);
 }
 
-void dae::Renderer::RenderTexture(const Texture2D& texture, const float x, const float y, const TransformInfo& info) const
+void dae::Renderer::RenderTexture(const Texture2D& texture, const float x, const float y, const TransformInfo& info, bool isFlippedH, bool isFlippedV) const
 {
 	SDL_Rect dst;
 	dst.x = static_cast<int>(x);
@@ -56,10 +55,9 @@ void dae::Renderer::RenderTexture(const Texture2D& texture, const float x, const
 	dst.w *= int(info.scale.x);
 	dst.h *= int(info.scale.y);
 
-
 	dst.y = (int)m_HeightOffset - dst.y - dst.h;
 
-	SDL_RenderCopyEx(mRenderer, texture.GetSDLTexture(), nullptr, &dst, info.rotation, nullptr, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(mRenderer, texture.GetSDLTexture(), nullptr, &dst, info.rotation, nullptr, SDL_RendererFlip((isFlippedH ? SDL_FLIP_HORIZONTAL : 0) | (isFlippedV ? SDL_FLIP_VERTICAL : 0)));
 }
 void dae::Renderer::RenderShape(const std::vector<Point2f>& points, const Color4f& color)
 {
@@ -90,7 +88,7 @@ Rectf dae::Renderer::GetWindowDims() const
 {
 	return Rectf({ 0.0f, 0.0f },float(m_Screen->w), float(m_Screen->h));
 }
-void dae::Renderer::RenderTexture(const Texture2D& texture, const TransformInfo& info, const Rectf& dstRect, const Rectf& srcRect) const
+void dae::Renderer::RenderTexture(const Texture2D& texture, const TransformInfo& info, const Rectf& dstRect, const Rectf& srcRect, bool isFlippedH, bool isFlippedV ) const
 {
 	Rectf empty{};
 
@@ -105,10 +103,10 @@ void dae::Renderer::RenderTexture(const Texture2D& texture, const TransformInfo&
 	dst.y = int(m_HeightOffset) - dst.y - dst.h;
 
 	if (srcRect == empty) RenderTexture(texture, dstRect.leftBottom.x, dstRect.leftBottom.y, info);
-	
+
 	else
 	{
-		SDL_RenderCopyEx(mRenderer, texture.GetSDLTexture(), &src, &dst, info.rotation, nullptr, SDL_FLIP_NONE);
+		SDL_RenderCopyEx(mRenderer, texture.GetSDLTexture(), &src, &dst, info.rotation, nullptr, SDL_RendererFlip((isFlippedH ? SDL_FLIP_HORIZONTAL : 0) | (isFlippedV ? SDL_FLIP_VERTICAL : 0)));
 	}
 	
 }

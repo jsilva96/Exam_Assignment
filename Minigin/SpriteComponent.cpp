@@ -118,7 +118,7 @@ void SpriteComponent::Render() const
 {
 	if (m_Texture && m_IsActive)
 	{
-		dae::Renderer::GetInstance().RenderTexture(*m_Texture, GetGameObject()->GetTransform()->GetTransformInfo(), m_DrawRect, m_SrcRect);
+		dae::Renderer::GetInstance().RenderTexture(*m_Texture, GetGameObject()->GetTransform()->GetTransformInfo(), m_DrawRect, m_SrcRect, m_IsFlippedV, m_IsFlippedH);
 	}
 }
 void SpriteComponent::SetTexture(const string& filename)

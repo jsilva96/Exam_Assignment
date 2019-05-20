@@ -23,9 +23,9 @@ namespace dae
 		void Render();
 		void Destroy();
 
-		void RenderTexture(const Texture2D& texture, const TransformInfo& info, const Rectf& dstRect) const;
-		void RenderTexture(const Texture2D& texture, const TransformInfo& info, const Rectf& dstRect, const Rectf& srcRect) const;
-		void RenderTexture(const Texture2D& texture, const float x, const float y, const TransformInfo& info) const;
+		void RenderTexture(const Texture2D& texture, const TransformInfo& info, const Rectf& dstRect, bool isFlippedH = false, bool isFlippedV = false) const;
+		void RenderTexture(const Texture2D& texture, const TransformInfo& info, const Rectf& dstRect, const Rectf& srcRect, bool isFlippedH = false, bool isFlippedV = false) const;
+		void RenderTexture(const Texture2D& texture, const float x, const float y, const TransformInfo& info, bool isFlippedH = false, bool isFlippedV = false) const;
 		void RenderShape(const std::vector<Point2f>& points, const Color4f& color);
 		void RenderRect(const Rectf& rect, const Color4f& color);
 

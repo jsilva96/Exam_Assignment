@@ -21,6 +21,7 @@ c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\m
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\collidercomponent.obj
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\baseshape.obj
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\baseobject.obj
+c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\basecollisionhandler.obj
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\translationcomponent.obj
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\transformcomponent.obj
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\timercomponent.obj
@@ -36,6 +37,11 @@ c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\m
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\scenemanager.obj
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\scalecomponent.obj
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\rotationcomponent.obj
+c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\x64\debug\minigin.lib
+c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\x64\debug\minigin.pdb
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\minigin.tlog\cl.command.1.tlog
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\minigin.tlog\cl.read.1.tlog
 c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\minigin.tlog\cl.write.1.tlog
+c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\minigin.tlog\lib-link.read.1.tlog
+c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\minigin.tlog\lib-link.write.1.tlog
+c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\minigin\x64\debug\minigin.tlog\lib.command.1.tlog

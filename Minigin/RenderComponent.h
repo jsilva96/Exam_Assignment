@@ -30,11 +30,16 @@ public:
 
 	float GetTextureHeight() const;
 	float GetTextureWidth() const;
+
+	void SetFlipped(bool isFlippedV, bool isFlippedH);
 protected:
 	dae::Texture2D* m_Texture;
 	Rectf m_DrawRect;
 
 	bool m_IsActive = true;
+	bool m_IsFlippedH = false;
+	bool m_IsFlippedV = false;
+
 private:
 
 	RenderComponent(const RenderComponent&) = delete;

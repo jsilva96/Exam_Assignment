@@ -43,7 +43,7 @@ void RenderComponent::Render() const
 
 	if (m_Texture && m_IsActive)
 	{
-		dae::Renderer::GetInstance().RenderTexture(*m_Texture, GetGameObject()->GetTransform()->GetTransformInfo(), m_DrawRect);
+		dae::Renderer::GetInstance().RenderTexture(*m_Texture, GetGameObject()->GetTransform()->GetTransformInfo(), m_DrawRect, m_IsFlippedV, m_IsFlippedH);
 	}
 }
 void RenderComponent::SetTexture(const string& filepath)
@@ -71,4 +71,10 @@ float RenderComponent::GetTextureWidth() const
 {
 	if (!m_Texture) throw std::exception("RenderComponent::GetTextureWidth->Texture is nullptr\n");
 	return m_Texture->GetWidth();
+}
+
+void RenderComponent::SetFlipped(bool isFlippedV, bool isFlippedH)
+{
+	m_IsFlippedV = isFlippedV;
+	m_IsFlippedH = isFlippedH;
 }
