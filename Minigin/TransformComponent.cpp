@@ -16,7 +16,7 @@ void* TransformComponent::operator new(size_t)
 }
 void TransformComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().DeleteObject<TransformComponent>(static_cast<TransformComponent*>(ptrDelete));
 }
 void TransformComponent::Initialize()
 {

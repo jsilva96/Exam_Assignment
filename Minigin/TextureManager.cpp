@@ -7,6 +7,7 @@
 
 TextureManager::~TextureManager()
 {
+	for(auto& p : m_Textures) DeleteCheck(p.second);
 }
 dae::Texture2D* TextureManager::GetTexture(const std::string& path)
 {

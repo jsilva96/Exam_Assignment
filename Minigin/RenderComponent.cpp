@@ -13,7 +13,7 @@ RenderComponent::RenderComponent()
 RenderComponent::~RenderComponent()
 {
 	m_IsActive = true;
-	DeleteCheck(m_Texture);
+//	DeleteCheck(m_Texture);
 }
 
 void* RenderComponent::operator new(size_t)
@@ -22,7 +22,7 @@ void* RenderComponent::operator new(size_t)
 }
 void RenderComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().DeleteObject<RenderComponent>(static_cast<RenderComponent*>(ptrDelete));
 }
 void RenderComponent::Initialize()
 {

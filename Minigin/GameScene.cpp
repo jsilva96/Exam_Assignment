@@ -15,18 +15,17 @@ GameScene::GameScene()
 }
 GameScene::~GameScene()
 {
-	for (GameObject* pObj : m_pObjects) delete pObj;
-
+	DeleteCheck(m_pObjects);
 	m_pObjects.clear();
 }
 void GameScene::RootInitialize()
 {
 	Initialize();
-	
-	for (GameObject* pOb : m_pObjects)
+
+	for(size_t i = 0 ; i < m_pObjects.size(); i++)
 	{
-		pOb->RootInitialize();
-		pOb->SetScene(this);
+		m_pObjects[i]->SetScene(this);
+		m_pObjects[i]->RootInitialize();
 	}
 }
 void GameScene::RootUpdate()

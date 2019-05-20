@@ -13,6 +13,7 @@
 #include "EnemyManager.h"
 #include "FPSDisplayComponent.h"
 #include "TextComponent.h"
+#include "BlockManager.h"
 
 DigDug::DigDug()
 {
@@ -32,7 +33,7 @@ void DigDug::operator delete(void* ptrDelete)
 
 void DigDug::Initialize()
 {
-	InitializeLevel();
+//	InitializeLevel();
 	InitializeBlocks();
 //	InitializePlayer();
 //	InitializeFygar();
@@ -129,12 +130,14 @@ void DigDug::InitializeEnemyManager()
 
 void DigDug::InitializeBlocks()
 {
+	int scale{ 2 };
+	int blockScale{ 3 };
 	auto go = new GameObject();
 
-	auto r = new RenderComponent();
-	r->SetTexture("Textures/DigDug/Black_Sprite.png");
+	auto blockManager = new BlockManager(8 * blockScale, 8 * blockScale);
+	go->AddComponent(blockManager);
 
-	go->AddComponent(r);
+	blockManager->GetBlocks(225 * scale, (272 - 38) * scale);
 
 	Add(go);
 }

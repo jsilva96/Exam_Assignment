@@ -39,7 +39,7 @@ public:
 			FindNewIndex();
 		}
 		else pOb = static_cast<T*>(malloc(sizeof(T)));
-
+		
 		return pOb;
 	}
 	void FindNewIndex() override
@@ -60,12 +60,18 @@ private:
 	void ReturnObject(BaseObject* pObj) override
 	{
 		const auto it = std::find(m_ObjectList.begin(), m_ObjectList.end(), pObj);
-		if (it == m_ObjectList.end()) free(pObj);
-		else if (m_IsPoolFull)
+		if (it == m_ObjectList.end())
 		{
-			m_NextIndex = (unsigned int)std::distance(m_ObjectList.begin(), it);
+			free(pObj);
+		}
+		else
+		{
+			if (m_IsPoolFull)
+			{
+				m_NextIndex = (unsigned int)std::distance(m_ObjectList.begin(), it);
+				m_IsPoolFull = false;
+			}
 			m_ActiveObjects[m_NextIndex] = false;
-			m_IsPoolFull = false;
 		}
 	}
 

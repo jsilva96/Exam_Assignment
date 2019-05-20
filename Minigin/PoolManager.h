@@ -29,6 +29,22 @@ public:
 		return static_cast<T*>(pObj);
 	}
 	void ReturnObject(BaseObject*);
+
+	template<class T>
+	void DeleteObject(BaseObject* pObj)
+	{
+		const type_info& ti = typeid(T);
+
+		for (BasePool* pBP : m_Pools)
+		{
+			if (pBP->GetType() == ti.name())
+			{
+				pBP->ReturnObject(pObj);
+				pObj->SetUsable(false);
+				return;
+			}
+		}
+	}
 private:
 	PoolManager() = default;
 	std::vector<BasePool*> m_Pools;

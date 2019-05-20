@@ -3,9 +3,6 @@
 #include <cmath>
 #include <list>
 
-
-
-
 class GameObject;
 struct Point2f
 {
@@ -248,10 +245,15 @@ inline bool AddCheck(std::list<T> & container, const T& object)
 		container.push_back(object);
 		return true;
 	}
-	for (const T& vectorObj : container) if (vectorObj == object) return false;
 
-	container.push_back(object);
-	return true;
+	const auto it = std::find(container.begin(), container.end(), object);
+	
+	if (it != container.end())
+	{
+		container.push_back(object);
+		return true;
+	}
+	else return false;
 }
 template<class T>
 inline void DeleteCheck(T* pObject)
