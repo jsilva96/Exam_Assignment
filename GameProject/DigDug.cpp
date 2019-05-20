@@ -33,11 +33,14 @@ void DigDug::operator delete(void* ptrDelete)
 
 void DigDug::Initialize()
 {
-//	InitializeLevel();
+	InitializeLevel();
 	InitializeBlocks();
-//	InitializePlayer();
+	InitializePlayer();
 //	InitializeFygar();
 //	InitializePooka();
+
+
+	AddFPSCounter({ 0.0f, 0.0f });
 }
 void DigDug::Update()
 {
@@ -56,22 +59,7 @@ void DigDug::InitializeLevel()
 	go->AddComponent(r);
 
 	Add(go);
-
-	go = new GameObject();
-	auto fps = new FPSDisplayComponent();
-	auto t = new TextComponent();
-
-	fps->SetTextComponent(t);
-
-	go->AddComponent(t);
-	go->AddComponent(fps);
-
-	t->SetFont("Lingua.otf", 25);
-	t->SetColor({ 0.0f, 1.0f, 0.0f, 1.0f });
-
-	Add(go);
 }
-
 void DigDug::InitializePlayer()
 {
 	m_pPlayer = new GameObject();
@@ -117,7 +105,6 @@ void DigDug::InitializePlayer()
 
 	Add(m_pPlayer);
 }
-
 void DigDug::InitializeEnemyManager()
 {
 	auto go = new GameObject();
@@ -127,7 +114,6 @@ void DigDug::InitializeEnemyManager()
 
 	Add(go);
 }
-
 void DigDug::InitializeBlocks()
 {
 	int scale{ 2 };
@@ -138,6 +124,23 @@ void DigDug::InitializeBlocks()
 	go->AddComponent(blockManager);
 
 	blockManager->GetBlocks(225 * scale, (272 - 38) * scale);
+
+	Add(go);
+}
+void DigDug::AddFPSCounter(const Point2f& p)
+{
+ 	auto go = new GameObject();
+	auto fps = new FPSDisplayComponent();
+	auto t = new TextComponent();
+
+	fps->SetTextComponent(t);
+
+	go->AddComponent(t);
+	go->AddComponent(fps);
+
+	t->SetFont("Lingua.otf", 25);
+	t->SetColor({ 0.0f, 1.0f, 0.0f, 1.0f });
+	go->SetPosition(p.x, p.y);
 
 	Add(go);
 }

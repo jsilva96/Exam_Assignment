@@ -14,14 +14,16 @@
 
 TextComponent::TextComponent()
 	:m_pFont{ nullptr },
-	m_Color{ 1,1,1,1 }
+	m_Color{ 1,1,1,1 },
+	m_IsTextChanged(false)
 {
 }
 TextComponent::~TextComponent()
 {
 	m_Color = { 1, 1,1, 1 };
 	m_Text.clear();
-	SDL_DestroyTexture(m_Texture->GetSDLTexture());
+
+	DeleteCheck(m_Texture);
 }
 void* TextComponent::operator new(size_t)
 {
@@ -37,7 +39,7 @@ void TextComponent::Initialize()
 }
 void TextComponent::Update()
 {
-	if (!m_Text.empty())
+	if (m_IsTextChanged)
 	{
 		const auto surf = TTF_RenderText_Blended(m_pFont->GetFont(), m_Text.c_str(), ToSDLColor(m_Color));
 		if (surf == nullptr) {
@@ -51,8 +53,10 @@ void TextComponent::Update()
 		}
 		SDL_FreeSurface(surf);
 		
-		delete m_Texture;
+		DeleteCheck(m_Texture);
+	
 		m_Texture = new dae::Texture2D(texture);
+		m_IsTextChanged = false;
 	}
 	RenderComponent::Update();
 }
@@ -67,6 +71,8 @@ void TextComponent::Render() const
 }
 void TextComponent::SetText(const std::string& text)
 {
+	if (text == m_Text) return;
+	m_IsTextChanged = true;
 	m_Text = text;
 }
 void TextComponent::SetFont(const std::string& path, unsigned int size)

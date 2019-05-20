@@ -31,10 +31,10 @@ void BlockManager::Render() const
 }
 void BlockManager::GetBlocks(float width, float height)
 {
-	/*Point2f p{};
+	Point2f p{};
 
-	int nrOfColumns{ int(width / m_BlockWidth) };
-	int nrOfRows{ int(height / m_BlockHeight) };
+	int nrOfColumns{ int(width / m_BlockWidth) + 1 };
+	int nrOfRows{ int(height / m_BlockHeight)  + 1};
 	int nColumns{};
 
 	int nrOfBlocks = nrOfColumns * nrOfRows;
@@ -52,10 +52,6 @@ void BlockManager::GetBlocks(float width, float height)
 			p.x = 0.0f;
 			p.y += m_BlockHeight;
 		}
-	}*/
-	for(size_t i = 0; i < 101; i++)
-	{
-		m_pBlocks.push_back(AddBlock({ 0.0, 0.0f }));
 	}
 }
 GameObject* BlockManager::AddBlock(const Point2f& p) const
@@ -68,6 +64,8 @@ GameObject* BlockManager::AddBlock(const Point2f& p) const
 	go->AddComponent(r);
 	go->SetPosition(p.x, p.y);
 	go->GetTransform()->SetScale(3);
+
+	r->SetActive(false);
 
 	return go;
 }

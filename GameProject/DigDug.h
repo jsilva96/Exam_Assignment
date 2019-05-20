@@ -1,5 +1,6 @@
 #pragma once
 #include <GameScene.h>
+#include "SomeStructs.h"
 
 class TimerComponent;
 enum class PlayerState
@@ -47,6 +48,8 @@ private:
 	void InitializePlayer();
 	void InitializeEnemyManager();
 	void InitializeBlocks();
+
+	void AddFPSCounter(const Point2f& p);
 
 
 	TimerComponent* timer;

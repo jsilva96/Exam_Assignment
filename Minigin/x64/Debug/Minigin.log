@@ -1,42 +1,4 @@
-﻿  MiniginPCH.cpp
-  BaseCollisionHandler.cpp
-  BaseObject.cpp
-  BaseShape.cpp
-  ColliderComponent.cpp
-  CollisionManager.cpp
-  Font.cpp
-  GameObject.cpp
-  Gamepad.cpp
-  GameScene.cpp
-  InputComponent.cpp
-  InputManager.cpp
-  LevelColliderComponent.cpp
-  Log.cpp
-  Minigin.cpp
-  MusicManager.cpp
-  PoolManager.cpp
-  Quad.cpp
-  RenderComponent.cpp
-  Renderer.cpp
-  ResourceManager.cpp
-  Generating Code...
-  Compiling...
-  RotationComponent.cpp
-  ScaleComponent.cpp
-  SceneManager.cpp
-  SoundComponent.cpp
-  SoundEffect.cpp
-  SoundStream.cpp
-  SpriteComponent.cpp
-  SVGParser.cpp
-  TextComponent.cpp
-  Texture2D.cpp
-  TextureManager.cpp
-  Time.cpp
-  TimerComponent.cpp
-  TransformComponent.cpp
-  TranslationComponent.cpp
-  Generating Code...
+﻿  TextComponent.cpp
   Minigin.vcxproj -> C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Debug\Minigin.lib
   C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\3rdParty\SDL2\lib\x64\SDL2.dll
   1 File(s) copied

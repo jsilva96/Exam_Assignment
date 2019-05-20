@@ -38,13 +38,13 @@ void GameObject::RootInitialize()
 	}
 	Initialize();
 
-	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable()) pObj->RootInitialize();
-	for (BaseComponent* pC : m_pComponents)
+	for (size_t i = 0; i < m_pChildren.size(); i++)
 	{
-		if (pC->IsUsable())
-		{
-			pC->Initialize();
-		}
+		if(m_pChildren[i]->IsUsable())m_pChildren[i]->RootInitialize();
+	}
+	for (size_t i = 0; i < m_pComponents.size(); i++)
+	{
+		m_pComponents[i]->Initialize();
 	}
 }
 void GameObject::RootUpdate()

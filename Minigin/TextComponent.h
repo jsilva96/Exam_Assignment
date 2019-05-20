@@ -26,6 +26,7 @@ public:
 
 private:
 	std::string m_Text;
+	bool m_IsTextChanged;
 	std::shared_ptr<dae::Font> m_pFont;
 	Color4f m_Color;
 
