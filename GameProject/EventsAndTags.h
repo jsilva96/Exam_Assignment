@@ -2,7 +2,8 @@
 enum TAG : unsigned int
 {
 	PLAYER,
-	BLOCK
+	BLOCK,
+	DUG_BLOCK,
 };
 
 enum EVENT : unsigned int

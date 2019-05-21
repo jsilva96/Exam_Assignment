@@ -23,6 +23,7 @@ protected:
 	bool m_IsTimeDependent = true;
 	bool m_IsMoving = false;
 	bool m_IsContinuous = false;
+	bool m_WasMoving = false;
 private:
 
 	BaseMovementComponent(const BaseMovementComponent&) = delete;

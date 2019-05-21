@@ -75,7 +75,7 @@ GameObject* BlockManager::AddBlock(const Point2f& p) const
 
 	r->SetActive(false);
 
-	Rectf rect{ p, float(m_BlockWidth - 1),float(m_BlockHeight - 1)};
+	Rectf rect{ p, float(m_BlockWidth - 0.1f),float(m_BlockHeight - 0.1f)};
 
 	auto c = new ColliderComponent(rect);
 	c->SetStatic(true);

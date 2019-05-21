@@ -29,6 +29,7 @@ void TranslationComponent::Initialize()
 }
 void TranslationComponent::Update()
 {
+	m_WasMoving = false;
 	if (!m_IsMoving) return;
 
 	float elapsedSecs{ 1.0f };
@@ -43,7 +44,11 @@ void TranslationComponent::Update()
 
 	GetGameObject()->GetTransform()->SetPosition(p);
 
-	if (!m_IsContinuous) m_IsMoving = false;
+	if (!m_IsContinuous)
+	{
+		m_WasMoving = true;
+		m_IsMoving = false;
+	}
 }
 void TranslationComponent::Render() const
 {
@@ -70,5 +75,5 @@ void TranslationComponent::MoveBack()
 }
 bool TranslationComponent::GetIsMoving() const
 {
-	return m_IsMoving;
+	return m_IsMoving || m_WasMoving;
 }

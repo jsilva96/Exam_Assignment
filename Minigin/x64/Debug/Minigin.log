@@ -1,25 +1,9 @@
-﻿  BaseCollisionHandler.cpp
-  BaseShape.cpp
-  ColliderComponent.cpp
+﻿  BaseShape.cpp
   CollisionManager.cpp
   GameObject.cpp
-  GameScene.cpp
-  Gamepad.cpp
-  InputComponent.cpp
-  InputManager.cpp
-  LevelColliderComponent.cpp
   Minigin.cpp
-  Quad.cpp
-  RenderComponent.cpp
   RotationComponent.cpp
   ScaleComponent.cpp
-  SoundComponent.cpp
-  SpriteComponent.cpp
-  TextComponent.cpp
-  TimerComponent.cpp
-  TransformComponent.cpp
-  Generating Code...
-  Compiling...
   TranslationComponent.cpp
   Generating Code...
   Minigin.vcxproj -> C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Debug\Minigin.lib

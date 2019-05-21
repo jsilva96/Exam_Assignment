@@ -1,10 +1,14 @@
 #pragma once
 #include <BaseCollisionHandler.h>
+
+class PlayerSpriteSwitchComponent;
 class PlayerCollisionHandler final : public BaseCollisionHandler
 {
 public:
 	PlayerCollisionHandler() = default;
 	virtual ~PlayerCollisionHandler() = default;
+
+	void Initialize() override;
 
 	void* operator new(size_t nBytes);
 	void  operator delete(void* ptrDelete);
@@ -18,5 +22,7 @@ public:
 
 	PlayerCollisionHandler& operator=(const PlayerCollisionHandler&) = delete;
 	PlayerCollisionHandler& operator=(PlayerCollisionHandler&&) noexcept = delete;
+private:
+	PlayerSpriteSwitchComponent* m_pSpriteSwitcher = nullptr;
 };
 

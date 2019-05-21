@@ -30,6 +30,9 @@
     <Filter Include="Engine Files\Structs">
       <UniqueIdentifier>{22403b36-e313-46ed-a83d-e0b2a0b5dbdc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine Files\Managers">
+      <UniqueIdentifier>{d8fb88c1-b8fc-45c1-ae18-51ed53886464}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -42,9 +45,6 @@
       <Filter>Engine Files</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
-      <Filter>Engine Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
       <Filter>Engine Files</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
@@ -116,9 +116,6 @@
     <ClInclude Include="ColliderComponent.h">
       <Filter>Engine Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionManager.h">
-      <Filter>Engine Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameScene.h">
       <Filter>Engine Files\Scenegraph</Filter>
     </ClInclude>
@@ -164,11 +161,17 @@
     <ClInclude Include="Minigin.h">
       <Filter>Engine Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>Engine Files</Filter>
-    </ClInclude>
     <ClInclude Include="BaseCollisionHandler.h">
       <Filter>Engine Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Engine Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Engine Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Engine Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -217,9 +220,6 @@
     <ClCompile Include="Font.cpp">
       <Filter>Engine Files</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>Engine Files</Filter>
-    </ClCompile>
     <ClCompile Include="MiniginPCH.cpp">
       <Filter>Engine Files</Filter>
     </ClCompile>
@@ -234,9 +234,6 @@
     </ClCompile>
     <ClCompile Include="ColliderComponent.cpp">
       <Filter>Engine Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
-      <Filter>Engine Files</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
       <Filter>Engine Files\Scenegraph</Filter>
@@ -271,14 +268,20 @@
     <ClCompile Include="Minigin.cpp">
       <Filter>Engine Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
-      <Filter>Engine Files</Filter>
-    </ClCompile>
     <ClCompile Include="BaseCollisionHandler.cpp">
       <Filter>Engine Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="BaseObject.cpp">
       <Filter>Engine Files\Scenegraph</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Engine Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Engine Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Engine Files\Managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

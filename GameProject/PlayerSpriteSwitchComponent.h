@@ -14,6 +14,7 @@ enum class PlayerState
 };
 class TranslationComponent;
 class SpriteComponent;
+class SpriteDescSwitchComponent;
 
 class PlayerSpriteSwitchComponent final: public BaseComponent
 {
@@ -31,6 +32,8 @@ public:
 	void SetTranslationComponent(TranslationComponent* pComp);
 	void SetSpriteComponent(SpriteComponent* pComp);
 
+	void IsDigging(bool isDigging);
+
 	PlayerSpriteSwitchComponent(const PlayerSpriteSwitchComponent&) = delete;
 	PlayerSpriteSwitchComponent(PlayerSpriteSwitchComponent&&) noexcept = delete;
 
@@ -39,7 +42,12 @@ public:
 private:
 	TranslationComponent* m_pTrans;
 	SpriteComponent* m_Sprite;
+	SpriteDescSwitchComponent* m_Switch;
+	float m_DugTimer;
+
+	void SetSpriteIndex(PlayerState s);
 
 	Vector2f m_Dir;
+	bool m_IsDigging;
 };
 
