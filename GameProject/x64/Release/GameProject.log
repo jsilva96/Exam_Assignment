@@ -1,16 +1,12 @@
-﻿  pch.cpp
-  PlayerMovementCommand.cpp
+﻿  BlockCollisionHandler.cpp
   BlockManager.cpp
   DigDug.cpp
-c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\gameproject\digdug.cpp(143): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  EnemyManager.cpp
-  FPSDisplayComponent.cpp
-  FPSScene.cpp
-  GameProject.cpp
+c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\gameproject\digdug.cpp(132): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   PlayerMovementComponent.cpp
-  SpriteDescSwitchComponent.cpp
      Creating library C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Release\GameProject.lib and object C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Release\GameProject.exp
   Generating code
-  All 3469 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  628 of 3830 functions (16.4%) were compiled, the rest were copied from previous compilation.
+    157 functions were new in current compilation
+    455 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   GameProject.vcxproj -> C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Release\GameProject.exe

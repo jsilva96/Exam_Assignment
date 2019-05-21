@@ -49,6 +49,9 @@ public:
 	}
 
 	std::vector<CollisionGroup> GetCollisionGroups() const;
+
+	void AddHandler(BaseCollisionHandler* pHandler);
+
 private:
 	Rectf m_Rect;
 	std::map<CollisionGroup, bool> m_CollisionGroup;

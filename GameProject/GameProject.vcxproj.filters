@@ -54,6 +54,9 @@
     <ClInclude Include="PlayerSpriteSwitchComponent.h">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="BlockCollisionHandler.h">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -87,6 +90,9 @@
       <Filter>Source Files\Game Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="PlayerSpriteSwitchComponent.cpp">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockCollisionHandler.cpp">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
   </ItemGroup>

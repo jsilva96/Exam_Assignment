@@ -39,7 +39,10 @@ ColliderComponent::~ColliderComponent()
 void ColliderComponent::Initialize()
 {
 	CollisionManager::GetInstance().AddCollider(this);
-	if (!m_pHandler)throw std::runtime_error("ColliderComponent::No ColliderHandler Found");
+	if (!m_pHandler)
+	{
+		throw std::exception("ColliderComponent::No ColliderHandler Found");
+	}
 }
 void ColliderComponent::Update()
 {
@@ -90,4 +93,9 @@ std::vector<CollisionGroup> ColliderComponent::GetCollisionGroups() const
 	for (const std::pair<CollisionGroup, bool>& pC : m_CollisionGroup) if (pC.second) obj.push_back(pC.first);
 
 	return obj;
+}
+
+void ColliderComponent::AddHandler(BaseCollisionHandler* pHandler)
+{
+	m_pHandler = pHandler;
 }

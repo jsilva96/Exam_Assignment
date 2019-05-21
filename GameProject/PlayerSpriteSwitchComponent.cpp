@@ -66,7 +66,7 @@ void PlayerSpriteSwitchComponent::Update()
 		m_Dir = m_pTrans->GetDirection();
 
 		m_pTrans->GetGameObject()->GetTransform()->SetRotation(m_Dir.x > 0.0f ? 0.0f : m_Dir.y * 90.0f);
-		m_Sprite->SetFlipped(m_Dir.x > 0.0f ? false : true, false);
+		m_Sprite->SetFlipped(!(m_Dir.x > 0.0f), m_Dir.y > 0.0f);
 	}
 }
 void PlayerSpriteSwitchComponent::Render() const

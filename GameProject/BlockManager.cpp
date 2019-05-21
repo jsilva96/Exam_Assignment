@@ -7,6 +7,9 @@
 #include "GameObject.h"
 
 #include <vector>
+#include "ColliderComponent.h"
+#include "BlockCollisionHandler.h"
+
 BlockManager::BlockManager(int blockWidth, int blockHeight)
 	:m_BlockWidth(blockWidth), m_BlockHeight(blockHeight)
 {
@@ -66,6 +69,17 @@ GameObject* BlockManager::AddBlock(const Point2f& p) const
 	go->GetTransform()->SetScale(3);
 
 	r->SetActive(false);
+
+	Rectf rect{ p, r->GetTextureWidth() * 3, r->GetTextureHeight() * 3 };
+
+	auto c = new ColliderComponent(rect);
+	c->SetStatic(true);
+
+	go->AddComponent(c);
+
+	auto handler = new BlockCollisionHandler();
+	go->AddComponent(handler);
+	c->AddHandler(handler);
 
 	return go;
 }

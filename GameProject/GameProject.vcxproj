@@ -173,6 +173,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BlockCollisionHandler.h" />
     <ClInclude Include="PlayerMovementCommand.h" />
     <ClInclude Include="BlockManager.h" />
     <ClInclude Include="DigDug.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="SpriteDescSwitchComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BlockCollisionHandler.cpp" />
     <ClCompile Include="PlayerMovementCommand.cpp" />
     <ClCompile Include="BlockManager.cpp" />
     <ClCompile Include="DigDug.cpp" />
