@@ -61,9 +61,10 @@ void CollisionManager::Update()
 }
 void CollisionManager::UpdateDynamicQuadrants()
 {
-	for (std::pair<const Quadrant, std::vector<ColliderComponent*>>& p : m_pDynamicColliders)p.second.clear();
 	for (std::pair<const Quadrant, std::vector<ColliderComponent*>>& p : m_pStaticColliders)p.second.clear();
 
+
+	for (std::pair<const Quadrant, std::vector<ColliderComponent*>>& p : m_pDynamicColliders)p.second.clear();
 	for (ColliderComponent* pC : m_pColliders) AddCollider(pC);
 }
 void CollisionManager::CheckQuadrantCollisions(std::vector<ColliderComponent*>& colliders)

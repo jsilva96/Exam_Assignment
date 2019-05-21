@@ -48,6 +48,8 @@ public:
 	void AddChild(GameObject* pObj);
 
 	void AddComponent(BaseComponent* pComp);
+	void AddTag(unsigned int tag);
+	bool CompareTag(unsigned int tag);
 
 protected:
 	TransformComponent * m_pTransform;
@@ -55,6 +57,7 @@ protected:
 	GameScene* m_pScene;
 	std::vector<GameObject*> m_pChildren;
 
+	std::vector<unsigned int> m_Tags;
 private:
 	GameObject(const GameObject&) = delete;
 	GameObject(GameObject&&) noexcept = delete;

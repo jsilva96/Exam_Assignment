@@ -19,6 +19,9 @@
 #include "PlayerMovementComponent.h"
 #include "TranslationComponent.h"
 #include "PlayerSpriteSwitchComponent.h"
+#include "ColliderComponent.h"
+#include "PlayerCollisionHandler.h"
+#include "EventsAndTags.h"
 
 DigDug::DigDug()
 {
@@ -68,6 +71,8 @@ void DigDug::InitializeLevel()
 }
 void DigDug::InitializePlayer()
 {
+	Point2f pos{ 30.0f, 30.0f };
+	float scale{ 1.0f };
 	m_pPlayer = new GameObject();
 
 	//SPRITE COMPONENT
@@ -87,7 +92,7 @@ void DigDug::InitializePlayer()
 	s->SetFlipped(true, false);
 
 	//PLAYER MOVEMENT COMPONENT
-	auto movCmp = new PlayerMovementComponent(10.0f);
+	auto movCmp = new PlayerMovementComponent(30.0f);
 	auto input = new InputComponent();
 	auto trans = new TranslationComponent();
 
@@ -98,16 +103,29 @@ void DigDug::InitializePlayer()
 	m_pPlayer->AddComponent(trans);
 	m_pPlayer->AddComponent(movCmp);
 
-
-	m_pPlayer->SetPosition(30.0f, 30.0f);
-	m_pPlayer->GetTransform()->SetScale(3.0f);
-
 	//PLAYER SPRITE SWITCH COMPONENT
 	auto pSwitch = new PlayerSpriteSwitchComponent();
 	pSwitch->SetSpriteComponent(s);
 	pSwitch->SetTranslationComponent(trans);
 
 	m_pPlayer->AddComponent(pSwitch);
+
+	//COLLIDER
+	auto c = new ColliderComponent();
+	Rectf rect{ pos, desc.width * scale, desc.height * scale};
+	c->SetRectf(rect);
+	c->SetStatic(false);
+
+	auto handler = new PlayerCollisionHandler();
+	c->AddHandler(handler);
+
+	m_pPlayer->AddComponent(c);
+	m_pPlayer->AddComponent(handler);
+
+
+	m_pPlayer->SetPosition(pos.x, pos.y);
+	m_pPlayer->GetTransform()->SetScale(scale);
+	m_pPlayer->AddTag(TAG::PLAYER);
 
 	Add(m_pPlayer);
 }
@@ -123,13 +141,14 @@ void DigDug::InitializeEnemyManager()
 void DigDug::InitializeBlocks()
 {
 	int scale{ 2 };
-	int blockScale{ 3 };
+	int blockScale{ 1 };
 	auto go = new GameObject();
 
 	auto blockManager = new BlockManager(8 * blockScale, 8 * blockScale);
 	go->AddComponent(blockManager);
 
 	blockManager->GetBlocks(225 * scale, (272 - 38) * scale);
+	blockManager->AddBlocksToScene(this);
 
 	Add(go);
 }

@@ -18,6 +18,8 @@ public:
 
 	void GetBlocks(float width, float height);
 
+	void AddBlocksToScene(GameScene* pScene);
+
 	BlockManager(const BlockManager&) = delete;
 	BlockManager(BlockManager&&) noexcept = delete;
 

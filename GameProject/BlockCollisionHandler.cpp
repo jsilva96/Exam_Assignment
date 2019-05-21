@@ -3,6 +3,8 @@
 
 #include "PoolManager.h"
 #include "ColliderComponent.h"
+#include "EventsAndTags.h"
+#include "RenderComponent.h"
 
 void* BlockCollisionHandler::operator new(size_t nBytes)
 {
@@ -17,6 +19,10 @@ void BlockCollisionHandler::operator delete(void* ptrDelete)
 void BlockCollisionHandler::OnCollideEnter(ColliderComponent* collider)
 {
 	UNREFERENCED_PARAMETER(collider);
+	if (collider->GetGameObject()->CompareTag(PLAYER))
+	{
+		GetGameObject()->GetComponent<RenderComponent>()->SetActive(true);
+	}
 }
 
 void BlockCollisionHandler::OnCollideStay(ColliderComponent* collider)

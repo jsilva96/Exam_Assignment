@@ -9,6 +9,7 @@
 #include <vector>
 #include "ColliderComponent.h"
 #include "BlockCollisionHandler.h"
+#include "EventsAndTags.h"
 
 BlockManager::BlockManager(int blockWidth, int blockHeight)
 	:m_BlockWidth(blockWidth), m_BlockHeight(blockHeight)
@@ -24,7 +25,6 @@ void BlockManager::operator delete(void* ptrDelete)
 }
 void BlockManager::Initialize()
 {
-	for (auto& pObj : m_pBlocks) GetGameObject()->GetScene()->Add(pObj);
 }
 void BlockManager::Update()
 {
@@ -57,6 +57,11 @@ void BlockManager::GetBlocks(float width, float height)
 		}
 	}
 }
+
+void BlockManager::AddBlocksToScene(GameScene* pScene)
+{
+	for (auto& pObj : m_pBlocks) pScene->Add(pObj);
+}
 GameObject* BlockManager::AddBlock(const Point2f& p) const
 {
 	auto go = new GameObject();
@@ -66,11 +71,11 @@ GameObject* BlockManager::AddBlock(const Point2f& p) const
 
 	go->AddComponent(r);
 	go->SetPosition(p.x, p.y);
-	go->GetTransform()->SetScale(3);
+	go->GetTransform()->SetScale(1);
 
 	r->SetActive(false);
 
-	Rectf rect{ p, r->GetTextureWidth() * 3, r->GetTextureHeight() * 3 };
+	Rectf rect{ p, float(m_BlockWidth - 1),float(m_BlockHeight - 1)};
 
 	auto c = new ColliderComponent(rect);
 	c->SetStatic(true);
@@ -80,6 +85,8 @@ GameObject* BlockManager::AddBlock(const Point2f& p) const
 	auto handler = new BlockCollisionHandler();
 	go->AddComponent(handler);
 	c->AddHandler(handler);
+
+	go->AddTag(BLOCK);
 
 	return go;
 }

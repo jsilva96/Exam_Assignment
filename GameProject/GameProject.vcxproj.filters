@@ -57,6 +57,12 @@
     <ClInclude Include="BlockCollisionHandler.h">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerCollisionHandler.h">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="EventsAndTags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -93,6 +99,9 @@
       <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="BlockCollisionHandler.cpp">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCollisionHandler.cpp">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
   </ItemGroup>

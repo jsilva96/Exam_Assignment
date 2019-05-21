@@ -55,7 +55,7 @@ void ColliderComponent::Update()
 }
 void ColliderComponent::Render() const
 {
-	//	Color4f c{ 1.0f, 1.0f, 1.0f, 0.1f };
+//	Color4f c{ 0.0f, 0.0f, 0.0f, 0.5f };
 
 //	dae::Renderer::GetInstance().RenderRect(m_Rect, c);
 }

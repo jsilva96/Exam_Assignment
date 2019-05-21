@@ -18,6 +18,8 @@ GameObject::~GameObject()
 {
 	DeleteCheck(m_pComponents);
 	DeleteCheck(m_pChildren);
+
+	m_Tags.clear();
 }
 
 void* GameObject::operator new(size_t)
@@ -28,7 +30,6 @@ void GameObject::operator delete(void* ptrDelete)
 {
 	PoolManager::GetInstance().ReturnObject<GameObject>(static_cast<GameObject*>(ptrDelete));
 }
-
 void GameObject::RootInitialize()
 {
 	if (!m_pTransform)
@@ -78,6 +79,15 @@ GameScene * GameObject::GetScene() const
 void GameObject::AddComponent(BaseComponent* pComp)
 {
 	if (AddCheck(m_pComponents, pComp)) pComp->SetGameObject(this);
+}
+
+void GameObject::AddTag(unsigned tag)
+{
+	if(!CompareTag(tag)) m_Tags.push_back(tag);
+}
+bool GameObject::CompareTag(unsigned tag)
+{
+	return std::find(m_Tags.begin(), m_Tags.end(), tag) != m_Tags.end();
 }
 void GameObject::SetPosition(float x, float y)
 {
