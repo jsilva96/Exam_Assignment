@@ -1,1 +1,3 @@
-﻿  GameProject.vcxproj -> C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Debug\GameProject.exe
+﻿  DigDug.cpp
+c:\users\jorge\desktop\dae\3rd year\2nd semester\programming 4\exam_assignment\gameproject\digdug.cpp(132): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GameProject.vcxproj -> C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Debug\GameProject.exe

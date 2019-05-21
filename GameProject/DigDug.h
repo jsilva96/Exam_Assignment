@@ -3,15 +3,6 @@
 #include "SomeStructs.h"
 
 class TimerComponent;
-enum class PlayerState
-{
-	MOVING = 0,
-	DIGING,
-	HOOK,
-	HOOKED,
-	CRUSHED,
-	DEAD
-};
 
 enum class FygarState
 {

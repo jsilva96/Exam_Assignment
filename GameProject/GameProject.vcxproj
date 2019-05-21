@@ -181,6 +181,7 @@
     <ClInclude Include="FPSScene.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
+    <ClInclude Include="PlayerSpriteSwitchComponent.h" />
     <ClInclude Include="SpriteDescSwitchComponent.h" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +199,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PlayerMovementComponent.cpp" />
+    <ClCompile Include="PlayerSpriteSwitchComponent.cpp" />
     <ClCompile Include="SpriteDescSwitchComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

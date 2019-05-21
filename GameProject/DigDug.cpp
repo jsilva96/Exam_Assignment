@@ -18,6 +18,7 @@
 #include "InputComponent.h"
 #include "PlayerMovementComponent.h"
 #include "TranslationComponent.h"
+#include "PlayerSpriteSwitchComponent.h"
 
 DigDug::DigDug()
 {
@@ -37,7 +38,7 @@ void DigDug::operator delete(void* ptrDelete)
 
 void DigDug::Initialize()
 {
-//	InitializeLevel();
+	InitializeLevel();
 //	InitializeBlocks();
 	InitializePlayer();
 //	InitializeFygar();
@@ -74,7 +75,7 @@ void DigDug::InitializePlayer()
 	desc.width = 14.0f;
 	desc.height = 13.0f;
 	desc.parseLogic = SpriteParse::HORIZONTAL;
-	desc.frames = 2;
+	desc.frames = 1;
 	desc.frameTime = 1 / 10.0f;
 	desc.startPos = { 0.0f, 0.0f};
 	desc.nrOfRuns = -1;
@@ -84,31 +85,6 @@ void DigDug::InitializePlayer()
 
 	m_pPlayer->AddComponent(s);
 	s->SetFlipped(true, false);
-
-	//SPRITE_DESC_SWITCH
-	SpriteDesc movingDesc, hookDesc, hookedDesc, crushedDesc, deadDesc;
-	auto descSwitch = new SpriteDescSwitchComponent();
-	m_pPlayer->AddComponent(descSwitch);
-	descSwitch->AddDesc(desc);
-
-	movingDesc = SpriteDesc{ {0.0f, 13.0f}, 2, -1, 14.0f, 13.0f, 1 / 10.0f, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(movingDesc);
-
-	hookDesc = SpriteDesc{ {0.0f, 26.0f}, 1, -1, 16.0f, 12.0f, 1 / 10.0f, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(hookDesc);
-
-	hookedDesc = SpriteDesc{ {0.0f, 38.0f}, 2, -1, 16.0f, 13.0f, 1 / 5.0f, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(hookedDesc);
-
-	crushedDesc = SpriteDesc{ {0.0f, 51.0f}, 1, -1, 14.0f, 7.0f, 1 / 5.0f, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(crushedDesc);
-
-	deadDesc = SpriteDesc{ {0.0f, 58.0f}, 5, 1, 17.0f, 15.0f, 1 / 5.0f, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(deadDesc);
-
-	m_pPlayer->SetPosition(30.0f, 30.0f);
-	m_pPlayer->GetTransform()->SetScale(3.0f);
-
 
 	//PLAYER MOVEMENT COMPONENT
 	auto movCmp = new PlayerMovementComponent(10.0f);
@@ -121,6 +97,17 @@ void DigDug::InitializePlayer()
 	m_pPlayer->AddComponent(input);
 	m_pPlayer->AddComponent(trans);
 	m_pPlayer->AddComponent(movCmp);
+
+
+	m_pPlayer->SetPosition(30.0f, 30.0f);
+	m_pPlayer->GetTransform()->SetScale(3.0f);
+
+	//PLAYER SPRITE SWITCH COMPONENT
+	auto pSwitch = new PlayerSpriteSwitchComponent();
+	pSwitch->SetSpriteComponent(s);
+	pSwitch->SetTranslationComponent(trans);
+
+	m_pPlayer->AddComponent(pSwitch);
 
 	Add(m_pPlayer);
 }

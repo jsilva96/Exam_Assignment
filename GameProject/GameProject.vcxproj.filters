@@ -51,6 +51,9 @@
     <ClInclude Include="PlayerMovementCommand.h">
       <Filter>Source Files\Game Files\Commands</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerSpriteSwitchComponent.h">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -82,6 +85,9 @@
     </ClCompile>
     <ClCompile Include="PlayerMovementCommand.cpp">
       <Filter>Source Files\Game Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSpriteSwitchComponent.cpp">
+      <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
