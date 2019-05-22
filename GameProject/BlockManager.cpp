@@ -15,7 +15,7 @@ BlockManager::BlockManager(int blockWidth, int blockHeight)
 	:m_BlockWidth(blockWidth), m_BlockHeight(blockHeight)
 {
 }
-void* BlockManager::operator new(size_t nBytes)
+void* BlockManager::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<BlockManager>();
 }
@@ -42,7 +42,7 @@ void BlockManager::GetBlocks(float width, float height)
 
 	int nrOfBlocks = nrOfColumns * nrOfRows;
 
-	for (size_t i = 0; i < nrOfBlocks; i++)
+	for (int i = 0; i < nrOfBlocks; i++)
 	{
 		m_pBlocks.push_back(AddBlock(p));
 
@@ -62,6 +62,26 @@ void BlockManager::AddBlocksToScene(GameScene* pScene)
 {
 	for (auto& pObj : m_pBlocks) pScene->Add(pObj);
 }
+
+void BlockManager::AddBlockCarver(const Rectf& rect)
+{
+	auto go = new GameObject();
+	auto c = new ColliderComponent();
+	auto handler = new BaseCollisionHandler();
+	c->SetRectf(rect);
+	c->AddHandler(handler);
+	c->SetStatic(true);
+
+	go->AddComponent(c);
+	go->AddComponent(handler);
+
+	go->AddTag(BLOCK_CARVER);
+
+	go->SetPosition(rect.leftBottom.x, rect.leftBottom.y);
+
+	m_pBlocks.push_back(go);
+}
+
 GameObject* BlockManager::AddBlock(const Point2f& p) const
 {
 	auto go = new GameObject();
@@ -70,11 +90,11 @@ GameObject* BlockManager::AddBlock(const Point2f& p) const
 
 	go->AddComponent(r);
 	go->SetPosition(p.x, p.y);
-	go->GetTransform()->SetScale(1);
+	go->GetTransform()->SetScale(4);
 
 	r->SetActive(false);
 
-	Rectf rect{ p, float(m_BlockWidth - 0.1f),float(m_BlockHeight - 0.1f)};
+	Rectf rect{ p, float(m_BlockWidth - 0.5f),float(m_BlockHeight - 0.5f)};
 
 	auto c = new ColliderComponent(rect);
 	c->SetStatic(true);

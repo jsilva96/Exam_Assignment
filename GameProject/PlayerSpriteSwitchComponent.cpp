@@ -17,7 +17,7 @@ PlayerSpriteSwitchComponent::~PlayerSpriteSwitchComponent()
 	m_Sprite = nullptr;
 	m_Switch = nullptr;
 }
-void* PlayerSpriteSwitchComponent::operator new(size_t nBytes)
+void* PlayerSpriteSwitchComponent::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<PlayerSpriteSwitchComponent>();
 }

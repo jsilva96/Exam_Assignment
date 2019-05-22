@@ -6,7 +6,7 @@
 
 #include "TextComponent.h"
 
-void* FPSDisplayComponent::operator new(size_t nBytes)
+void* FPSDisplayComponent::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<FPSDisplayComponent>();
 }

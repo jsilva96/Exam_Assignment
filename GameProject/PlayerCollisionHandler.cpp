@@ -12,7 +12,7 @@ void PlayerCollisionHandler::Initialize()
 {
 	m_pSpriteSwitcher = GetGameObject()->GetComponent<PlayerSpriteSwitchComponent>();
 }
-void* PlayerCollisionHandler::operator new(size_t nBytes)
+void* PlayerCollisionHandler::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<PlayerCollisionHandler>();
 }
@@ -26,7 +26,7 @@ void PlayerCollisionHandler::OnCollideEnter(ColliderComponent* collider)
 	if(collider->GetGameObject()->CompareTag(BLOCK) && !collider->GetGameObject()->CompareTag(DUG_BLOCK))
 	{
 		m_pSpriteSwitcher->IsDigging(true);
-		collider->GetGameObject()->AddTag(DUG_BLOCK);	
+		collider->GetGameObject()->AddTag(DUG_BLOCK);
 	}
 }
 void PlayerCollisionHandler::OnCollideStay(ColliderComponent* collider)

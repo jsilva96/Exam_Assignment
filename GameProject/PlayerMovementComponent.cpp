@@ -14,7 +14,7 @@ PlayerMovementComponent::~PlayerMovementComponent()
 {
 	m_pInput = nullptr;
 }
-void* PlayerMovementComponent::operator new(size_t nBytes)
+void* PlayerMovementComponent::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<PlayerMovementComponent>();
 }

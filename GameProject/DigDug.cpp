@@ -30,7 +30,7 @@ DigDug::~DigDug()
 {
 }
 
-void* DigDug::operator new(size_t nBytes)
+void* DigDug::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<DigDug>();
 }
@@ -64,7 +64,7 @@ void DigDug::InitializeLevel()
 	r->SetTexture("Levels/DigDug/Level1.png");
 
 	r->SetFlipped(false, false);
-	go->GetTransform()->SetScale(2.0f);
+	go->GetTransform()->SetScale(1.0f);
 	go->AddComponent(r);
 
 	Add(go);
@@ -140,14 +140,29 @@ void DigDug::InitializeEnemyManager()
 }
 void DigDug::InitializeBlocks()
 {
-	int scale{ 2 };
-	int blockScale{ 1 };
+	int blockScale{ 4 };
+	std::vector<Rectf> carvers;
 	auto go = new GameObject();
 
-	auto blockManager = new BlockManager(8 * blockScale, 8 * blockScale);
+	auto blockManager = new BlockManager(2 * blockScale, 2 * blockScale);
 	go->AddComponent(blockManager);
 
-	blockManager->GetBlocks(225 * scale, (272 - 38) * scale);
+	blockManager->GetBlocks(450, (544 - 76));
+
+	carvers.push_back({ 37,290,20,153 });
+	carvers.push_back({ 164,320,89,22 });
+	carvers.push_back({ 294,165,121,25 });
+	carvers.push_back({ 192,290,25, 200 });
+	carvers.push_back({ 70,420,115, 25 });
+	carvers.push_back({ 292,512,25, 150 });
+
+
+	for (auto rect : carvers)
+	{
+		rect.leftBottom.y = (544 - rect.leftBottom.y) + rect.height;
+		blockManager->AddBlockCarver(rect);
+	}
+
 	blockManager->AddBlocksToScene(this);
 
 	Add(go);
@@ -163,7 +178,7 @@ void DigDug::AddFPSCounter(const Point2f& p)
 	go->AddComponent(t);
 	go->AddComponent(fps);
 
-	t->SetFont("Lingua.otf", 25);
+	t->SetFont("Lingua.otf", 15);
 	t->SetColor({ 0.0f, 1.0f, 0.0f, 1.0f });
 	go->SetPosition(p.x, p.y);
 

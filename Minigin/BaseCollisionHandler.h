@@ -5,8 +5,8 @@ class ColliderComponent;
 class BaseCollisionHandler : public BaseComponent
 {
 public:
-	BaseCollisionHandler();
-	virtual ~BaseCollisionHandler();
+	BaseCollisionHandler() = default;
+	virtual ~BaseCollisionHandler() = default;
 
 	void* operator new(size_t nBytes);
 	void  operator delete(void* ptrDelete);
@@ -15,9 +15,9 @@ public:
 	void Update() override{};
 	void Render() const override{};
 
-	virtual void OnCollideEnter(ColliderComponent* collider) = 0;
-	virtual void OnCollideStay(ColliderComponent* collider) = 0;
-	virtual void OnCollideExit(ColliderComponent* collider) = 0;
+	virtual void OnCollideEnter(ColliderComponent* collider);
+	virtual void OnCollideStay(ColliderComponent* collider);
+	virtual void OnCollideExit(ColliderComponent* collider);
 
 	BaseCollisionHandler(const BaseCollisionHandler&) = delete;
 	BaseCollisionHandler(BaseCollisionHandler&&) = delete;

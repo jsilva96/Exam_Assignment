@@ -6,7 +6,7 @@
 #include "TransformComponent.h"
 #include "PoolManager.h"
 
-void* EnemyManager::operator new(size_t nBytes)
+void* EnemyManager::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<EnemyManager>();
 }

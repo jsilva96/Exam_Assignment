@@ -2,6 +2,7 @@
 enum TAG : unsigned int
 {
 	PLAYER,
+	BLOCK_CARVER,
 	BLOCK,
 	DUG_BLOCK,
 };

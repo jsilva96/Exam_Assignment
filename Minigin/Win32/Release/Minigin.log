@@ -1,8 +1,8 @@
 ﻿  MiniginPCH.cpp
-  BaseShape.cpp
+  BaseCollisionHandler.cpp
+  BaseObject.cpp
   ColliderComponent.cpp
   CollisionManager.cpp
-  Color4f.cpp
   Font.cpp
   GameObject.cpp
   Gamepad.cpp
@@ -13,15 +13,13 @@
   Log.cpp
   Minigin.cpp
   MusicManager.cpp
-  Point2f.cpp
   PoolManager.cpp
-  Quad.cpp
   RenderComponent.cpp
   Renderer.cpp
   ResourceManager.cpp
-  Compiling...
   RotationComponent.cpp
   ScaleComponent.cpp
+  Compiling...
   SceneManager.cpp
   SoundComponent.cpp
   SoundEffect.cpp
@@ -30,6 +28,7 @@
   SVGParser.cpp
   TextComponent.cpp
   Texture2D.cpp
+  TextureManager.cpp
   Time.cpp
   TimerComponent.cpp
   TransformComponent.cpp
