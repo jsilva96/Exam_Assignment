@@ -11,14 +11,6 @@ public:
 	explicit GameScene();
 	virtual ~GameScene();
 
-	virtual void Initialize() = 0;
-	virtual void Update() = 0;
-	virtual void Render() const = 0;
-
-	void RootInitialize();
-	void RootUpdate();
-	void RootRender() const;
-
 	void Add(GameObject* pObj);
 	void SetSceneName(const std::string& name);
 
@@ -37,10 +29,19 @@ public:
 	bool IsPaused() const;
 private:
 	std::vector<GameObject*> m_pObjects;
-
 	std::string m_Name;
-
 	bool m_IsPaused;
+
+	friend class SceneManager;
+
+	virtual void Initialize() = 0;
+	virtual void Update() = 0;
+	virtual void Render() const = 0;
+
+	void RootInitialize();
+	void RootUpdate();
+	void RootRender() const;
+	
 	GameScene(const GameScene&) = delete;
 	GameScene(GameScene&&) noexcept = delete;
 

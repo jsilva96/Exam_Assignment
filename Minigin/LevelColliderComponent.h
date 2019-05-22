@@ -16,9 +16,9 @@ public:
 	void AddVerts(const std::vector<Point2f>& verts);
 	const std::vector<std::vector<Point2f>>& GetVerts() const;
 
-	void OnLevelCollide(HitInfo info, ColliderComponent* pCollider)
+	void OnLevelCollide(HitInfo, ColliderComponent*)
 	{
-		pCollider->GetGameObject()->OnLevelCollide(info);
+		//pCollider->GetGameObject()->OnLevelCollide(info);
 	}
 private:
 

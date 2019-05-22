@@ -104,15 +104,6 @@
     <ClInclude Include="Command.h">
       <Filter>Engine Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="BaseShape.h">
-      <Filter>Engine Files\Scenegraph\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Quad.h">
-      <Filter>Engine Files\Scenegraph\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Shapes.h">
-      <Filter>Engine Files\Scenegraph\Shapes</Filter>
-    </ClInclude>
     <ClInclude Include="ColliderComponent.h">
       <Filter>Engine Files\Components</Filter>
     </ClInclude>
@@ -173,6 +164,9 @@
     <ClInclude Include="TextureManager.h">
       <Filter>Engine Files\Managers</Filter>
     </ClInclude>
+    <ClInclude Include="BaseObserver.h">
+      <Filter>Engine Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RenderComponent.cpp">
@@ -225,12 +219,6 @@
     </ClCompile>
     <ClCompile Include="Log.cpp">
       <Filter>Engine Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseShape.cpp">
-      <Filter>Engine Files\Scenegraph\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Quad.cpp">
-      <Filter>Engine Files\Scenegraph\Shapes</Filter>
     </ClCompile>
     <ClCompile Include="ColliderComponent.cpp">
       <Filter>Engine Files\Components</Filter>

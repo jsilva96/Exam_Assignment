@@ -1,10 +1,10 @@
 #pragma once
 #include "GameObject.h"
 
-class Command  :  public BaseObject
+class Command : public BaseObject
 {
 public:
-	Command(const std::string& event)
+	Command(unsigned int event)
 		:m_Event{ event }
 	{
 	}
@@ -19,10 +19,10 @@ public:
 		m_pGameObject = pObject; 
 	};
 
-	std::string GetEvent() { return m_Event; };
+	unsigned int GetEvent() { return m_Event; };
 
 	protected:
-	std::string m_Event;
+	unsigned int m_Event;
 	GameObject* m_pGameObject;
 
 private:

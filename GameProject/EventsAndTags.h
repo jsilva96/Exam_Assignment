@@ -8,5 +8,5 @@ enum TAG : unsigned int
 
 enum EVENT : unsigned int
 {
-
+	MOVING
 };

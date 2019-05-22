@@ -25,7 +25,7 @@ void GameScene::RootInitialize()
 	for(size_t i = 0 ; i < m_pObjects.size(); i++)
 	{
 		m_pObjects[i]->SetScene(this);
-		m_pObjects[i]->RootInitialize();
+		m_pObjects[i]->Initialize();
 	}
 }
 void GameScene::RootUpdate()
@@ -33,13 +33,13 @@ void GameScene::RootUpdate()
 	if (m_IsPaused) return;
 	Update();
 	
-	for (GameObject* pOb : m_pObjects) if (pOb->IsUsable()) pOb->RootUpdate();
+	for (GameObject* pOb : m_pObjects) if (pOb->IsUsable()) pOb->Update();
 }
 void GameScene::RootRender() const
 {
 	Render();
 
-	for (GameObject* pOb : m_pObjects)if (pOb->IsUsable()) pOb->RootRender();
+	for (GameObject* pOb : m_pObjects)if (pOb->IsUsable()) pOb->Render();
 }
 void GameScene::Add(GameObject* pObj)
 {

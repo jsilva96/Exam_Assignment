@@ -5,6 +5,7 @@
 #include "Time.h"
 #include "PoolManager.h"
 #include "SomeStructs.h"
+#include "BaseObserver.h"
 
 
 GameObject::GameObject()
@@ -18,6 +19,7 @@ GameObject::~GameObject()
 {
 	DeleteCheck(m_pComponents);
 	DeleteCheck(m_pChildren);
+	DeleteCheck(m_Observers);
 
 	m_Tags.clear();
 }
@@ -30,44 +32,35 @@ void GameObject::operator delete(void* ptrDelete)
 {
 	PoolManager::GetInstance().ReturnObject<GameObject>(static_cast<GameObject*>(ptrDelete));
 }
-void GameObject::RootInitialize()
+
+void GameObject::Initialize()
 {
 	if (!m_pTransform)
 	{
 		m_pTransform = new TransformComponent();
 		AddComponent(m_pTransform);
 	}
-	Initialize();
-
 	for (size_t i = 0; i < m_pChildren.size(); i++)
 	{
-		if(m_pChildren[i]->IsUsable())m_pChildren[i]->RootInitialize();
+		if (m_pChildren[i]->IsUsable())m_pChildren[i]->Initialize();
 	}
 	for (size_t i = 0; i < m_pComponents.size(); i++)
 	{
 		m_pComponents[i]->Initialize();
 	}
 }
-void GameObject::RootUpdate()
+void GameObject::Update()
 {
-	Update();
-
-	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable()) pObj->RootUpdate();
+	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable()) pObj->Update();
 	for (BaseComponent* pC : m_pComponents) if (pC->IsUsable()) pC->Update();
 }
-void GameObject::RootRender() const
+
+void GameObject::Render() const
 {
-	Render();
-	
-	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable()) pObj->RootRender();
+	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable()) pObj->Render();
 	for (BaseComponent* pC : m_pComponents) if (pC->IsUsable()) pC->Render();
 }
-void GameObject::OnCollide(GameObject*)
-{
-}
-void GameObject::OnLevelCollide(HitInfo)
-{
-}
+
 void GameObject::SetScene(GameScene * pScene)
 {
 	m_pScene = pScene;
@@ -88,6 +81,14 @@ void GameObject::AddTag(unsigned tag)
 bool GameObject::CompareTag(unsigned tag)
 {
 	return std::find(m_Tags.begin(), m_Tags.end(), tag) != m_Tags.end();
+}
+void GameObject::AddObserver(BaseObserver* pObserver)
+{
+	AddCheck(m_Observers, pObserver);
+}
+void GameObject::OnNotify(unsigned event)
+{
+	for(auto& pObs : m_Observers) pObs->onNotify(this, event);
 }
 void GameObject::SetPosition(float x, float y)
 {

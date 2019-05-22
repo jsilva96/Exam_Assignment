@@ -214,8 +214,8 @@ xcopy "$(SolutionDir)3rdParty\SDL_gfx\lib\*.dll" "$(OutputPath)" /R /Y</Command>
     <ClInclude Include="BaseCollisionHandler.h" />
     <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="BaseObserver.h" />
     <ClInclude Include="BasePool.h" />
-    <ClInclude Include="BaseShape.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Command.h" />
@@ -234,14 +234,12 @@ xcopy "$(SolutionDir)3rdParty\SDL_gfx\lib\*.dll" "$(OutputPath)" /R /Y</Command>
     <ClInclude Include="MusicManager.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="PoolManager.h" />
-    <ClInclude Include="Quad.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="RotationComponent.h" />
     <ClInclude Include="ScaleComponent.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Shapes.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SomeStructs.h" />
     <ClInclude Include="SoundComponent.h" />
@@ -261,7 +259,6 @@ xcopy "$(SolutionDir)3rdParty\SDL_gfx\lib\*.dll" "$(OutputPath)" /R /Y</Command>
   <ItemGroup>
     <ClCompile Include="BaseCollisionHandler.cpp" />
     <ClCompile Include="BaseObject.cpp" />
-    <ClCompile Include="BaseShape.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -282,7 +279,6 @@ xcopy "$(SolutionDir)3rdParty\SDL_gfx\lib\*.dll" "$(OutputPath)" /R /Y</Command>
     </ClCompile>
     <ClCompile Include="MusicManager.cpp" />
     <ClCompile Include="PoolManager.cpp" />
-    <ClCompile Include="Quad.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />

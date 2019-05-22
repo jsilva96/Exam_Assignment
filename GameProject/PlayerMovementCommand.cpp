@@ -1,9 +1,10 @@
 #include "pch.h"
 #include "PlayerMovementCommand.h"
 #include "TranslationComponent.h"
+#include "EventsAndTags.h"
 
 PlayerMovementCommand::PlayerMovementCommand()
-	:Command("Moving"), m_TransComponent(nullptr)
+	:Command(MOVING), m_TransComponent(nullptr)
 {
 }
 void PlayerMovementCommand::SetDirection(const Vector2f& v)

@@ -65,7 +65,6 @@ void BlockManager::AddBlocksToScene(GameScene* pScene)
 GameObject* BlockManager::AddBlock(const Point2f& p) const
 {
 	auto go = new GameObject();
-
 	auto r = new RenderComponent();
 	r->SetTexture("Textures/DigDug/Black_Sprite.png");
 
