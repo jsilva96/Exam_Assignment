@@ -8,7 +8,6 @@ void SceneManager::AddScene(GameScene * pScene)
 	if (AddCheck(m_pScenes, pScene) && pScene->IsUsable())
 	{
 		if (m_pScenes.size() == 1) SetScene(pScene->GetID());
-		pScene->RootInitialize();
 	}
 }
 void SceneManager::SetScene(unsigned sceneID)
@@ -37,7 +36,7 @@ void SceneManager::Update()
 }
 void SceneManager::Render()
 {
-	if (m_pCurrentScene) m_pCurrentScene->RootUpdate();
+	if (m_pCurrentScene) m_pCurrentScene->RootRender();
 }
 void SceneManager::Destroy()
 {

@@ -5,7 +5,7 @@
 
 using namespace std;
 GameScene::GameScene(unsigned int sceneID)
-	:m_SceneID{ sceneID },
+	:m_SceneID{ sceneID }
 {
 }
 GameScene::~GameScene()

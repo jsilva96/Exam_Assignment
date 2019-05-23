@@ -5,6 +5,8 @@ class InputComponent;
 class InputManager final : public dae::Singleton<InputManager>
 {
 public:
+	InputManager();
+
 	bool ProcessInput();
 
 	void AddInputComponent(InputComponent* pComponent);

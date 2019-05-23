@@ -3,6 +3,11 @@
 #include <SDL.h>
 #include "InputComponent.h"
 
+InputManager::InputManager()
+{
+	std::cout << "Enter\n";
+
+}
 bool InputManager::ProcessInput()
 {
 	SDL_Event e;
