@@ -4,7 +4,7 @@ class SelectionComponent;
 class SelectCommand final: public Command
 {
 public:
-	SelectCommand();
+	SelectCommand(bool moveDown);
 	virtual ~SelectCommand() = default;
 
 	void Execute() override;
@@ -19,6 +19,8 @@ public:
 
 private:
 	std::vector<SelectionComponent*> m_Options;
+
+	bool m_MoveDown;
 
 	float m_LastCheck = 0.0f;
 	float m_MinTime = 0.1f;

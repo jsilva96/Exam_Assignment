@@ -4,13 +4,8 @@
 #include "PoolManager.h"
 
 using namespace std;
-GameScene::GameScene(const std::string& name)
-	:m_Name{ name },
-	m_IsPaused{ false }
-{
-}
-GameScene::GameScene()
-	: GameScene("Scene")
+GameScene::GameScene(unsigned int sceneID)
+	:m_SceneID{ sceneID },
 {
 }
 GameScene::~GameScene()
@@ -30,7 +25,6 @@ void GameScene::RootInitialize()
 }
 void GameScene::RootUpdate()
 {
-	if (m_IsPaused) return;
 	Update();
 	
 	for (GameObject* pOb : m_pObjects) if (pOb->IsUsable()) pOb->Update();
@@ -44,16 +38,4 @@ void GameScene::RootRender() const
 void GameScene::Add(GameObject* pObj)
 {
 	AddCheck(m_pObjects, pObj);
-}
-void GameScene::SetSceneName(const std::string & name)
-{
-	m_Name = name;
-}
-void GameScene::Pause()
-{
-	m_IsPaused = !m_IsPaused;
-}
-bool GameScene::IsPaused() const
-{
-	return m_IsPaused;
 }

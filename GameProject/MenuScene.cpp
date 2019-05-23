@@ -4,14 +4,16 @@
 #include "PoolManager.h"
 #include "GameObject.h"
 
+#include "SceneManager.h"
 #include "RenderComponent.h"
 #include "TextComponent.h"
 #include "SelectionComponent.h"
 #include "InputComponent.h"
 #include "SelectCommand.h"
+#include "EventsAndTags.h"
 
 MenuScene::MenuScene()
-	:GameScene("MenuScene")
+	:GameScene(MENU), m_IsSelected(false)
 {
 }
 
@@ -105,12 +107,28 @@ void MenuScene::AddPlayer()
 	options.controller = ControllerButton::DPad_Down;
 	options.keyboard = KeyboardButton::Down;
 
-	auto cmd = new SelectCommand();
+	auto cmd = new SelectCommand(true);
 
 	for (auto& pObj : m_Options) cmd->AddOption(pObj->GetComponent<SelectionComponent>());
 	input->AddCommand(cmd, options);
 
+	options.controller = ControllerButton::DPad_Up;
+	options.keyboard = KeyboardButton::Up;
+	cmd = new SelectCommand(false);
+	
+	for (auto& pObj : m_Options) cmd->AddOption(pObj->GetComponent<SelectionComponent>());
+	input->AddCommand(cmd, options);
+	
 	go->AddComponent(input);
-
 	Add(go);
+}
+
+void MenuScene::SelectGameMode()
+{
+	const auto it = std::find_if(m_Options.begin(), m_Options.end(), [](GameObject* pObj)
+	{
+		return pObj->GetComponent<SelectionComponent>()->IsSelected();
+	});
+
+	if (it == m_Options.end()) throw std::runtime_error("MenuScene::SelectGameMode->No GameMode found/n");
 }

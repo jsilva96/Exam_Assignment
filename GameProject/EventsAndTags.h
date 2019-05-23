@@ -12,3 +12,11 @@ enum EVENT : unsigned int
 	MOVING,
 	SELECTING,
 };
+enum SCENE : unsigned int
+{
+	FPS_TEST,
+	MENU,
+	SOLO,
+	COOP,
+	VERSUS
+};

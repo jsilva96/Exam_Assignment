@@ -8,14 +8,14 @@ public:
 	virtual ~SceneManager();
 
 	void AddScene(GameScene* pScene);
+	void SetScene(unsigned int sceneID);
+	
 	void Update();
 	void Render();
 	void Destroy();
-	bool IsGameOver() const;
-
-	void EndGame();
 
 private:
 	std::vector<GameScene*> m_pScenes;
-	bool m_IsGameOver = false;
+
+	GameScene* m_pCurrentScene = nullptr;
 };

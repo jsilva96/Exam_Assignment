@@ -9,9 +9,10 @@
 #include "TextComponent.h"
 #include "PoolManager.h"
 #include "Time.h"
+#include "EventsAndTags.h"
 
 FPSScene::FPSScene()
-	:GameScene("FPSScene")
+	:GameScene(SCENE::FPS_TEST)
 {
 }
 

@@ -7,12 +7,11 @@ class GameObject;
 class GameScene : public BaseObject
 {
 public:
-	explicit GameScene(const std::string& name);
-	explicit GameScene();
+	explicit GameScene(unsigned int sceneID);
 	virtual ~GameScene();
 
 	void Add(GameObject* pObj);
-	void SetSceneName(const std::string& name);
+	unsigned int GetID() const { return m_SceneID; };
 
 	template<class T> T* GetGameObject()
 	{
@@ -24,13 +23,9 @@ public:
 
 		return nullptr;
 	}
-
-	void Pause();
-	bool IsPaused() const;
 private:
 	std::vector<GameObject*> m_pObjects;
-	std::string m_Name;
-	bool m_IsPaused;
+	unsigned int m_SceneID;
 
 	friend class SceneManager;
 

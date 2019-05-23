@@ -6,8 +6,8 @@
 #include "SelectionComponent.h"
 #include "Time.h"
 
-SelectCommand::SelectCommand()
-	:Command(EVENT::SELECTING)
+SelectCommand::SelectCommand(bool moveDown)
+	:Command(EVENT::SELECTING), m_MoveDown(moveDown)
 {
 }
 void SelectCommand::Execute()
@@ -21,8 +21,17 @@ void SelectCommand::Execute()
 	if (it == m_Options.end()) throw std::runtime_error("SelectCommand::Execute->No option is selected\n");
 
 	(*it)->SetSelected(false);
-	if (++it == m_Options.end()) m_Options[0]->SetSelected(true);
-	else (*it)->SetSelected(true);
+
+	if (m_MoveDown)
+	{
+		if (++it == m_Options.end()) (*m_Options.begin())->SetSelected(true);
+		else (*it)->SetSelected(true);
+	}
+	else
+	{
+		if (it == m_Options.begin()) (*(m_Options.end() - 1))->SetSelected(true);
+		else (*(--it))->SetSelected(true);
+	}
 
 	m_LastCheck = Time::GetInstance().GetElapsedTime();
 }

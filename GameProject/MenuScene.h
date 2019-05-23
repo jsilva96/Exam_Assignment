@@ -26,6 +26,9 @@ private:
 	void InitializeOption(const std::string& text, const Point2f& p);
 	void AddPlayer();
 
+	void SelectGameMode();
+
 	std::vector<GameObject*> m_Options;
+	bool m_IsSelected;
 };
 

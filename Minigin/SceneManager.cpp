@@ -5,36 +5,42 @@
 
 void SceneManager::AddScene(GameScene * pScene)
 {
-	if (AddCheck(m_pScenes, pScene) && pScene->IsUsable())pScene->RootInitialize();
+	if (AddCheck(m_pScenes, pScene) && pScene->IsUsable())
+	{
+		if (m_pScenes.size() == 1) SetScene(pScene->GetID());
+		pScene->RootInitialize();
+	}
+}
+void SceneManager::SetScene(unsigned sceneID)
+{
+	if (m_pCurrentScene)
+	{
+		if (m_pCurrentScene->GetID() == sceneID) return;
+	}
+
+	auto it = std::find_if(m_pScenes.begin(), m_pScenes.end(), [sceneID](GameScene* pScene)
+	{
+		return pScene->GetID() == sceneID;
+ 	});
+
+	if (it == m_pScenes.end()) throw std::runtime_error("SceneManager::SetScene->Invalid ID " + std::to_string(sceneID) + " not found/n");
+
+	m_pCurrentScene = (*it);
+	m_pCurrentScene->RootInitialize();
 }
 SceneManager::~SceneManager()
 {
 }
 void SceneManager::Update()
 {
-	for(auto scene : m_pScenes)
-	{
-		if(scene->IsUsable())scene->RootUpdate();
-	}
+	if (m_pCurrentScene) m_pCurrentScene->RootUpdate();
 }
 void SceneManager::Render()
 {
-	for (auto scene : m_pScenes)
-	{
-		if (scene->IsUsable())scene->RootRender();
-	}
+	if (m_pCurrentScene) m_pCurrentScene->RootUpdate();
 }
 void SceneManager::Destroy()
 {
-	for (GameScene* pScene : m_pScenes) delete pScene;
-
+	DeleteCheck(m_pScenes);
 	m_pScenes.clear();
-}
-bool SceneManager::IsGameOver() const
-{
-	return m_IsGameOver;
-}
-void SceneManager::EndGame()
-{
-	m_IsGameOver = true;
 }

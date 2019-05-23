@@ -3,7 +3,7 @@
 #include <Xinput.h>
 
 class InputComponent;
-class Gamepad : public BaseObject
+class Gamepad final : public BaseObject
 {
 	struct Analog  :  public Vector2f
 	{

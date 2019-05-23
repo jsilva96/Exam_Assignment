@@ -26,10 +26,12 @@ enum class ControllerButton
 };
 enum class KeyboardButton : UINT8
 {
+	A = 4,
+	B,C,D,E,F,G,H,I,J,K,L,M,
+	N,O,P,Q,R,S,T,U,V,W,X,Y,Z,
 	Right = 79,
-	Left = 80,
-	Down = 81,
-	Up = 82,
+	Left,Down,Up,
+	Enter = 40
 };
 
 struct InputOptions
@@ -40,7 +42,7 @@ struct InputOptions
 class Command;
 class Gamepad;
 
-class InputComponent : public BaseComponent
+class InputComponent final: public BaseComponent
 {
 public:
 	InputComponent();

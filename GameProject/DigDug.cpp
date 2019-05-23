@@ -24,6 +24,7 @@
 #include "EventsAndTags.h"
 
 DigDug::DigDug()
+	:GameScene(SCENE::SOLO)
 {
 }
 DigDug::~DigDug()
