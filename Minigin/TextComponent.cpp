@@ -81,6 +81,8 @@ void TextComponent::SetFont(const std::string& path, unsigned int size)
 }
 void TextComponent::SetColor(const Color4f& color)
 {
+	if (color == m_Color) return;
+	m_IsTextChanged = true;
 	m_Color = color;
 }
 

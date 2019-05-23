@@ -72,6 +72,14 @@ struct Color4f
 	{
 
 	}
+
+	bool operator==(const Color4f& c) const
+	{
+		return ((c.r == r) && 
+			    (c.g == g) && 
+			    (c.b == b) && 
+			    (c.a == a));
+	}
 };
 struct Vector2f
 {

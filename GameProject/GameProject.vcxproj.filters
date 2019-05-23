@@ -63,6 +63,15 @@
     <ClInclude Include="EventsAndTags.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>Source Files\Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionComponent.h">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectCommand.h">
+      <Filter>Source Files\Game Files\Commands</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -103,6 +112,15 @@
     </ClCompile>
     <ClCompile Include="PlayerCollisionHandler.cpp">
       <Filter>Source Files\Game Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Source Files\Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionComponent.cpp">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectCommand.cpp">
+      <Filter>Source Files\Game Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

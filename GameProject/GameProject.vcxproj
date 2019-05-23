@@ -175,6 +175,7 @@
   <ItemGroup>
     <ClInclude Include="BlockCollisionHandler.h" />
     <ClInclude Include="EventsAndTags.h" />
+    <ClInclude Include="MenuScene.h" />
     <ClInclude Include="PlayerCollisionHandler.h" />
     <ClInclude Include="PlayerMovementCommand.h" />
     <ClInclude Include="BlockManager.h" />
@@ -185,10 +186,13 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
     <ClInclude Include="PlayerSpriteSwitchComponent.h" />
+    <ClInclude Include="SelectCommand.h" />
+    <ClInclude Include="SelectionComponent.h" />
     <ClInclude Include="SpriteDescSwitchComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BlockCollisionHandler.cpp" />
+    <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="PlayerCollisionHandler.cpp" />
     <ClCompile Include="PlayerMovementCommand.cpp" />
     <ClCompile Include="BlockManager.cpp" />
@@ -205,6 +209,8 @@
     </ClCompile>
     <ClCompile Include="PlayerMovementComponent.cpp" />
     <ClCompile Include="PlayerSpriteSwitchComponent.cpp" />
+    <ClCompile Include="SelectCommand.cpp" />
+    <ClCompile Include="SelectionComponent.cpp" />
     <ClCompile Include="SpriteDescSwitchComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

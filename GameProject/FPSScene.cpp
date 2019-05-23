@@ -11,12 +11,12 @@
 #include "Time.h"
 
 FPSScene::FPSScene()
+	:GameScene("FPSScene")
 {
 }
 
-void* FPSScene::operator new(size_t nBytes)
+void* FPSScene::operator new(size_t)
 {
-	UNREFERENCED_PARAMETER(nBytes);
 	return PoolManager::GetInstance().RetrieveObject<FPSScene>();
 }
 void FPSScene::operator delete(void* ptrDelete)
