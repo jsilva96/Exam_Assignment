@@ -52,6 +52,8 @@ private:
 
 	void SetScene(GameScene* pScene);
 
+	bool m_IsInitialized = false;
+
 	TransformComponent * m_pTransform;
 	std::vector<BaseComponent*> m_pComponents;
 	GameScene* m_pScene;

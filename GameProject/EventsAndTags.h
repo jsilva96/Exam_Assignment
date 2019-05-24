@@ -11,6 +11,7 @@ enum EVENT : unsigned int
 {
 	MOVING,
 	SELECTING,
+	ENTER_SELECTION
 };
 enum SCENE : unsigned int
 {

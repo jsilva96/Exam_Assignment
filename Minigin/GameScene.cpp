@@ -12,9 +12,12 @@ GameScene::~GameScene()
 {
 	DeleteCheck(m_pObjects);
 	m_pObjects.clear();
+
+	m_IsInitialized = false;
 }
 void GameScene::RootInitialize()
 {
+	if (m_IsInitialized) return;
 	Initialize();
 
 	for(size_t i = 0 ; i < m_pObjects.size(); i++)
@@ -22,6 +25,8 @@ void GameScene::RootInitialize()
 		m_pObjects[i]->SetScene(this);
 		m_pObjects[i]->Initialize();
 	}
+
+	m_IsInitialized = true;
 }
 void GameScene::RootUpdate()
 {
@@ -37,9 +42,8 @@ void GameScene::RootRender() const
 }
 void GameScene::Add(GameObject* pObj)
 {
-	AddCheck(m_pObjects, pObj);
+	if (AddCheck(m_pObjects, pObj) && !m_IsInitialized) pObj->Initialize();
 }
-
 void GameScene::SetActive(bool isActive)
 {
 	if (isActive == IsActive()) return;

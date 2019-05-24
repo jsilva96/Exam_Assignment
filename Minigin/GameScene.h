@@ -29,6 +29,7 @@ public:
 private:
 	std::vector<GameObject*> m_pObjects;
 	unsigned int m_SceneID;
+	bool m_IsInitialized = false;
 
 	friend class SceneManager;
 

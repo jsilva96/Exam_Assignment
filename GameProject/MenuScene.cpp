@@ -11,6 +11,8 @@
 #include "InputComponent.h"
 #include "SelectCommand.h"
 #include "EventsAndTags.h"
+#include "DigDug.h"
+#include "EnterCommand.h"
 
 MenuScene::MenuScene()
 	:GameScene(MENU), m_IsSelected(false)
@@ -50,9 +52,14 @@ void MenuScene::Initialize()
 }
 void MenuScene::Update()
 {
+	if (m_IsSelected) SelectGameMode();
 }
 void MenuScene::Render() const
 {
+}
+void MenuScene::Select()
+{
+	m_IsSelected = true;
 }
 void MenuScene::InitializeBackground()
 {
@@ -117,7 +124,12 @@ void MenuScene::AddPlayer()
 	
 	for (auto& pObj : m_Options) cmd->AddOption(pObj->GetComponent<SelectionComponent>());
 	input->AddCommand(cmd, options);
-	
+
+	options.controller = ControllerButton::ButtonX;
+	options.keyboard = KeyboardButton::Enter;
+
+	input->AddCommand(new EnterCommand(), options);
+
 	go->AddComponent(input);
 	Add(go);
 }
@@ -130,4 +142,9 @@ void MenuScene::SelectGameMode()
 	});
 
 	if (it == m_Options.end()) throw std::runtime_error("MenuScene::SelectGameMode->No GameMode found/n");
+
+	auto scene = new DigDug();
+
+	SceneManager::GetInstance().AddScene(scene);
+	SceneManager::GetInstance().SetScene(scene->GetID());
 }

@@ -16,13 +16,14 @@ void SceneManager::SetScene(unsigned sceneID)
 	{
 		if (m_pCurrentScene->GetID() == sceneID) return;
 	}
-
 	auto it = std::find_if(m_pScenes.begin(), m_pScenes.end(), [sceneID](GameScene* pScene)
 	{
 		return pScene->GetID() == sceneID;
  	});
 
 	if (it == m_pScenes.end()) throw std::runtime_error("SceneManager::SetScene->Invalid ID " + std::to_string(sceneID) + " not found/n");
+
+	if(m_pCurrentScene)m_pCurrentScene->SetActive(false);
 
 	m_pCurrentScene = (*it);
 	m_pCurrentScene->RootInitialize();

@@ -16,6 +16,7 @@ void FPSDisplayComponent::operator delete(void* ptrDelete)
 }
 void FPSDisplayComponent::Initialize()
 {
+	m_pText->SetText("Loading...");
 }
 void FPSDisplayComponent::Update()
 {

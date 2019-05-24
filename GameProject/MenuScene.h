@@ -15,6 +15,8 @@ public:
 	void Update() override;
 	void Render() const override;
 
+	void Select();
+
 	MenuScene(const MenuScene&) = delete;
 	MenuScene(MenuScene&&) noexcept = delete;
 

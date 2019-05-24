@@ -30,24 +30,22 @@ void* GameObject::operator new(size_t)
 }
 void GameObject::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<GameObject>(static_cast<GameObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<GameObject>(ptrDelete);
 }
 
 void GameObject::Initialize()
 {
+	if (m_IsInitialized) return;
+
 	if (!m_pTransform)
 	{
 		m_pTransform = new TransformComponent();
 		AddComponent(m_pTransform);
 	}
-	for (size_t i = 0; i < m_pChildren.size(); i++)
-	{
-		if (m_pChildren[i]->IsUsable())m_pChildren[i]->Initialize();
-	}
-	for (size_t i = 0; i < m_pComponents.size(); i++)
-	{
-		m_pComponents[i]->Initialize();
-	}
+	for (size_t i = 0; i < m_pChildren.size(); i++) if (m_pChildren[i]->IsUsable())m_pChildren[i]->Initialize();
+	for (size_t i = 0; i < m_pComponents.size(); i++) m_pComponents[i]->Initialize();
+
+	m_IsInitialized = true;
 }
 void GameObject::Update()
 {
@@ -56,8 +54,8 @@ void GameObject::Update()
 }
 void GameObject::Render() const
 {
-	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable()) pObj->Render();
-	for (BaseComponent* pC : m_pComponents) if (pC->IsUsable()) pC->Render();
+	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable() && pObj->IsActive()) pObj->Render();
+	for (BaseComponent* pC : m_pComponents) if (pC->IsUsable() && pC->IsActive()) pC->Render();
 }
 void GameObject::SetScene(GameScene * pScene)
 {
@@ -69,7 +67,11 @@ GameScene * GameObject::GetScene() const
 }
 void GameObject::AddComponent(BaseComponent* pComp)
 {
-	if (AddCheck(m_pComponents, pComp)) pComp->SetGameObject(this);
+	if (AddCheck(m_pComponents, pComp))
+	{
+		pComp->SetGameObject(this);
+		if (m_IsInitialized) pComp->Initialize();
+	}
 }
 
 void GameObject::AddTag(unsigned tag)
@@ -109,5 +111,5 @@ TransformComponent* GameObject::GetTransform() const
 }
 void GameObject::AddChild(GameObject * pObj)
 {
-	AddCheck(m_pChildren, pObj);
+	if(AddCheck(m_pChildren, pObj) && m_IsInitialized) pObj->Initialize();
 }
