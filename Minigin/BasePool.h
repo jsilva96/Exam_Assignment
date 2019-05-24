@@ -8,7 +8,7 @@ public:
 	BasePool() = default;
 	virtual ~BasePool() = default;
 
-	virtual void ReturnObject(BaseObject*) = 0;
+	virtual void ReturnObject(void*) = 0;
 
 	virtual void FindNewIndex() = 0;
 

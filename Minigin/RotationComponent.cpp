@@ -12,7 +12,7 @@ void* RotationComponent::operator new(size_t)
 }
 void RotationComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<RotationComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<RotationComponent>(ptrDelete);
 }
 void RotationComponent::Initialize()
 {

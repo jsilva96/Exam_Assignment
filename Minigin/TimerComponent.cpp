@@ -21,7 +21,7 @@ void* TimerComponent::operator new(size_t)
 }
 void TimerComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<TimerComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<TimerComponent>(ptrDelete);
 }
 void TimerComponent::Initialize()
 {

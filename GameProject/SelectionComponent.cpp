@@ -9,7 +9,7 @@ void* SelectionComponent::operator new(size_t nBytes)
 }
 void SelectionComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<SelectionComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<SelectionComponent>(ptrDelete);
 }
 void SelectionComponent::Initialize()
 {

@@ -60,7 +60,7 @@ void* Gamepad::operator new(size_t)
 }
 void Gamepad::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<Gamepad>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<Gamepad>(ptrDelete);
 }
 
 void Gamepad::AssignInput(InputComponent * pComp)

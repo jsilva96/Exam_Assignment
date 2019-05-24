@@ -51,16 +51,14 @@ void GameObject::Initialize()
 }
 void GameObject::Update()
 {
-	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable()) pObj->Update();
-	for (BaseComponent* pC : m_pComponents) if (pC->IsUsable()) pC->Update();
+	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable() && pObj->IsActive()) pObj->Update();
+	for (BaseComponent* pC : m_pComponents) if (pC->IsUsable() && pC->IsActive()) pC->Update();
 }
-
 void GameObject::Render() const
 {
 	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable()) pObj->Render();
 	for (BaseComponent* pC : m_pComponents) if (pC->IsUsable()) pC->Render();
 }
-
 void GameObject::SetScene(GameScene * pScene)
 {
 	m_pScene = pScene;
@@ -94,6 +92,17 @@ void GameObject::SetPosition(float x, float y)
 {
 	if(m_pTransform)m_pTransform->SetPosition(Point2f(x, y));
 }
+
+void GameObject::SetActive(bool isActive)
+{
+	if (isActive == IsActive()) return;
+
+	BaseObject::SetActive(isActive);
+
+	for (GameObject* pObj : m_pChildren) if (pObj->IsUsable()) pObj->SetActive(isActive);
+	for (BaseComponent* pC : m_pComponents) if (pC->IsUsable()) pC->SetActive(isActive);
+}
+
 TransformComponent* GameObject::GetTransform() const
 {
 	return m_pTransform;

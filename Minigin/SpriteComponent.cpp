@@ -24,7 +24,6 @@ SpriteComponent::~SpriteComponent()
 	m_CountRuns = false;
 	m_Timer = 0.0f;
 	m_StopTimer = false;
-	m_IsActive = true;
 
 	m_SpriteInfo.Reset();
 
@@ -35,7 +34,7 @@ void* SpriteComponent::operator new(size_t)
 }
 void SpriteComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<SpriteComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<SpriteComponent>(ptrDelete);
 }
 void SpriteComponent::Initialize()
 {
@@ -49,7 +48,7 @@ void SpriteComponent::Update()
 {
 	RenderComponent::Update();
 
-	if (m_StopTimer || !m_IsActive) return;
+	if (m_StopTimer) return;
 	m_Timer += Time::GetInstance().GetElapsedSecs();
 
 	switch (m_SpriteInfo.parseLogic)
@@ -60,9 +59,6 @@ void SpriteComponent::Update()
 
 	case SpriteParse::VERTICAL:
 		UpdateVertical();
-		break;
-	case SpriteParse::CUSTOM:
-		UpdateCustom();
 		break;
 	}
 }
@@ -78,7 +74,7 @@ void SpriteComponent::UpdateHorizontal()
 				++m_RunCount;
 				if (m_SpriteInfo.nrOfRuns <= int(m_RunCount))
 				{
-					m_IsActive = false;
+					SetActive(false);
 					return;
 				}
 			}
@@ -102,7 +98,7 @@ void SpriteComponent::UpdateVertical()
 				++m_RunCount;
 				if (m_SpriteInfo.nrOfRuns <= int(m_RunCount))
 				{
-					m_IsActive = false;
+					SetActive(false);
 					return;
 				}
 			}
@@ -116,7 +112,7 @@ void SpriteComponent::UpdateVertical()
 }
 void SpriteComponent::Render() const
 {
-	if (m_Texture && m_IsActive)
+	if (m_Texture)
 	{
 		dae::Renderer::GetInstance().RenderTexture(*m_Texture, GetGameObject()->GetTransform()->GetTransformInfo(), m_DrawRect, m_SrcRect, m_IsFlippedV, m_IsFlippedH);
 	}

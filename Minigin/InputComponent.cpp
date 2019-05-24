@@ -28,7 +28,7 @@ void* InputComponent::operator new(size_t)
 }
 void InputComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<InputComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<InputComponent>(ptrDelete);
 }
 void InputComponent::Initialize()
 {

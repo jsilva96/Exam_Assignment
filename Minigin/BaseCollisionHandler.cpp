@@ -7,7 +7,7 @@ void* BaseCollisionHandler::operator new(size_t)
 }
 void BaseCollisionHandler::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<BaseCollisionHandler>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<BaseCollisionHandler>(ptrDelete);
 }
 
 void BaseCollisionHandler::OnCollideEnter(ColliderComponent*)

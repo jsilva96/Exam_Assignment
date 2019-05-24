@@ -25,8 +25,6 @@ public:
 	void Render()const override;
 
 	virtual void SetTexture(const string& filename);
-	void SetActive(bool b);
-	bool IsActive() const;
 
 	float GetTextureHeight() const;
 	float GetTextureWidth() const;
@@ -36,7 +34,6 @@ protected:
 	dae::Texture2D* m_Texture;
 	Rectf m_DrawRect;
 
-	bool m_IsActive = true;
 	bool m_IsFlippedH = false;
 	bool m_IsFlippedV = false;
 

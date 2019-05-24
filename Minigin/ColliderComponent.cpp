@@ -23,7 +23,7 @@ void* ColliderComponent::operator new(size_t)
 }
 void ColliderComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<ColliderComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<ColliderComponent>(ptrDelete);
 }
 ColliderComponent::~ColliderComponent()
 {
@@ -88,7 +88,7 @@ Rectf ColliderComponent::GetRectf() const
 std::vector<CollisionGroup> ColliderComponent::GetCollisionGroups() const
 {
 	std::vector<CollisionGroup> obj;
-	if (!IsUsable()) return obj;
+	if (!IsUsable() || !IsActive()) return obj;
 
 	for (const std::pair<CollisionGroup, bool>& pC : m_CollisionGroup) if (pC.second) obj.push_back(pC.first);
 

@@ -23,7 +23,7 @@ void* MenuScene::operator new(size_t)
 }
 void MenuScene::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<MenuScene>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<MenuScene>(ptrDelete);
 }
 void MenuScene::Initialize()
 {
@@ -96,7 +96,6 @@ void MenuScene::InitializeOption(const std::string& text, const Point2f& p)
 	m_Options.push_back(go);
 	Add(go);
 }
-
 void MenuScene::AddPlayer()
 {
 	auto go = new GameObject();

@@ -20,7 +20,7 @@ void* PlayerMovementComponent::operator new(size_t)
 }
 void PlayerMovementComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<PlayerMovementComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<PlayerMovementComponent>(ptrDelete);
 }
 void PlayerMovementComponent::Initialize()
 {

@@ -15,9 +15,7 @@ public:
 	virtual void Render() const = 0;
 
 	void SetGameObject(GameObject* obj) { m_pGameObject = obj; };
-	
 	GameObject* GetGameObject() const { return m_pGameObject; };
-
 private:
 	GameObject* m_pGameObject;
 

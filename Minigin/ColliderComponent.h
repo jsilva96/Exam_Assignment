@@ -25,10 +25,10 @@ public:
 	ColliderComponent(const Rectf& rect);
 	ColliderComponent();
 
+	virtual ~ColliderComponent();
+
 	void* operator new(size_t nBytes);
 	void  operator delete(void* ptrDelete);
-
-	virtual ~ColliderComponent();
 
 	void Initialize() override;
 	void Update() override;

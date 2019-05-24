@@ -13,7 +13,7 @@ void* ScaleComponent::operator new(size_t)
 }
 void ScaleComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<ScaleComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<ScaleComponent>(ptrDelete);
 }
 void ScaleComponent::Initialize()
 {

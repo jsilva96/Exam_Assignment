@@ -13,7 +13,7 @@ void* EnemyManager::operator new(size_t)
 
 void EnemyManager::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<EnemyManager>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<EnemyManager>(ptrDelete);
 }
 
 GameObject* EnemyManager::GetFygar(const Point2f& pos, float scale) const

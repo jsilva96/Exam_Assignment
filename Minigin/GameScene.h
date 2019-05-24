@@ -23,6 +23,9 @@ public:
 
 		return nullptr;
 	}
+
+	void SetActive(bool isActive) override;
+
 private:
 	std::vector<GameObject*> m_pObjects;
 	unsigned int m_SceneID;
@@ -36,7 +39,7 @@ private:
 	void RootInitialize();
 	void RootUpdate();
 	void RootRender() const;
-	
+
 	GameScene(const GameScene&) = delete;
 	GameScene(GameScene&&) noexcept = delete;
 

@@ -23,7 +23,7 @@ void* PlayerSpriteSwitchComponent::operator new(size_t)
 }
 void PlayerSpriteSwitchComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<PlayerSpriteSwitchComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<PlayerSpriteSwitchComponent>(ptrDelete);
 }
 void PlayerSpriteSwitchComponent::Initialize()
 {

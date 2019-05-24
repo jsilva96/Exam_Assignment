@@ -5,7 +5,6 @@ enum class SpriteParse
 {
 	HORIZONTAL,
 	VERTICAL,
-	CUSTOM
 };
 
 struct SpriteDesc
@@ -65,7 +64,7 @@ class SpriteComponent final : public RenderComponent
 public:
 	SpriteComponent(const SpriteDesc& desc);
 	SpriteComponent();
-	~SpriteComponent();
+	virtual ~SpriteComponent();
 
 	void* operator new(size_t nBytes);
 	void  operator delete(void* ptrDelete);
@@ -79,7 +78,8 @@ public:
 	void SetDesc(const SpriteDesc& desc);
 
 protected:
-	virtual void UpdateCustom() {};
+	
+private:
 	void UpdateHorizontal();
 	void UpdateVertical();
 
@@ -88,10 +88,9 @@ protected:
 	unsigned int m_CurrFrame;
 	float m_Timer;
 	bool m_StopTimer;
-	
+
 	bool m_CountRuns;
 	unsigned int m_RunCount;
-private:
 
 	SpriteComponent(const SpriteComponent&) = delete;
 	SpriteComponent(SpriteComponent&&) noexcept = delete;

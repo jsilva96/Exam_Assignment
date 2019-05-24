@@ -12,7 +12,7 @@ void* FPSDisplayComponent::operator new(size_t)
 }
 void FPSDisplayComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<FPSDisplayComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<FPSDisplayComponent>(ptrDelete);
 }
 void FPSDisplayComponent::Initialize()
 {

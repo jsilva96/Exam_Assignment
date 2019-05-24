@@ -3,7 +3,7 @@
 #include <map>
 class SoundEffect;
 
-class SoundComponent : public BaseComponent
+class SoundComponent final: public BaseComponent
 {
 public:
 	SoundComponent();

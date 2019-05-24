@@ -24,13 +24,12 @@ public:
 			return nullptr;
 		}
 		BaseObject* pObj = GetPool<T>()->RetrieveObject();
-		pObj->SetUsable(true);
 
 		return static_cast<T*>(pObj);
 	}
 
 	template<class T>
-	void ReturnObject(BaseObject* pObj)
+	void ReturnObject(void* pObj)
 	{
 		const type_info& ti = typeid(T);
 
@@ -39,7 +38,6 @@ public:
 			if (pBP->GetType() == ti.name())
 			{
 				pBP->ReturnObject(pObj);
-				pObj->SetUsable(false);
 				return;
 			}
 		}

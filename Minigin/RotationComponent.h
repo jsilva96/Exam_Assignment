@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseMovementComponent.h"
-class RotationComponent : public BaseMovementComponent
+class RotationComponent final: public BaseMovementComponent
 {
 public:
 	RotationComponent() = default;

@@ -31,7 +31,7 @@ void* TextComponent::operator new(size_t)
 }
 void TextComponent::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<TextComponent>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<TextComponent>(ptrDelete);
 }
 void TextComponent::Initialize()
 {

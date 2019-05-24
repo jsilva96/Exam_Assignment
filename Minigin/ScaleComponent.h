@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseMovementComponent.h"
-class ScaleComponent : public BaseMovementComponent
+class ScaleComponent final: public BaseMovementComponent
 {
 public:
 	ScaleComponent() = default;

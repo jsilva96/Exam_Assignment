@@ -57,13 +57,10 @@ private:
 	bool m_IsPoolFull;
 
 	friend class PoolManager;
-	void ReturnObject(BaseObject* pObj) override
+	void ReturnObject(void* pObj) override
 	{
 		const auto it = std::find(m_ObjectList.begin(), m_ObjectList.end(), pObj);
-		if (it == m_ObjectList.end())
-		{
-			free(pObj);
-		}
+		if (it == m_ObjectList.end()) free(pObj);
 		else
 		{
 			if (m_IsPoolFull)

@@ -37,7 +37,7 @@ void* DigDug::operator new(size_t)
 }
 void DigDug::operator delete(void* ptrDelete)
 {
-	PoolManager::GetInstance().ReturnObject<DigDug>(static_cast<BaseObject*>(ptrDelete));
+	PoolManager::GetInstance().ReturnObject<DigDug>(ptrDelete);
 }
 
 void DigDug::Initialize()

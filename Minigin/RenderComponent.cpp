@@ -12,8 +12,6 @@ RenderComponent::RenderComponent()
 }
 RenderComponent::~RenderComponent()
 {
-	m_IsActive = true;
-//	DeleteCheck(m_Texture);
 }
 
 void* RenderComponent::operator new(size_t)
@@ -41,7 +39,7 @@ void RenderComponent::Render() const
 	tempRect.width *= GetGameObject()->GetTransform()->GetScale().x;
 	tempRect.height *= GetGameObject()->GetTransform()->GetScale().y;*/
 
-	if (m_Texture && m_IsActive)
+	if (m_Texture)
 	{
 		dae::Renderer::GetInstance().RenderTexture(*m_Texture, GetGameObject()->GetTransform()->GetTransformInfo(), m_DrawRect, m_IsFlippedV, m_IsFlippedH);
 	}
@@ -53,15 +51,6 @@ void RenderComponent::SetTexture(const string& filepath)
 	m_DrawRect.width = m_Texture->GetWidth();
 	m_DrawRect.height = m_Texture->GetHeight();
 }
-void RenderComponent::SetActive(bool b)
-{
-	m_IsActive = b;
-}
-bool RenderComponent::IsActive() const
-{
-	return m_IsActive;
-}
-
 float RenderComponent::GetTextureHeight() const
 {
 	if (!m_Texture) throw std::exception("RenderComponent::GetTextureHeight->Texture is nullptr\n");

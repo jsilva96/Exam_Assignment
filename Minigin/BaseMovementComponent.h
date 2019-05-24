@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseComponent.h"
+#include "SomeStructs.h"
 class BaseMovementComponent : public BaseComponent
 {
 public:

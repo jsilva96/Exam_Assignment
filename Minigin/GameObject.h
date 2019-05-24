@@ -21,6 +21,8 @@ public:
 
 	void SetPosition(float x, float y);
 
+	void SetActive(bool IsActive) override;
+
 	template<class T> T* GetComponent()
 	{
 		const type_info& ti = typeid(T);
@@ -41,8 +43,8 @@ public:
 
 	void AddObserver(BaseObserver* pObserver);
 	void OnNotify(unsigned int event);
-private:
 
+private:
 	friend class GameScene;
 	void Initialize();
 	void Update();
@@ -56,7 +58,6 @@ private:
 	std::vector<GameObject*> m_pChildren;
 
 	std::vector<unsigned int> m_Tags;
-
 	std::vector<BaseObserver*> m_Observers;
 
 	GameObject(const GameObject&) = delete;
