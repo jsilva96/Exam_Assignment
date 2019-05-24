@@ -44,5 +44,7 @@ private:
 	InputManager* m_Input;
     SDL_Window* m_Window = nullptr;
 
+	bool m_LoadSucess = true;
+
 	SDL_Window* InitializeWindow(int width, int height);
 };

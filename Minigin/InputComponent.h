@@ -60,6 +60,8 @@ public:
 	void AddCommand(Command* pCommand, InputOptions button);
 
 	Gamepad* GetGamepad() const;
+	void AssignGamepad(int portNr = -1, bool forceAssign = true);//if true, will reassign an already assigned controller; Else no changes will be made if the controller is already assigned
+
 private:
 	std::map<InputOptions ,std::vector<Command*>> m_pCommands;
 	Gamepad* m_pGamepad;
@@ -68,6 +70,9 @@ private:
 	
 	void UpdateGamepad();
 	void UpdateKeyboard();
+
+	friend class Gamepad;
+	void UnbindGamepad();
 
 	InputComponent(const InputComponent&) = delete;
 	InputComponent(InputComponent&&) noexcept = delete;

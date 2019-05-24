@@ -97,6 +97,8 @@ void DigDug::InitializePlayer()
 	auto input = new InputComponent();
 	auto trans = new TranslationComponent();
 
+	input->AssignGamepad(0);
+
 	movCmp->SetInputComponent(input);
 	movCmp->SetTranslationComponent(trans);
 

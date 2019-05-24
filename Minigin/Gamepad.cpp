@@ -2,12 +2,12 @@
 #include "Gamepad.h"
 #include "InputComponent.h"
 
-int Gamepad::m_ControlNr = 0;
 
-Gamepad::Gamepad()
-	:m_Port{ -1 },
+Gamepad::Gamepad(int portNr)
+	:m_Port{ portNr },
 	m_LeftAnalogDeadZone{ 0.05f, 0.05f },
-	m_RightAnalogDeadZone{ 0.05f, 0.05f }
+	m_RightAnalogDeadZone{ 0.05f, 0.05f },
+	m_pInput(nullptr)
 {
 }
 Gamepad::~Gamepad()
@@ -22,20 +22,18 @@ Gamepad::~Gamepad()
 }
 void Gamepad::CheckController()
 {
-	if (m_Port == -1)
-	{
-		for (DWORD i = m_ControlNr; i < XUSER_MAX_COUNT && m_Port == -1; i++)
-		{
-			ZeroMemory(&m_State, sizeof(XINPUT_STATE));
 
-			if (XInputGetState(i, &m_State) == ERROR_SUCCESS)
-			{
-				++m_ControlNr;
-				m_Port = i;
-			}
+	/*for (DWORD i = m_ControlNr; i < XUSER_MAX_COUNT && m_Port == -1; i++)
+	{
+		ZeroMemory(&m_State, sizeof(XINPUT_STATE));
+
+		if (XInputGetState(i, &m_State) == ERROR_SUCCESS)
+		{
+			++m_ControlNr;
+			m_Port = i;
 		}
-		m_IsConnected = m_Port != -1;
 	}
+	m_IsConnected = m_Port != -1;
 
 	if (m_IsConnected)
 	{
@@ -51,6 +49,19 @@ void Gamepad::CheckController()
 			m_RightAnalogDeadZone = { 0.05f, 0.05f };
 		}
 		else UpdateValues();
+	}*/
+
+	ZeroMemory(&m_State, sizeof(XINPUT_STATE));
+	m_IsConnected = (XInputGetState(m_Port, &m_State) == ERROR_SUCCESS);
+
+	if (m_IsConnected && m_pInput) UpdateValues();
+	else
+	{
+		m_LeftTriggerPress = 0.0f;
+		m_RightTriggerPress = 0.0f;
+
+		m_LeftAnalog = { 0.0f, 0.0f };
+		m_RightAnalog = { 0.0f, 0.0f };
 	}
 }
 
@@ -67,11 +78,18 @@ void Gamepad::AssignInput(InputComponent * pComp)
 {
 	m_pInput = pComp;
 }
+
+void Gamepad::UnbindInput()
+{
+	if (m_pInput)m_pInput->UnbindGamepad();
+	m_pInput = nullptr;
+}
+
 bool Gamepad::IsPressed(WORD button) const
 {
-	if (button == XINPUT_GAMEPAD_LEFT_THUMB) return (m_LeftAnalog != Vector2f{ 0.0f, 0.0f }) || (m_State.Gamepad.wButtons & button);
-	if (button == XINPUT_GAMEPAD_RIGHT_THUMB) return(m_RightAnalog != Vector2f{ 0.0f, 0.0f }) || (m_State.Gamepad.wButtons & button);
-	
+	if (button == XINPUT_GAMEPAD_LEFT_THUMB) return (m_LeftAnalog.IsPressed()) || (m_State.Gamepad.wButtons & button);
+	if (button == XINPUT_GAMEPAD_RIGHT_THUMB) return(m_RightAnalog.IsPressed()) || (m_State.Gamepad.wButtons & button);
+
 	return m_State.Gamepad.wButtons & button;
 }
 void Gamepad::UpdateValues()
@@ -107,6 +125,11 @@ bool Gamepad::IsConnected() const
 {
 	return m_IsConnected;
 }
+
+bool Gamepad::IsAssigned() const
+{
+	return m_IsConnected && m_pInput;
+}
 float Gamepad::GetLeftTrigger() const
 {
 	return m_LeftTriggerPress;
@@ -117,11 +140,11 @@ float Gamepad::GetRightTrigger() const
 }
 Vector2f Gamepad::GetLeftAnalogStick() const
 {
-	return m_LeftAnalog;
+	return Vector2f(m_LeftAnalog.x, m_LeftAnalog.y);
 }
 Vector2f Gamepad::GetRightAnalogStick() const
 {
-	return m_RightAnalog;
+	return Vector2f(m_RightAnalog.x, m_RightAnalog.y);
 }
 void Gamepad::SetLeftAnalogDeadZone(const Point2f& p)
 {
@@ -130,4 +153,9 @@ void Gamepad::SetLeftAnalogDeadZone(const Point2f& p)
 void Gamepad::SetRightAnalogDeadZone(const Point2f& p)
 {
 	m_RightAnalogDeadZone = p;
+}
+
+int Gamepad::GetPortNr() const
+{
+	return m_Port;
 }

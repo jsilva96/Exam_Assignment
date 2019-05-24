@@ -5,20 +5,32 @@
 class InputComponent;
 class Gamepad final : public BaseObject
 {
-	struct Analog  :  public Vector2f
+	struct Analog
 	{
+		float x, y;
+
+		Analog(float x, float y)
+			:x(x), y(y)
+		{
+		}
+		Analog()
+			:Analog(0.0f, 0.0f)
+		{
+		}
+
+		bool IsPressed() const { return (x != 0.0f) || (y != 0.0f); }
 	};
 
-	struct LeftAnalog : public Analog
-	{
-	};
-	struct RightAnalog : public Analog
-	{
-	};
+	//struct LeftAnalog : public Analog
+	//{
+	//};
+	//struct RightAnalog : public Analog
+	//{
+	//};
 
 
 public:
-	Gamepad();
+	explicit Gamepad(int portNr);
 	virtual ~Gamepad();
 
 	void CheckController();
@@ -31,6 +43,7 @@ public:
 	void UpdateValues();
 
 	bool IsConnected() const;
+	bool IsAssigned() const;
 
 	float GetLeftTrigger() const;
 	float GetRightTrigger() const;
@@ -41,6 +54,7 @@ public:
 	void SetLeftAnalogDeadZone(const Point2f& p);
 	void SetRightAnalogDeadZone(const Point2f& p);
 
+	int GetPortNr() const;
 private:	
 	XINPUT_STATE m_State;
 	InputComponent* m_pInput;
@@ -49,22 +63,20 @@ private:
 
 	bool m_IsConnected;
 
-	static int m_ControlNr;
-
 	float m_LeftTriggerPress;
 	float m_RightTriggerPress;
 
 	Point2f m_LeftAnalogDeadZone;
 	Point2f m_RightAnalogDeadZone;
 
-	LeftAnalog m_LeftAnalog;
-	RightAnalog m_RightAnalog;
+	Analog m_LeftAnalog, m_RightAnalog;
 
 	void DoDeadZoneCalculations(Analog& a, const Point2f& p);
 	void UpdateAnalogs();
 
 	friend class InputComponent;
 	void AssignInput(InputComponent* pComp);
+	void UnbindInput();
 	
 	Gamepad(const Gamepad&) = delete;
 	Gamepad(const Gamepad&&) noexcept = delete;

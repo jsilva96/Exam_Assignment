@@ -108,6 +108,7 @@ void MenuScene::AddPlayer()
 	auto go = new GameObject();
 
 	auto input = new InputComponent();
+	input->AssignGamepad(5);
 
 	InputOptions options;
 	options.controller = ControllerButton::DPad_Down;
@@ -125,12 +126,13 @@ void MenuScene::AddPlayer()
 	for (auto& pObj : m_Options) cmd->AddOption(pObj->GetComponent<SelectionComponent>());
 	input->AddCommand(cmd, options);
 
-	options.controller = ControllerButton::ButtonX;
+	options.controller = ControllerButton::ButtonA;
 	options.keyboard = KeyboardButton::Enter;
 
 	input->AddCommand(new EnterCommand(), options);
 
 	go->AddComponent(input);
+
 	Add(go);
 }
 
