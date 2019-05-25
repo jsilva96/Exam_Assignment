@@ -1,7 +1,8 @@
-﻿     Creating library C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Release\GameProject.lib and object C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Release\GameProject.exp
+﻿  DigDug.cpp
+     Creating library C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Release\GameProject.lib and object C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Release\GameProject.exp
   Generating code
-  4 of 4559 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 4416 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   GameProject.vcxproj -> C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\x64\Release\GameProject.exe

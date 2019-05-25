@@ -18,6 +18,8 @@ public:
 	GameObject* GetFygar(const Point2f& pos, float scale) const;
 	GameObject* GetPooka(const Point2f& pos, float scale) const;
 
+	GameObject* GetPlayableFygar(const Point2f& pos) const;
+
 	EnemyManager(const EnemyManager& obj) = delete;
 	EnemyManager(EnemyManager&& obj) noexcept = delete;
 

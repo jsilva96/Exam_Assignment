@@ -55,7 +55,7 @@ GameObject* PlayerManager::GetPlayer(const Point2f& p)
 	s->SetFlipped(true, false);
 
 	//PLAYER MOVEMENT COMPONENT
-	auto movCmp = new PlayerMovementComponent(30.0f);
+	auto movCmp = new PlayerMovementComponent(30.0f, m_NrOfPlayersSpawned + 1);
 	auto input = new InputComponent();
 	auto trans = new TranslationComponent();
 

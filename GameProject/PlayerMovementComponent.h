@@ -6,7 +6,7 @@ class TranslationComponent;
 class PlayerMovementComponent final : public BaseComponent
 {
 public:
-	PlayerMovementComponent(float speed);
+	PlayerMovementComponent(float speed, int plyrNr);
 	virtual ~PlayerMovementComponent();
 
 	void* operator new(size_t nBytes);
@@ -29,5 +29,7 @@ private:
 	InputComponent* m_pInput;
 	TranslationComponent* m_pTrans;
 	float m_Speed;
+
+	int m_PlyrNr;
 };
 

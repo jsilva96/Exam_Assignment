@@ -6,8 +6,8 @@
 #include "PlayerMovementCommand.h"
 #include "TranslationComponent.h"
 
-PlayerMovementComponent::PlayerMovementComponent(float speed)
-	:m_Speed(speed), m_pInput(nullptr)
+PlayerMovementComponent::PlayerMovementComponent(float speed, int plyrNr)
+	:m_Speed(speed), m_pInput(nullptr), m_PlyrNr(plyrNr)
 {
 }
 PlayerMovementComponent::~PlayerMovementComponent()
@@ -39,7 +39,7 @@ void PlayerMovementComponent::Initialize()
 	//LEFT
 	InputOptions actions;
 	actions.controller = ControllerButton::DPad_Left;
-	actions.keyboard = KeyboardButton::Left;
+	actions.keyboard = m_PlyrNr == 1 ? KeyboardButton::Left : KeyboardButton::A;
 
 	auto cmd = new PlayerMovementCommand();
 	cmd->SetDirection({ -1.0f, 0.0f });
@@ -51,7 +51,7 @@ void PlayerMovementComponent::Initialize()
 
 	//RIGHT
 	actions.controller = ControllerButton::DPad_Right;
-	actions.keyboard = KeyboardButton::Right;
+	actions.keyboard = m_PlyrNr == 1 ? KeyboardButton::Right : KeyboardButton::D;
 
 	cmd = new PlayerMovementCommand();
 	cmd->SetDirection({ 1.0f, 0.0f });
@@ -63,7 +63,7 @@ void PlayerMovementComponent::Initialize()
 
 	//UP
 	actions.controller = ControllerButton::DPad_Up;
-	actions.keyboard = KeyboardButton::Up;
+	actions.keyboard = m_PlyrNr == 1 ? KeyboardButton::Up : KeyboardButton::W;
 
 	cmd = new PlayerMovementCommand();
 	cmd->SetDirection({ 0.0f, 1.0f });
@@ -75,7 +75,7 @@ void PlayerMovementComponent::Initialize()
 
 	//DOWN
 	actions.controller = ControllerButton::DPad_Down;
-	actions.keyboard = KeyboardButton::Down;
+	actions.keyboard = m_PlyrNr == 1 ? KeyboardButton::Down : KeyboardButton::S;
 
 	cmd = new PlayerMovementCommand();
 	cmd->SetDirection({ 0.0f, -1.0f });

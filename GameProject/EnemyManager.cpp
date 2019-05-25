@@ -5,6 +5,9 @@
 #include "TimerComponent.h"
 #include "TransformComponent.h"
 #include "PoolManager.h"
+#include "PlayerMovementComponent.h"
+#include "TranslationComponent.h"
+#include "InputComponent.h"
 
 void* EnemyManager::operator new(size_t)
 {
@@ -115,6 +118,21 @@ GameObject* EnemyManager::GetPooka(const Point2f& pos, float scale) const
 
 	go->SetPosition(pos.x, pos.y);
 	go->GetTransform()->SetScale(scale);
+
+	return go;
+}
+
+GameObject* EnemyManager::GetPlayableFygar(const Point2f& pos) const
+{
+	auto go = GetFygar(pos, 1.0f);
+
+	auto input = new InputComponent();
+	auto trans = new TranslationComponent();
+	go->AddComponent(input);
+	go->AddComponent(trans);
+
+	auto plyrMovement = new PlayerMovementComponent(20.0f, 2);
+	go->AddComponent(plyrMovement);
 
 	return go;
 }

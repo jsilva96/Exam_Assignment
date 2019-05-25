@@ -77,15 +77,17 @@ void DigDug::Initialize()
 
 void DigDug::InitializeSolo()
 {
-	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 0.0f, 0.0f }));
+	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 200.0f, 230.0f }));
 }
 void DigDug::InitializeCoop()
 {
-	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 100.0f, 100.0f }));
+	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 160.0f, 230.0f }));
+	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 240.0f, 230.0f }));
 }
 void DigDug::InitializeVersus()
 {
-	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 200.f, 200.0f }));
+	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 200.f, 230.0f }));
+	Add(m_EnemyManager->GetComponent<EnemyManager>()->GetPlayableFygar({ 40.0f, 380.0f }));
 }
 void DigDug::Update()
 {
@@ -115,12 +117,12 @@ void DigDug::InitializePlayer()
 }
 void DigDug::InitializeEnemyManager()
 {
-	auto go = new GameObject();
+    m_EnemyManager = new GameObject();
 
 	auto r = new EnemyManager();
-	go->AddComponent(r);
+	m_EnemyManager->AddComponent(r);
 
-	Add(go);
+	Add(m_EnemyManager);
 }
 void DigDug::InitializeBlocks()
 {

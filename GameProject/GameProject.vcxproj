@@ -191,6 +191,7 @@
     <ClInclude Include="SelectCommand.h" />
     <ClInclude Include="SelectionComponent.h" />
     <ClInclude Include="SpriteDescSwitchComponent.h" />
+    <ClInclude Include="SpriteDirectionComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BlockCollisionHandler.cpp" />
@@ -216,6 +217,7 @@
     <ClCompile Include="SelectCommand.cpp" />
     <ClCompile Include="SelectionComponent.cpp" />
     <ClCompile Include="SpriteDescSwitchComponent.cpp" />
+    <ClCompile Include="SpriteDirectionComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
