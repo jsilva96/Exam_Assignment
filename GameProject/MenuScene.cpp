@@ -33,13 +33,13 @@ void MenuScene::Initialize()
 	InitializeGameName();
 
 	Point2f p{140.0f, 350.0f};
-	InitializeOption("Solo", p);
+	InitializeOption("Solo", p, SOLO);
 
 	p.y -= 40.0f;
-	InitializeOption("Co-op", p);
+	InitializeOption("Co-op", p, COOP);
 
 	p.y -= 40.0f;
-	InitializeOption("Versus", p);
+	InitializeOption("Versus", p, VERSUS);
 
 	bool isSelected{ true };
 	for(auto& obj : m_Options)
@@ -86,7 +86,7 @@ void MenuScene::InitializeGameName()
 
 	Add(go);
 }
-void MenuScene::InitializeOption(const std::string& text, const Point2f& p)
+void MenuScene::InitializeOption(const std::string& text, const Point2f& p, const GAME_MODE& gameMode)
 {
 	auto go = new GameObject();
 
@@ -96,6 +96,7 @@ void MenuScene::InitializeOption(const std::string& text, const Point2f& p)
 	go->AddComponent(t);
 
 	auto select = new SelectionComponent();
+	select->SetOption(gameMode);
 	go->AddComponent(select);
 	go->SetPosition(p.x, p.y);
 
@@ -108,7 +109,7 @@ void MenuScene::AddPlayer()
 	auto go = new GameObject();
 
 	auto input = new InputComponent();
-	input->AssignGamepad(5);
+	input->AssignGamepad(0);
 
 	InputOptions options;
 	options.controller = ControllerButton::DPad_Down;
@@ -145,7 +146,7 @@ void MenuScene::SelectGameMode()
 
 	if (it == m_Options.end()) throw std::runtime_error("MenuScene::SelectGameMode->No GameMode found/n");
 
-	auto scene = new DigDug();
+	auto scene = new DigDug((*it)->GetComponent<SelectionComponent>()->GetOption());
 
 	SceneManager::GetInstance().AddScene(scene);
 	SceneManager::GetInstance().SetScene(scene->GetID());

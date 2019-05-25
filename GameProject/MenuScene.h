@@ -2,6 +2,13 @@
 #include <GameScene.h>
 struct Point2f;
 
+enum GAME_MODE : unsigned int
+{
+	SOLO,
+	COOP,
+	VERSUS
+};
+
 class MenuScene final: public GameScene
 {
 public:
@@ -25,7 +32,7 @@ public:
 private:
 	void InitializeBackground();
 	void InitializeGameName();
-	void InitializeOption(const std::string& text, const Point2f& p);
+	void InitializeOption(const std::string& text, const Point2f& p, const GAME_MODE& gameMode);
 	void AddPlayer();
 
 	void SelectGameMode();

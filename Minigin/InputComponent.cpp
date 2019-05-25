@@ -67,7 +67,7 @@ void InputComponent::Render() const
 }
 void InputComponent::CheckInput()
 {
-	if(m_pGamepad->IsConnected())UpdateGamepad();
+	if(m_pGamepad)UpdateGamepad();
 	UpdateKeyboard();
 }
 void InputComponent::AddCommand(Command* pCommand, InputOptions button)
@@ -85,7 +85,7 @@ void InputComponent::AssignGamepad(int portNr, bool forceAssign)
 
 	if(m_pGamepad)
 	{
-		if (!m_pGamepad->IsConnected()) throw std::runtime_error("Connecting to non-existent gamepad\n");
+		if (!m_pGamepad->IsConnected()) return; //throw std::runtime_error("Connecting to non-existent gamepad\n");
 		
 		if (m_pGamepad->IsAssigned() && forceAssign) m_pGamepad->UnbindInput();
 		m_pGamepad->AssignInput(this);

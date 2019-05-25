@@ -18,7 +18,7 @@ enum class FygarState
 class DigDug : public GameScene
 {
 public:
-	DigDug();
+	DigDug(unsigned int gameMode);
 	virtual ~DigDug();
 
 	void* operator new(size_t nBytes);
@@ -40,13 +40,19 @@ private:
 	void InitializeEnemyManager();
 	void InitializeBlocks();
 
+	void InitializeSolo();
+	void InitializeCoop();
+	void InitializeVersus();
+
 	void AddFPSCounter(const Point2f& p);
 
 
 	TimerComponent* timer;
 	unsigned int m_Sprite = 0;
 
-	GameObject* m_pPlayer = nullptr;
+	unsigned int m_GameMode;
+
+	GameObject* m_pPlayerManager = nullptr;
 	GameObject* m_EnemyManager = nullptr;
 };
 

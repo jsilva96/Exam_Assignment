@@ -17,7 +17,5 @@ enum SCENE : unsigned int
 {
 	FPS_TEST,
 	MENU,
-	SOLO,
-	COOP,
-	VERSUS
+	DIG_DUG
 };

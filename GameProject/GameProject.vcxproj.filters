@@ -75,6 +75,9 @@
     <ClInclude Include="EnterCommand.h">
       <Filter>Source Files\Game Files\Commands</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerManager.h">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -127,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="EnterCommand.cpp">
       <Filter>Source Files\Game Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

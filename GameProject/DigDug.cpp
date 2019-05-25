@@ -15,6 +15,8 @@
 #include "TextComponent.h"
 #include "BlockManager.h"
 
+#include "MenuScene.h"
+
 #include "InputComponent.h"
 #include "PlayerMovementComponent.h"
 #include "TranslationComponent.h"
@@ -22,15 +24,15 @@
 #include "ColliderComponent.h"
 #include "PlayerCollisionHandler.h"
 #include "EventsAndTags.h"
+#include "PlayerManager.h"
 
-DigDug::DigDug()
-	:GameScene(SCENE::SOLO)
+DigDug::DigDug(unsigned int gameMode)
+	:GameScene(SCENE::DIG_DUG), m_GameMode(gameMode)
 {
 }
 DigDug::~DigDug()
 {
 }
-
 void* DigDug::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<DigDug>();
@@ -45,11 +47,45 @@ void DigDug::Initialize()
 	InitializeLevel();
 	InitializeBlocks();
 	InitializePlayer();
+	InitializeEnemyManager();
+
+	switch (m_GameMode)
+	{
+	case SOLO:
+		InitializeSolo();
+		break;
+
+	case COOP:
+		InitializeCoop();
+		break;
+
+	case VERSUS:
+		InitializeVersus();
+		break;
+
+	default:
+		throw std::exception("DigDug::Initialize->GameMode unknown\n");
+		break;
+	}
+
 //	InitializeFygar();
 //	InitializePooka();
 
 
 	AddFPSCounter({ 0.0f, 0.0f });
+}
+
+void DigDug::InitializeSolo()
+{
+	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 0.0f, 0.0f }));
+}
+void DigDug::InitializeCoop()
+{
+	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 100.0f, 100.0f }));
+}
+void DigDug::InitializeVersus()
+{
+	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 200.f, 200.0f }));
 }
 void DigDug::Update()
 {
@@ -72,65 +108,10 @@ void DigDug::InitializeLevel()
 }
 void DigDug::InitializePlayer()
 {
-	Point2f pos{ 30.0f, 30.0f };
-	float scale{ 1.0f };
-	m_pPlayer = new GameObject();
+	m_pPlayerManager = new GameObject();
+	m_pPlayerManager->AddComponent(new PlayerManager());
 
-	//SPRITE COMPONENT
-	SpriteDesc desc;
-	desc.width = 14.0f;
-	desc.height = 13.0f;
-	desc.parseLogic = SpriteParse::HORIZONTAL;
-	desc.frames = 1;
-	desc.frameTime = 1 / 10.0f;
-	desc.startPos = { 0.0f, 0.0f};
-	desc.nrOfRuns = -1;
-
-	auto s = new SpriteComponent(desc);
-	s->SetTexture("Textures/DigDug/Player_Sprite.png");
-
-	m_pPlayer->AddComponent(s);
-	s->SetFlipped(true, false);
-
-	//PLAYER MOVEMENT COMPONENT
-	auto movCmp = new PlayerMovementComponent(30.0f);
-	auto input = new InputComponent();
-	auto trans = new TranslationComponent();
-
-	input->AssignGamepad(0);
-
-	movCmp->SetInputComponent(input);
-	movCmp->SetTranslationComponent(trans);
-
-	m_pPlayer->AddComponent(input);
-	m_pPlayer->AddComponent(trans);
-	m_pPlayer->AddComponent(movCmp);
-
-	//PLAYER SPRITE SWITCH COMPONENT
-	auto pSwitch = new PlayerSpriteSwitchComponent();
-	pSwitch->SetSpriteComponent(s);
-	pSwitch->SetTranslationComponent(trans);
-
-	m_pPlayer->AddComponent(pSwitch);
-
-	//COLLIDER
-	auto c = new ColliderComponent();
-	Rectf rect{ pos, desc.width * scale, desc.height * scale};
-	c->SetRectf(rect);
-	c->SetStatic(false);
-
-	auto handler = new PlayerCollisionHandler();
-	c->AddHandler(handler);
-
-	m_pPlayer->AddComponent(c);
-	m_pPlayer->AddComponent(handler);
-
-
-	m_pPlayer->SetPosition(pos.x, pos.y);
-	m_pPlayer->GetTransform()->SetScale(scale);
-	m_pPlayer->AddTag(TAG::PLAYER);
-
-	Add(m_pPlayer);
+	Add(m_pPlayerManager);
 }
 void DigDug::InitializeEnemyManager()
 {

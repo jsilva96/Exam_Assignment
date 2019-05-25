@@ -19,6 +19,9 @@ public:
 	void SetSelected(bool isSelected);
 	bool IsSelected() const { return m_IsSelected; }
 
+	void SetOption(unsigned int option) { m_Option = option; }
+	unsigned int GetOption() const { return m_Option; }
+
 	SelectionComponent(const SelectionComponent&) = delete;
 	SelectionComponent(SelectionComponent&&) noexcept = delete;
 
@@ -30,5 +33,6 @@ private:
 	Color4f m_SelectColor, m_UnselectColor;
 	bool m_IsSelected = false;
 
+	unsigned int m_Option;
 };
 
