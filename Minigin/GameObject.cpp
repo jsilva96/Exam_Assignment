@@ -74,6 +74,14 @@ void GameObject::AddComponent(BaseComponent* pComp)
 	}
 }
 
+void GameObject::RemoveComponent(BaseComponent* pComp)
+{
+	const auto it = std::find(m_pComponents.begin(), m_pComponents.end(), pComp);
+
+	if (it == m_pComponents.end()) return;
+
+	m_pComponents.erase(std::remove(m_pComponents.begin(), m_pComponents.end(), pComp), m_pComponents.end());
+}
 void GameObject::AddTag(unsigned tag)
 {
 	if(!CompareTag(tag)) m_Tags.push_back(tag);
@@ -112,4 +120,13 @@ TransformComponent* GameObject::GetTransform() const
 void GameObject::AddChild(GameObject * pObj)
 {
 	if(AddCheck(m_pChildren, pObj) && m_IsInitialized) pObj->Initialize();
+}
+
+void GameObject::RemoveChild(GameObject* pObj)
+{
+	const auto it = std::find(m_pChildren.begin(), m_pChildren.end(), pObj);
+
+	if (it == m_pChildren.end()) return;
+
+	m_pChildren.erase(std::remove(m_pChildren.begin(), m_pChildren.end(), pObj), m_pChildren.end());
 }

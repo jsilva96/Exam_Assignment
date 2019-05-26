@@ -12,6 +12,7 @@
 #include "TranslationComponent.h"
 #include "TransformComponent.h"
 #include "EventsAndTags.h"
+#include "SpriteDirectionComponent.h"
 
 void* PlayerManager::operator new(size_t nBytes)
 {
@@ -75,6 +76,13 @@ GameObject* PlayerManager::GetPlayer(const Point2f& p)
 
 	obj->AddComponent(pSwitch);
 
+	//SPRITE DIRECTION COMPONENT
+	auto pSpriteDir = new SpriteDirectionComponent();
+	pSpriteDir->SetSpriteComponent(s);
+	pSpriteDir->SetTranslationComponent(trans);
+
+	obj->AddComponent(pSpriteDir);
+	obj->RemoveComponent(pSpriteDir);
 	//COLLIDER
 	auto c = new ColliderComponent();
 	Rectf rect{ p, desc.width * scale, desc.height * scale };

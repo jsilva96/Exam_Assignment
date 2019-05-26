@@ -27,11 +27,17 @@ enum class ControllerButton
 enum class KeyboardButton : UINT8
 {
 	A = 4,
-	B,C,D,E,F,G,H,I,J,K,L,M,
-	N,O,P,Q,R,S,T,U,V,W,X,Y,Z,
+	B, C, D, E, F, G, H, I, J, K, L, M,
+	N, O, P, Q, R, S, T, U, V, W, X, Y, Z, 
+	One, Two, Three, Four, Five, Six,
+	Seven, Eight, Nine, Zero,
 	Right = 79,
-	Left,Down,Up,
-	Enter = 40
+	Left, Down, Up,
+	Enter = 40,
+	Space = 44,
+	One_KP = 89,
+	Two_KP,Three_KP,Four_KP,Five_KP,
+    Six_KP,Seven_KP,Eight_KP,Nine_KP,Zero_KP
 };
 
 struct InputOptions

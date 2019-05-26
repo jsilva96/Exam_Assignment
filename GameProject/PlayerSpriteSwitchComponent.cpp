@@ -63,14 +63,6 @@ void PlayerSpriteSwitchComponent::Initialize()
 }
 void PlayerSpriteSwitchComponent::Update()
 {	
-	if(m_Dir != m_pTrans->GetDirection())
-	{
-		m_Dir = m_pTrans->GetDirection();
-
-		m_pTrans->GetGameObject()->GetTransform()->SetRotation(m_Dir.x > 0.0f ? 0.0f : m_Dir.y * 90.0f);
-		m_Sprite->SetFlipped(!(m_Dir.x > 0.0f), m_Dir.y > 0.0f);
-	}
-
 	if (!m_pTrans->GetIsMoving())
 	{
 		SetSpriteIndex(m_IsDigging ? PlayerState::DIGING : PlayerState::IDLE);

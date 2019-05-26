@@ -280,14 +280,6 @@ inline void DeleteCheck(std::vector<T*> & pContainer)
 		DeleteCheck(pObject);
 	}
 }
-template<class T>
-inline void DeleteCheck(std::list<T*> & pContainer)
-{
-	for (T* pObject : pContainer)
-	{
-		DeleteCheck(pObject);
-	}
-}
 template<class T> 
 inline T* CastTo(GameObject* pObject)
 {

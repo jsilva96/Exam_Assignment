@@ -33,11 +33,14 @@ public:
 
 		return nullptr;
 	}
+	void AddComponent(BaseComponent* pComp);
+	void RemoveComponent(BaseComponent* pComp);
 
 	TransformComponent* GetTransform() const;
-	void AddChild(GameObject* pObj);
 
-	void AddComponent(BaseComponent* pComp);
+	void AddChild(GameObject* pObj);
+	void RemoveChild(GameObject* pObj);
+
 	void AddTag(unsigned int tag);
 	bool CompareTag(unsigned int tag);
 

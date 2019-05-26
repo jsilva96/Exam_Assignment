@@ -11,8 +11,8 @@ int main()
 
 	int scale = 1;
 	engine->Initialize(450 * scale, 544 * scale);
-	engine->AddGameScene(new DigDug(2));
-//	engine->AddGameScene(new MenuScene());
+//	engine->AddGameScene(new DigDug(2));
+	engine->AddGameScene(new MenuScene());
 
 	engine->RunGame();
 

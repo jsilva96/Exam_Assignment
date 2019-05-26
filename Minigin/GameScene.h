@@ -11,6 +11,7 @@ public:
 	virtual ~GameScene();
 
 	void Add(GameObject* pObj);
+	void Remove(GameObject* pObj);
 	unsigned int GetID() const { return m_SceneID; };
 
 	template<class T> T* GetGameObject()

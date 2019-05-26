@@ -8,6 +8,7 @@
 #include "PlayerMovementComponent.h"
 #include "TranslationComponent.h"
 #include "InputComponent.h"
+#include "SpriteDirectionComponent.h"
 
 void* EnemyManager::operator new(size_t)
 {
@@ -133,6 +134,9 @@ GameObject* EnemyManager::GetPlayableFygar(const Point2f& pos) const
 
 	auto plyrMovement = new PlayerMovementComponent(20.0f, 2);
 	go->AddComponent(plyrMovement);
+
+	auto pSpriteDir = new SpriteDirectionComponent();
+	go->AddComponent(pSpriteDir);
 
 	return go;
 }

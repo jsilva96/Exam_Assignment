@@ -42,7 +42,16 @@ void GameScene::RootRender() const
 }
 void GameScene::Add(GameObject* pObj)
 {
-	if (AddCheck(m_pObjects, pObj) && !m_IsInitialized) pObj->Initialize();
+	if (AddCheck(m_pObjects, pObj) && m_IsInitialized) pObj->Initialize();
+}
+
+void GameScene::Remove(GameObject* pObj)
+{
+	const auto it = std::find(m_pObjects.begin(), m_pObjects.end(), pObj);
+
+	if (it == m_pObjects.end()) return;
+
+	m_pObjects.erase(std::remove(m_pObjects.begin(), m_pObjects.end(), pObj), m_pObjects.end());
 }
 void GameScene::SetActive(bool isActive)
 {
