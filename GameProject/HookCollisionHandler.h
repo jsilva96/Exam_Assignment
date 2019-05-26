@@ -4,7 +4,7 @@ class HookCollisionHandler final: public BaseCollisionHandler
 {
 public:
 	HookCollisionHandler() = default;
-	virtual ~HookCollisionHandler() = default;
+	virtual ~HookCollisionHandler();
 
 	void* operator new(size_t nBytes);
 	void  operator delete(void* ptrDelete);
@@ -20,5 +20,7 @@ public:
 
 	HookCollisionHandler& operator=(const HookCollisionHandler&) = delete;
 	HookCollisionHandler& operator=(HookCollisionHandler&&) noexcept = delete;
+private:
+	GameObject* m_pHookedEnemy;
 };
 

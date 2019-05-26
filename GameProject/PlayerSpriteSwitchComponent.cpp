@@ -8,6 +8,9 @@
 #include "TransformComponent.h"
 #include "Time.h"
 #include "SpriteDirectionComponent.h"
+#include "EventsAndTags.h"
+#include "EnemySpriteSwitchComponent.h"
+#include "FygarSpriteSwitchComponent.h"
 
 PlayerSpriteSwitchComponent::PlayerSpriteSwitchComponent()
 	:m_Sprite(nullptr), m_pTrans(nullptr),m_Dir(), m_State(PlayerState::IDLE)
@@ -19,6 +22,7 @@ PlayerSpriteSwitchComponent::~PlayerSpriteSwitchComponent()
 	m_Sprite = nullptr;
 	m_Switch = nullptr;
 	m_SpriteDir = nullptr;
+	m_pEnemy = nullptr;
 }
 void* PlayerSpriteSwitchComponent::operator new(size_t)
 {
@@ -70,7 +74,7 @@ void PlayerSpriteSwitchComponent::Initialize()
 }
 void PlayerSpriteSwitchComponent::Update()
 {	
-	if (m_State == PlayerState::HOOK) return;
+	if (m_State == PlayerState::HOOK || m_State == PlayerState::HOOKED) return;
 	if (!m_pTrans->GetIsMoving())
 	{
 		SetSpriteIndex(m_IsDigging ? PlayerState::DIGING : PlayerState::IDLE);
@@ -116,6 +120,19 @@ void PlayerSpriteSwitchComponent::SetSpriteIndex(PlayerState s)
 	}
 }
 
+void PlayerSpriteSwitchComponent::EnemyHooked(GameObject* pEnemy)
+{
+	if (m_pEnemy->CompareTag(POOKA) || m_pEnemy->CompareTag(FYGAR))
+	{
+		SetSpriteIndex(PlayerState::HOOKED);
+		m_pEnemy = pEnemy;
+	}
+}
+
+void PlayerSpriteSwitchComponent::PumpEnemy()
+{
+	auto pSpriteSwitch = m_pEnemy->CompareTag(POOKA) ? m_pEnemy->GetComponent<EnemySpriteSwitchComponent>() : m_pEnemy->GetComponent<FygarSpriteSwitchComponent>();
+}
 void PlayerSpriteSwitchComponent::IsDigging(bool isDigging)
 {
 	if (m_IsDigging) return;

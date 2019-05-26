@@ -4,17 +4,6 @@
 
 class TimerComponent;
 
-enum class FygarState
-{
-	MOVING = 0,
-	PHASING,
-	CRUSHED,
-	HOOKED_1,
-	HOOKED_2,
-	HOOKED_3,
-	HOOKED_4,
-};
-
 class DigDug : public GameScene
 {
 public:

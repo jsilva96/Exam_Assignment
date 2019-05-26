@@ -1,4 +1,5 @@
 ﻿  DigDug.cpp
+  HookCollisionHandler.cpp
   HookComponent.cpp
   PlayerCollisionHandler.cpp
   PlayerManager.cpp

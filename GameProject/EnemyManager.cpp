@@ -9,6 +9,11 @@
 #include "TranslationComponent.h"
 #include "InputComponent.h"
 #include "SpriteDirectionComponent.h"
+#include "ColliderComponent.h"
+#include "EnemyCollisionHandler.h"
+#include "EnemySpriteSwitchComponent.h"
+#include "FygarSpriteSwitchComponent.h"
+#include "EventsAndTags.h"
 
 void* EnemyManager::operator new(size_t)
 {
@@ -20,7 +25,7 @@ void EnemyManager::operator delete(void* ptrDelete)
 	PoolManager::GetInstance().ReturnObject<EnemyManager>(ptrDelete);
 }
 
-GameObject* EnemyManager::GetFygar(const Point2f& pos, float scale) const
+GameObject* EnemyManager::GetFygar(const Point2f& pos, const Vector2f& dir) const
 {
 	auto go = new GameObject();
 
@@ -39,41 +44,45 @@ GameObject* EnemyManager::GetFygar(const Point2f& pos, float scale) const
 
 	go->AddComponent(s);
 
+	//TRANSLATION
+	auto trans = new TranslationComponent();
+	trans->SetDirection(dir);
+	trans->SetSpeed(10.0f);
+
+	go->AddComponent(trans);
+
 	//SPRITE_DESC_SWITCH
-	SpriteDesc phasingDesc, crushedDesc, hooked1Desc, hooked2Desc, hooked3Desc, hooked4Desc, fireDesc;
+	auto pSwitch = new FygarSpriteSwitchComponent();
+	pSwitch->SetSpriteComponent(s);
+	pSwitch->SetTranslationComponent(trans);
 
-	auto descSwitch = new SpriteDescSwitchComponent();
-	go->AddComponent(descSwitch);
-	descSwitch->AddDesc(desc);
+	go->AddComponent(pSwitch);
 
-	phasingDesc = SpriteDesc{ {0.0f, 13.0f}, 2, -1, 13.0f, 11.0f, 1 / 5.0f, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(phasingDesc);
+	//SPRITE_DIRECTION
+	auto pDir = new SpriteDirectionComponent();
+	pDir->SetSpriteComponent(s);
+	pDir->SetTranslationComponent(trans);
 
-	crushedDesc = SpriteDesc{ {0.0f, 24.0f}, 1, -1, 13.0f, 7.0f, 1 / 5.0f, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(crushedDesc);
+	go->AddComponent(pDir);
 
-	hooked1Desc = SpriteDesc{ {72.0f, 31.0f}, 1, -1, 24.0f, 23.0f, 1, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(hooked1Desc);
+	//COLLIDER
+	auto col = new ColliderComponent();
+	col->SetStatic(false);
+	col->SetRectf({ pos.x, pos.y, 13.0f, 13.0f });
 
-	hooked2Desc = SpriteDesc{ {48.0f, 31.0f}, 2, -1, 24.0f, 23.0f, 1, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(hooked2Desc);
+	auto handler = new EnemyCollisionHandler();
+	col->AddHandler(handler);
 
-	hooked3Desc = SpriteDesc{ {24.0f, 31.0f}, 3, -1, 24.0f, 23.0f, 1, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(hooked3Desc);
-
-	hooked4Desc = SpriteDesc{ {0.0f, 31.0f}, 1, 1, 24.0f, 23.0f, 1, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(hooked4Desc);
-
-	fireDesc = SpriteDesc{ {0.0f, 54.0f}, 2, -1, 13.0f, 13.0f, 1 / 5.0f, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(fireDesc);
+	go->AddComponent(col);
+	go->AddComponent(handler);
 
 	go->SetPosition(pos.x, pos.y);
-	go->GetTransform()->SetScale(scale);
+	go->AddTag(FYGAR);
 
 	return go;
 }
 
-GameObject* EnemyManager::GetPooka(const Point2f& pos, float scale) const
+GameObject* EnemyManager::GetPooka(const Point2f& pos, const Vector2f& dir) const
 {
 	auto go = new GameObject();
 
@@ -92,51 +101,53 @@ GameObject* EnemyManager::GetPooka(const Point2f& pos, float scale) const
 
 	go->AddComponent(s);
 
+	//TRANSLATION
+	auto trans = new TranslationComponent();
+	trans->SetDirection(dir);
+	trans->SetSpeed(30.0f);
+
+	go->AddComponent(trans);
+
 	//SPRITE_DESC_SWITCH
-	SpriteDesc phasingDesc, crushedDesc, hooked1Desc, hooked2Desc, hooked3Desc, hooked4Desc;
+	auto pSwitch = new EnemySpriteSwitchComponent();
+	pSwitch->SetSpriteComponent(s);
+	pSwitch->SetTranslationComponent(trans);
 
-	auto descSwitch = new SpriteDescSwitchComponent();
-	go->AddComponent(descSwitch);
-	descSwitch->AddDesc(desc);
+	go->AddComponent(pSwitch);
 
-	phasingDesc = SpriteDesc{ {0.0f, 12.0f}, 2, -1, 13.0f, 8.0f, 1 / 5.0f, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(phasingDesc);
+	//SPRITE_DIRECTION
+	auto pDir = new SpriteDirectionComponent();
+	pDir->SetSpriteComponent(s);
+	pDir->SetTranslationComponent(trans);
 
-	crushedDesc = SpriteDesc{ {0.0f, 20.0f}, 1, -1, 13.0f, 7.0f, 1 / 5.0f, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(crushedDesc);
+	go->AddComponent(pDir);
 
-	hooked1Desc = SpriteDesc{ {75.0f, 27.0f}, 1, -1, 25.0f, 20.0f, 1, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(hooked1Desc);
+	//COLLIDER
+	auto col = new ColliderComponent();
+	col->SetStatic(false);
+	col->SetRectf({ pos.x, pos.y, 10.0f, 10.0f });
 
-	hooked2Desc = SpriteDesc{ {50.0f, 27.0f}, 2, -1, 25.0f, 20.0f, 1, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(hooked2Desc);
+	auto handler = new EnemyCollisionHandler();
+	col->AddHandler(handler);
 
-	hooked3Desc = SpriteDesc{ {25.0f, 27.0f}, 3, -1, 25.0f, 20.0f, 1, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(hooked3Desc);
-
-	hooked4Desc = SpriteDesc{ {0.0f, 27.0f}, 1, 1, 25.0f, 20.0f, 1, SpriteParse::HORIZONTAL };
-	descSwitch->AddDesc(hooked4Desc);
+	go->AddComponent(col);
+	go->AddComponent(handler);
 
 	go->SetPosition(pos.x, pos.y);
-	go->GetTransform()->SetScale(scale);
 
+	go->AddTag(POOKA);
 	return go;
 }
 
 GameObject* EnemyManager::GetPlayableFygar(const Point2f& pos) const
 {
-	auto go = GetFygar(pos, 1.0f);
+	auto go = GetFygar(pos, Vector2f(1.0f, 0.0f));
 
 	auto input = new InputComponent();
-	auto trans = new TranslationComponent();
 	go->AddComponent(input);
-	go->AddComponent(trans);
 
 	auto plyrMovement = new PlayerMovementComponent(20.0f, 2);
 	go->AddComponent(plyrMovement);
-
-	auto pSpriteDir = new SpriteDirectionComponent();
-	go->AddComponent(pSpriteDir);
 
 	return go;
 }

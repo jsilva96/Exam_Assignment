@@ -22,6 +22,9 @@
     <Filter Include="Source Files\Game Files\Commands">
       <UniqueIdentifier>{eb7f82de-8bd8-431e-8800-7beaab5b726b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game Files\Components\CollisionHandlers">
+      <UniqueIdentifier>{2a50c1f7-2a27-4410-911d-26e1e84f7254}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -54,9 +57,6 @@
     <ClInclude Include="PlayerSpriteSwitchComponent.h">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="BlockCollisionHandler.h">
-      <Filter>Source Files\Game Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerCollisionHandler.h">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClInclude>
@@ -87,7 +87,22 @@
     <ClInclude Include="HookCommand.h">
       <Filter>Source Files\Game Files\Commands</Filter>
     </ClInclude>
+    <ClInclude Include="EnemySpriteSwitchComponent.h">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FygarSpriteSwitchComponent.h">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockCollisionHandler.h">
+      <Filter>Source Files\Game Files\Components\CollisionHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyCollisionHandler.h">
+      <Filter>Source Files\Game Files\Components\CollisionHandlers</Filter>
+    </ClInclude>
     <ClInclude Include="HookCollisionHandler.h">
+      <Filter>Source Files\Game Files\Components\CollisionHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="RespawnComponent.h">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
@@ -125,9 +140,6 @@
     <ClCompile Include="PlayerSpriteSwitchComponent.cpp">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="BlockCollisionHandler.cpp">
-      <Filter>Source Files\Game Files\Components</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerCollisionHandler.cpp">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
@@ -155,7 +167,22 @@
     <ClCompile Include="HookCommand.cpp">
       <Filter>Source Files\Game Files\Commands</Filter>
     </ClCompile>
+    <ClCompile Include="EnemySpriteSwitchComponent.cpp">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FygarSpriteSwitchComponent.cpp">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockCollisionHandler.cpp">
+      <Filter>Source Files\Game Files\Components\CollisionHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyCollisionHandler.cpp">
+      <Filter>Source Files\Game Files\Components\CollisionHandlers</Filter>
+    </ClCompile>
     <ClCompile Include="HookCollisionHandler.cpp">
+      <Filter>Source Files\Game Files\Components\CollisionHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="RespawnComponent.cpp">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
   </ItemGroup>

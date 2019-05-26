@@ -174,8 +174,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BlockCollisionHandler.h" />
+    <ClInclude Include="EnemyCollisionHandler.h" />
     <ClInclude Include="EnterCommand.h" />
     <ClInclude Include="EventsAndTags.h" />
+    <ClInclude Include="EnemySpriteSwitchComponent.h" />
+    <ClInclude Include="FygarSpriteSwitchComponent.h" />
     <ClInclude Include="HookCollisionHandler.h" />
     <ClInclude Include="HookCommand.h" />
     <ClInclude Include="HookComponent.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlayerMovementComponent.h" />
     <ClInclude Include="PlayerSpriteSwitchComponent.h" />
+    <ClInclude Include="RespawnComponent.h" />
     <ClInclude Include="SelectCommand.h" />
     <ClInclude Include="SelectionComponent.h" />
     <ClInclude Include="SpriteDescSwitchComponent.h" />
@@ -198,7 +202,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BlockCollisionHandler.cpp" />
+    <ClCompile Include="EnemyCollisionHandler.cpp" />
     <ClCompile Include="EnterCommand.cpp" />
+    <ClCompile Include="EnemySpriteSwitchComponent.cpp" />
+    <ClCompile Include="FygarSpriteSwitchComponent.cpp" />
     <ClCompile Include="HookCollisionHandler.cpp" />
     <ClCompile Include="HookCommand.cpp" />
     <ClCompile Include="HookComponent.cpp" />
@@ -220,6 +227,7 @@
     </ClCompile>
     <ClCompile Include="PlayerMovementComponent.cpp" />
     <ClCompile Include="PlayerSpriteSwitchComponent.cpp" />
+    <ClCompile Include="RespawnComponent.cpp" />
     <ClCompile Include="SelectCommand.cpp" />
     <ClCompile Include="SelectionComponent.cpp" />
     <ClCompile Include="SpriteDescSwitchComponent.cpp" />

@@ -1,7 +1,7 @@
 #pragma once
 #include <Command.h>
-class HookCommand :
-	public Command
+class PlayerSpriteSwitchComponent;
+class HookCommand final: public Command
 {
 public:
 	HookCommand();
@@ -14,5 +14,8 @@ public:
 
 	HookCommand& operator=(const HookCommand&) = delete;
 	HookCommand& operator=(HookCommand&&) noexcept = delete;
+
+private:
+	PlayerSpriteSwitchComponent* m_pPlayer = nullptr;
 };
 

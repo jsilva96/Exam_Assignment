@@ -15,8 +15,8 @@ public:
 	void Update() override {};
 	void Render() const override {};
 
-	GameObject* GetFygar(const Point2f& pos, float scale) const;
-	GameObject* GetPooka(const Point2f& pos, float scale) const;
+	GameObject* GetFygar(const Point2f& pos, const Vector2f& dir) const;
+	GameObject* GetPooka(const Point2f& pos, const Vector2f& dir) const;
 
 	GameObject* GetPlayableFygar(const Point2f& pos) const;
 

@@ -15,6 +15,7 @@
 #include "SpriteDirectionComponent.h"
 #include "HookComponent.h"
 #include "HookCommand.h"
+#include "RespawnComponent.h"
 
 void* PlayerManager::operator new(size_t)
 {
@@ -112,6 +113,11 @@ GameObject* PlayerManager::GetPlayer(const Point2f& p)
 	options.keyboard = KeyboardButton::Space;
 
 	input->AddCommand(hookCmd, options);
+
+	//RESPAWN
+	auto respawn = new RespawnComponent(2);
+	respawn->SetRespawnPos(p);
+	obj->AddComponent(respawn);
 
 	++m_NrOfPlayersSpawned;
 

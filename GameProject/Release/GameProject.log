@@ -1,22 +1,10 @@
-﻿  BlockCollisionHandler.cpp
-  BlockManager.cpp
-  DigDug.cpp
-  EnterCommand.cpp
-  FPSScene.cpp
-  HookCollisionHandler.cpp
-  HookCommand.cpp
-  HookComponent.cpp
-  MenuScene.cpp
-  PlayerCollisionHandler.cpp
-  PlayerManager.cpp
-  PlayerMovementCommand.cpp
-  PlayerSpriteSwitchComponent.cpp
-  SelectCommand.cpp
+﻿  DigDug.cpp
+  EnemyManager.cpp
      Creating library C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\Release\GameProject.lib and object C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\Release\GameProject.exp
   Generating code
-  360 of 4736 functions ( 7.6%) were compiled, the rest were copied from previous compilation.
-    5 functions were new in current compilation
-    76 functions had inline decision re-evaluated but remain unchanged
+  2 of 4892 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   GameProject.vcxproj -> C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\Release\GameProject.exe
   0 File(s) copied

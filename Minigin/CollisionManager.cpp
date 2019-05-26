@@ -94,7 +94,7 @@ void CollisionManager::CheckQuadrantCollisions(std::vector<ColliderComponent*>& 
 }
 void CollisionManager::CreateQuadrants()
 {
-	int nrOfQuadrants{ 512 };
+	int nrOfQuadrants{ 300 };
 
 	int root{ int(sqrt(nrOfQuadrants)) };
 

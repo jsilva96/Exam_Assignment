@@ -37,6 +37,11 @@ public:
 
 	void SetSpriteIndex(PlayerState s);
 
+	void EnemyHooked(GameObject* pEnemy);
+	void PumpEnemy();
+
+	PlayerState GetState() const { return m_State; };
+
 	PlayerSpriteSwitchComponent(const PlayerSpriteSwitchComponent&) = delete;
 	PlayerSpriteSwitchComponent(PlayerSpriteSwitchComponent&&) noexcept = delete;
 
@@ -53,5 +58,7 @@ private:
 	bool m_IsDigging;
 
 	PlayerState m_State;
+
+	GameObject* m_pEnemy = nullptr;
 };
 
