@@ -5,6 +5,7 @@ struct Vector2f;
 class RenderComponent;
 class ColliderComponent;
 class TranslationComponent;
+class PlayerSpriteSwitchComponent;
 class HookComponent final : public BaseComponent
 {
 public:
@@ -22,6 +23,8 @@ public:
 
 	bool IsLaunched() const;
 
+	void ResetSprite() const;
+
 	HookComponent(const HookComponent&) = delete;
 	HookComponent(HookComponent&&) noexcept = delete;
 
@@ -33,4 +36,5 @@ private:
 	RenderComponent* m_pRender = nullptr;
 	ColliderComponent* m_pCollider = nullptr;
 	TranslationComponent* m_pTrans = nullptr;
+	PlayerSpriteSwitchComponent* m_pPlayerSpriteSwitch = nullptr;
 };

@@ -61,6 +61,7 @@ GameObject* PlayerManager::GetPlayer(const Point2f& p)
 	auto movCmp = new PlayerMovementComponent(30.0f, m_NrOfPlayersSpawned + 1);
 	auto input = new InputComponent();
 	auto trans = new TranslationComponent();
+	trans->SetDirection({ 1.0f, 0.0f });
 
 	input->AssignGamepad(m_NrOfPlayersSpawned);
 

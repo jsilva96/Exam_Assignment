@@ -13,6 +13,8 @@ public:
 	void OnCollideStay(ColliderComponent* collider) override;
 	void OnCollideExit(ColliderComponent* collider) override;
 
+	void RemoveHook() const;
+
 	HookCollisionHandler(const HookCollisionHandler&) = delete;
 	HookCollisionHandler(HookCollisionHandler&&) noexcept = delete;
 

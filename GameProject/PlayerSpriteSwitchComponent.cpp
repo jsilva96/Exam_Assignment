@@ -7,8 +7,10 @@
 #include "TranslationComponent.h"
 #include "TransformComponent.h"
 #include "Time.h"
+#include "SpriteDirectionComponent.h"
+
 PlayerSpriteSwitchComponent::PlayerSpriteSwitchComponent()
-	:m_Sprite(nullptr), m_pTrans(nullptr),m_Dir()
+	:m_Sprite(nullptr), m_pTrans(nullptr),m_Dir(), m_State(PlayerState::IDLE)
 {
 }
 PlayerSpriteSwitchComponent::~PlayerSpriteSwitchComponent()
@@ -16,6 +18,7 @@ PlayerSpriteSwitchComponent::~PlayerSpriteSwitchComponent()
 	m_pTrans = nullptr;
 	m_Sprite = nullptr;
 	m_Switch = nullptr;
+	m_SpriteDir = nullptr;
 }
 void* PlayerSpriteSwitchComponent::operator new(size_t)
 {
@@ -49,7 +52,7 @@ void PlayerSpriteSwitchComponent::Initialize()
 	digDesc = SpriteDesc{ {0.0f, 13.0f}, 2, -1, 14.0f, 13.0f, 1 / 10.0f, SpriteParse::HORIZONTAL };
 	m_Switch->AddDesc(digDesc);
 
-	hookDesc = SpriteDesc{ {0.0f, 26.0f}, 1, -1, 16.0f, 12.0f, 1 / 10.0f, SpriteParse::HORIZONTAL };
+	hookDesc = SpriteDesc{ {0.0f, 26.0f}, 1, -1, 16.0f, 12.0f, 1 / 60.0f, SpriteParse::HORIZONTAL };
 	m_Switch->AddDesc(hookDesc);
 
 	hookedDesc = SpriteDesc{ {0.0f, 38.0f}, 2, -1, 16.0f, 13.0f, 1 / 5.0f, SpriteParse::HORIZONTAL };
@@ -60,9 +63,14 @@ void PlayerSpriteSwitchComponent::Initialize()
 
 	deadDesc = SpriteDesc{ {0.0f, 58.0f}, 5, 1, 17.0f, 15.0f, 1 / 5.0f, SpriteParse::HORIZONTAL };
 	m_Switch->AddDesc(deadDesc);
+
+	m_SpriteDir = GetGameObject()->GetComponent<SpriteDirectionComponent>();
+
+	if (!m_SpriteDir) throw std::runtime_error("PlayerSpriteSwitchComponent::Initialize->No SpriteDir component found");	
 }
 void PlayerSpriteSwitchComponent::Update()
 {	
+	if (m_State == PlayerState::HOOK) return;
 	if (!m_pTrans->GetIsMoving())
 	{
 		SetSpriteIndex(m_IsDigging ? PlayerState::DIGING : PlayerState::IDLE);
@@ -93,7 +101,19 @@ void PlayerSpriteSwitchComponent::SetSpriteComponent(SpriteComponent* pComp)
 
 void PlayerSpriteSwitchComponent::SetSpriteIndex(PlayerState s)
 {
+	m_State = s;
 	m_Switch->SetDesc((int)s);
+
+	if (s == PlayerState::HOOK || s == PlayerState::HOOKED)
+	{
+		m_pTrans->SetActive(false);
+		m_SpriteDir->SetActive(false);
+	}
+	else
+	{
+		m_pTrans->SetActive(true);
+		m_SpriteDir->SetActive(true);
+	}
 }
 
 void PlayerSpriteSwitchComponent::IsDigging(bool isDigging)

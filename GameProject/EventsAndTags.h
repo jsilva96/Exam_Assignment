@@ -5,6 +5,8 @@ enum TAG : unsigned int
 	BLOCK_CARVER,
 	BLOCK,
 	DUG_BLOCK,
+	POOKA,
+	FYGAR
 };
 
 enum EVENT : unsigned int
