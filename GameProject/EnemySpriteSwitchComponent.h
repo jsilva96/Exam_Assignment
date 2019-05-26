@@ -37,6 +37,14 @@ public:
 
 	void SetSpriteIndex(int index);
 
+	bool IsEnemyDead() const
+	{
+		if (m_State == (unsigned int)EnemyState::CRUSHED) return true;
+		if (m_State == (unsigned int)EnemyState::HOOKED_4) return true;
+
+		return false;
+	}
+
 	EnemySpriteSwitchComponent(const EnemySpriteSwitchComponent&) = delete;
 	EnemySpriteSwitchComponent(EnemySpriteSwitchComponent&&) noexcept = delete;
 

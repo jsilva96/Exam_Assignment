@@ -111,6 +111,7 @@ GameObject* PlayerManager::GetPlayer(const Point2f& p)
 	InputOptions options;
 	options.controller = ControllerButton::RightTrigger_Up;
 	options.keyboard = KeyboardButton::Space;
+	if (m_NrOfPlayersSpawned == 1) options.keyboard = KeyboardButton::X;
 
 	input->AddCommand(hookCmd, options);
 

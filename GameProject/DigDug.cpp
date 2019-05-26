@@ -45,7 +45,7 @@ void DigDug::operator delete(void* ptrDelete)
 void DigDug::Initialize()
 {
 	InitializeLevel();
-//	InitializeBlocks();
+	InitializeBlocks();
 	InitializePlayer();
 	InitializeEnemyManager();
 
@@ -78,7 +78,7 @@ void DigDug::Initialize()
 void DigDug::InitializeSolo()
 {
 	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 200.0f, 230.0f }));
-	auto go = m_EnemyManager->GetComponent<EnemyManager>()->GetFygar({ 40.0f, 380.0f }, {0.0f, -1.0f});
+	auto go = m_EnemyManager->GetComponent<EnemyManager>()->GetFygar({ 40.0f, 380.0f }, {0.0f, 1.0f});
 
 	go->GetComponent<TranslationComponent>()->IsContinuous(true);
 	go->GetComponent<TranslationComponent>()->IsMoving();
@@ -88,6 +88,12 @@ void DigDug::InitializeCoop()
 {
 	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 160.0f, 230.0f }));
 	Add(m_pPlayerManager->GetComponent<PlayerManager>()->GetPlayer({ 240.0f, 230.0f }));
+	auto go = m_EnemyManager->GetComponent<EnemyManager>()->GetFygar({ 40.0f, 380.0f }, { 0.0f, 1.0f });
+
+	go->GetComponent<TranslationComponent>()->IsContinuous(true);
+	go->GetComponent<TranslationComponent>()->IsMoving();
+	Add(go);
+
 }
 void DigDug::InitializeVersus()
 {

@@ -1,10 +1,4 @@
-﻿  DigDug.cpp
-  HookCollisionHandler.cpp
-  HookComponent.cpp
-  PlayerCollisionHandler.cpp
-  PlayerManager.cpp
-  PlayerSpriteSwitchComponent.cpp
-  Generating Code...
+﻿  HookCollisionHandler.cpp
   GameProject.vcxproj -> C:\Users\jorge\Desktop\DAE\3rd Year\2nd semester\Programming 4\Exam_Assignment\Debug\GameProject.exe
   0 File(s) copied
   0 File(s) copied

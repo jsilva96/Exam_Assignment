@@ -31,7 +31,7 @@ void HookCollisionHandler::OnCollideEnter(ColliderComponent* collider)
 		m_pHookedEnemy->GetComponent<FygarSpriteSwitchComponent>()->SetSpriteIndex((int)EnemyState::HOOKED_1);
 		m_pHookedEnemy->GetComponent<TranslationComponent>()->SetActive(false);
 		GetGameObject()->GetComponent<TranslationComponent>()->SetActive(false);
-		GetGameObject()->GetParent()->GetComponent<PlayerSpriteSwitchComponent>()->EnemyHooked(m_pHookedEnemy);
+		GetGameObject()->GetParent()->GetComponent<PlayerSpriteSwitchComponent>()->EnemyHooked(m_pHookedEnemy, this);
 	}
 }
 void HookCollisionHandler::OnCollideStay(ColliderComponent*)
@@ -44,10 +44,18 @@ void HookCollisionHandler::OnCollideStay(ColliderComponent*)
 void HookCollisionHandler::OnCollideExit(ColliderComponent* collider)
 {
 	if(collider->GetGameObject() == GetGameObject()->GetParent() && !m_pHookedEnemy) RemoveHook();
-	
+
+	if(collider->GetGameObject() == m_pHookedEnemy)
+	{
+		RemoveHook();
+		m_pHookedEnemy = nullptr;
+		GetGameObject()->GetParent()->GetComponent<PlayerSpriteSwitchComponent>()->EnemyHooked(nullptr, this);
+	}
 }
-void HookCollisionHandler::RemoveHook() const
+void HookCollisionHandler::RemoveHook()
 {
 	GetGameObject()->SetActive(false);
 	GetGameObject()->GetParent()->GetComponent<HookComponent>()->ResetSprite();
+	GetGameObject()->GetParent()->GetComponent<PlayerSpriteSwitchComponent>()->EnemyHooked(nullptr, this);
+	m_pHookedEnemy = nullptr;
 }

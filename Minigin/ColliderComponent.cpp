@@ -99,3 +99,11 @@ void ColliderComponent::AddHandler(BaseCollisionHandler* pHandler)
 {
 	m_pHandler = pHandler;
 }
+
+void ColliderComponent::CheckExitColliders()
+{
+	for(auto& pCol : m_pPrevCurrentCollisions)
+	{
+		m_pHandler->OnCollideExit(pCol);
+	}
+}

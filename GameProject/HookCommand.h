@@ -17,5 +17,8 @@ public:
 
 private:
 	PlayerSpriteSwitchComponent* m_pPlayer = nullptr;
+
+	float m_LastCheck = 0.0f;
+	float m_MinTime = 0.2f;
 };
 

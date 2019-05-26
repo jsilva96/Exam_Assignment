@@ -16,6 +16,7 @@ class TranslationComponent;
 class SpriteComponent;
 class SpriteDescSwitchComponent;
 class SpriteDirectionComponent;
+class HookCollisionHandler;
 
 class PlayerSpriteSwitchComponent final: public BaseComponent
 {
@@ -37,7 +38,7 @@ public:
 
 	void SetSpriteIndex(PlayerState s);
 
-	void EnemyHooked(GameObject* pEnemy);
+	void EnemyHooked(GameObject* pEnemy, HookCollisionHandler* pHandler);
 	void PumpEnemy();
 
 	PlayerState GetState() const { return m_State; };
@@ -52,6 +53,7 @@ private:
 	TranslationComponent* m_pTrans = nullptr;
 	SpriteComponent* m_Sprite = nullptr;
 	SpriteDescSwitchComponent* m_Switch = nullptr;
+	HookCollisionHandler* m_Handler = nullptr;
 	float m_DugTimer;
 
 	Vector2f m_Dir;

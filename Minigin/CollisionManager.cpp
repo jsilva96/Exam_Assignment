@@ -150,9 +150,11 @@ void CollisionManager::AddCollider(ColliderComponent * pCollider, bool loadToCol
 {
 	if (!pCollider->IsUsable()) return;
 
-	
-	if (!pCollider->IsStatic()) LoadColliderToQuadrants(pCollider, m_pDynamicColliders);
-	else LoadColliderToQuadrants(pCollider, m_pStaticColliders);
+	if (pCollider->IsActive())
+	{
+		if (!pCollider->IsStatic()) LoadColliderToQuadrants(pCollider, m_pDynamicColliders);
+		else LoadColliderToQuadrants(pCollider, m_pStaticColliders);
+	}
 
 	if(loadToColliders)AddCheck(m_pColliders, pCollider);
 }

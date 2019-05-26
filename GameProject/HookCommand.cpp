@@ -6,6 +6,7 @@
 #include "HookComponent.h"
 #include "TransformComponent.h"
 #include "PlayerSpriteSwitchComponent.h"
+#include "Time.h"
 HookCommand::HookCommand()
 	:Command(EVENT::HOOK)
 {
@@ -16,11 +17,13 @@ HookCommand::~HookCommand()
 }
 void HookCommand::Execute()
 {
+	if ((Time::GetInstance().GetElapsedTime() - m_LastCheck) <= m_MinTime) return;
+
 	if (!m_pPlayer) m_pPlayer = GetGameObject()->GetComponent<PlayerSpriteSwitchComponent>();
 
 	if (m_pPlayer->GetState() == PlayerState::HOOKED)
 	{
-		m_pPlayer->PumpEnemy();
+ 		m_pPlayer->PumpEnemy();
 	}
 	else
 	{
@@ -30,4 +33,6 @@ void HookCommand::Execute()
 
 		if (!hook->IsLaunched())hook->UseHook(p);
 	}
+
+	m_LastCheck = Time::GetInstance().GetElapsedTime();
 }

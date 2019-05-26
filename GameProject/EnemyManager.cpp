@@ -47,7 +47,7 @@ GameObject* EnemyManager::GetFygar(const Point2f& pos, const Vector2f& dir) cons
 	//TRANSLATION
 	auto trans = new TranslationComponent();
 	trans->SetDirection(dir);
-	trans->SetSpeed(10.0f);
+	trans->SetSpeed(30.0f);
 
 	go->AddComponent(trans);
 

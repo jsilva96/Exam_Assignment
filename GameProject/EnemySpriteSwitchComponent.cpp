@@ -57,21 +57,26 @@ void EnemySpriteSwitchComponent::Initialize()
 	m_Switch->AddDesc(hooked4Desc);
 
 	m_pTimer = new TimerComponent();
-	m_pTimer->SetTimer(1.0f);
+	m_pTimer->SetTimer(0.5f);
 
 	GetGameObject()->AddComponent(m_pTimer);
 	m_pTimer->SetActive(false);
 }
 void EnemySpriteSwitchComponent::Update()
 {
-	if (!m_pTimer->IsActive())
+	if (m_pTimer->IsActive())
 	{
 		if (m_pTimer->IsTimerOver())
 		{
+			if(m_State == (unsigned int)EnemyState::HOOKED_4)
+			{
+				GetGameObject()->SetActive(false);
+				return;
+			}
 			if (m_State < (unsigned int)EnemyState::HOOKED_1)m_pTimer->RestartTimer();
 			else m_pTimer->SetActive(false);
 
-			SetSpriteIndex(--m_State);
+			SetSpriteIndex(m_State - 1);
 		}
 	}
 }
@@ -82,9 +87,9 @@ void EnemySpriteSwitchComponent::Pump()
 {
 	if (m_State < (unsigned int)EnemyState::HOOKED_1 || m_State >(unsigned int)EnemyState::HOOKED_4) return;
 
-	SetSpriteIndex(++m_State);
+	SetSpriteIndex(m_State + 1);
 
-	if (m_State == (unsigned int)EnemyState::HOOKED_4) m_pTimer->SetActive(false);
+	if (m_State == (unsigned int)EnemyState::HOOKED_4) m_pTimer->SetActive(true);
 }
 void EnemySpriteSwitchComponent::SetTranslationComponent(TranslationComponent* pComp)
 {
@@ -96,14 +101,14 @@ void EnemySpriteSwitchComponent::SetSpriteComponent(SpriteComponent* pComp)
 }
 void EnemySpriteSwitchComponent::SetSpriteIndex(int index)
 {
-	if (index == m_State) return;
+	if (index == (int)m_State) return;
 
 	if (m_Switch)
 	{
 		m_State = index;
 		m_Switch->SetDesc(index);
 
-		if (m_State == (unsigned int)EnemyState::HOOKED_1)
+		if (m_State >= (unsigned int)EnemyState::HOOKED_1 && m_State <=(unsigned int)EnemyState::HOOKED_4)
 		{
 			m_pTimer->SetActive(true);
 			m_pTimer->RestartTimer();
