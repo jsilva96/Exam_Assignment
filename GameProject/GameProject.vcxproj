@@ -176,6 +176,9 @@
     <ClInclude Include="BlockCollisionHandler.h" />
     <ClInclude Include="EnterCommand.h" />
     <ClInclude Include="EventsAndTags.h" />
+    <ClInclude Include="HookCollisionHandler.h" />
+    <ClInclude Include="HookCommand.h" />
+    <ClInclude Include="HookComponent.h" />
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="PlayerCollisionHandler.h" />
     <ClInclude Include="PlayerManager.h" />
@@ -196,6 +199,9 @@
   <ItemGroup>
     <ClCompile Include="BlockCollisionHandler.cpp" />
     <ClCompile Include="EnterCommand.cpp" />
+    <ClCompile Include="HookCollisionHandler.cpp" />
+    <ClCompile Include="HookCommand.cpp" />
+    <ClCompile Include="HookComponent.cpp" />
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="PlayerCollisionHandler.cpp" />
     <ClCompile Include="PlayerManager.cpp" />

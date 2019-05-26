@@ -45,7 +45,7 @@ void DigDug::operator delete(void* ptrDelete)
 void DigDug::Initialize()
 {
 	InitializeLevel();
-	InitializeBlocks();
+//	InitializeBlocks();
 	InitializePlayer();
 	InitializeEnemyManager();
 

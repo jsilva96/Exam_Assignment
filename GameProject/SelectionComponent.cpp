@@ -3,7 +3,7 @@
 
 #include "PoolManager.h"
 #include "TextComponent.h"
-void* SelectionComponent::operator new(size_t nBytes)
+void* SelectionComponent::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<SelectionComponent>();
 }

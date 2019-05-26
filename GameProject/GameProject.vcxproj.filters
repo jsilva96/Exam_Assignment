@@ -81,6 +81,15 @@
     <ClInclude Include="SpriteDirectionComponent.h">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="HookComponent.h">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="HookCommand.h">
+      <Filter>Source Files\Game Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="HookCollisionHandler.h">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -138,6 +147,15 @@
       <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="SpriteDirectionComponent.cpp">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="HookComponent.cpp">
+      <Filter>Source Files\Game Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="HookCommand.cpp">
+      <Filter>Source Files\Game Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="HookCollisionHandler.cpp">
       <Filter>Source Files\Game Files\Components</Filter>
     </ClCompile>
   </ItemGroup>

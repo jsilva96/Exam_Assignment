@@ -29,7 +29,7 @@ public:
 	~CollisionManager();
 
 	void Update();
-	void AddCollider(ColliderComponent* pCollider);
+	void AddCollider(ColliderComponent* pCollider, bool loadToColliders = true);
 	void AddLevelCollider(LevelColliderComponent* pCollider);
 
 	void LoadWindow(int width, int height)

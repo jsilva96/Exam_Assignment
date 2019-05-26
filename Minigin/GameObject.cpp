@@ -21,6 +21,8 @@ GameObject::~GameObject()
 	DeleteCheck(m_pChildren);
 	DeleteCheck(m_Observers);
 
+	m_pParent = nullptr;
+
 	m_Tags.clear();
 }
 
@@ -42,8 +44,8 @@ void GameObject::Initialize()
 		m_pTransform = new TransformComponent();
 		AddComponent(m_pTransform);
 	}
-	for (size_t i = 0; i < m_pChildren.size(); i++) if (m_pChildren[i]->IsUsable())m_pChildren[i]->Initialize();
 	for (size_t i = 0; i < m_pComponents.size(); i++) m_pComponents[i]->Initialize();
+	for (size_t i = 0; i < m_pChildren.size(); i++) if (m_pChildren[i]->IsUsable())m_pChildren[i]->Initialize();
 
 	m_IsInitialized = true;
 }
@@ -119,7 +121,11 @@ TransformComponent* GameObject::GetTransform() const
 }
 void GameObject::AddChild(GameObject * pObj)
 {
-	if(AddCheck(m_pChildren, pObj) && m_IsInitialized) pObj->Initialize();
+	if (AddCheck(m_pChildren, pObj))
+	{
+		if(m_IsInitialized)pObj->Initialize();
+		pObj->m_pParent = this;
+	}
 }
 
 void GameObject::RemoveChild(GameObject* pObj)
@@ -129,4 +135,5 @@ void GameObject::RemoveChild(GameObject* pObj)
 	if (it == m_pChildren.end()) return;
 
 	m_pChildren.erase(std::remove(m_pChildren.begin(), m_pChildren.end(), pObj), m_pChildren.end());
+	(*it)->m_pParent = nullptr;
 }

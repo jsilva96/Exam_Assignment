@@ -65,7 +65,7 @@ void CollisionManager::UpdateDynamicQuadrants()
 
 
 	for (std::pair<const Quadrant, std::vector<ColliderComponent*>>& p : m_pDynamicColliders)p.second.clear();
-	for (ColliderComponent* pC : m_pColliders) AddCollider(pC);
+	for (ColliderComponent* pC : m_pColliders) AddCollider(pC, false);
 }
 void CollisionManager::CheckQuadrantCollisions(std::vector<ColliderComponent*>& colliders)
 {
@@ -146,14 +146,15 @@ void CollisionManager::CreateQuadrants()
 		quad.leftBottom.y = 0.0f;
 	}
 }
-void CollisionManager::AddCollider(ColliderComponent * pCollider)
+void CollisionManager::AddCollider(ColliderComponent * pCollider, bool loadToColliders)
 {
 	if (!pCollider->IsUsable()) return;
+
 	
 	if (!pCollider->IsStatic()) LoadColliderToQuadrants(pCollider, m_pDynamicColliders);
 	else LoadColliderToQuadrants(pCollider, m_pStaticColliders);
 
-	AddCheck(m_pColliders, pCollider);
+	if(loadToColliders)AddCheck(m_pColliders, pCollider);
 }
 void CollisionManager::LoadColliderToQuadrants(ColliderComponent* pCollider, std::map<Quadrant, std::vector<ColliderComponent*>>& container)
 {

@@ -13,8 +13,10 @@
 #include "TransformComponent.h"
 #include "EventsAndTags.h"
 #include "SpriteDirectionComponent.h"
+#include "HookComponent.h"
+#include "HookCommand.h"
 
-void* PlayerManager::operator new(size_t nBytes)
+void* PlayerManager::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<PlayerManager>();
 }
@@ -82,7 +84,7 @@ GameObject* PlayerManager::GetPlayer(const Point2f& p)
 	pSpriteDir->SetTranslationComponent(trans);
 
 	obj->AddComponent(pSpriteDir);
-	obj->RemoveComponent(pSpriteDir);
+
 	//COLLIDER
 	auto c = new ColliderComponent();
 	Rectf rect{ p, desc.width * scale, desc.height * scale };
@@ -95,10 +97,20 @@ GameObject* PlayerManager::GetPlayer(const Point2f& p)
 	obj->AddComponent(c);
 	obj->AddComponent(handler);
 
-
 	obj->SetPosition(p.x, p.y);
 	obj->GetTransform()->SetScale(scale);
 	obj->AddTag(TAG::PLAYER);
+
+	//HOOK
+	auto hook = new HookComponent();
+	obj->AddComponent(hook);
+
+	auto hookCmd = new HookCommand();
+	InputOptions options;
+	options.controller = ControllerButton::RightTrigger_Up;
+	options.keyboard = KeyboardButton::Space;
+
+	input->AddCommand(hookCmd, options);
 
 	++m_NrOfPlayersSpawned;
 

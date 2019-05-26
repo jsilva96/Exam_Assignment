@@ -40,6 +40,7 @@ public:
 
 	void AddChild(GameObject* pObj);
 	void RemoveChild(GameObject* pObj);
+	GameObject* GetParent() const { return m_pParent; }
 
 	void AddTag(unsigned int tag);
 	bool CompareTag(unsigned int tag);
@@ -60,6 +61,8 @@ private:
 	TransformComponent * m_pTransform;
 	std::vector<BaseComponent*> m_pComponents;
 	GameScene* m_pScene;
+
+	GameObject* m_pParent = nullptr;
 	std::vector<GameObject*> m_pChildren;
 
 	std::vector<unsigned int> m_Tags;

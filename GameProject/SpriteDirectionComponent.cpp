@@ -13,7 +13,7 @@ SpriteDirectionComponent::~SpriteDirectionComponent()
 	m_pSprite = nullptr;
 	m_Dir = { 0.0f, 0.0f };
 }
-void* SpriteDirectionComponent::operator new(size_t nBytes)
+void* SpriteDirectionComponent::operator new(size_t)
 {
 	return PoolManager::GetInstance().RetrieveObject<SpriteDirectionComponent>();
 }
@@ -31,7 +31,8 @@ void SpriteDirectionComponent::Initialize()
 
 	if (!m_pSprite)
 	{
-		m_pSprite = GetGameObject()->GetComponent<SpriteComponent>();
+		m_pSprite = GetGameObject()->GetComponent<RenderComponent>();
+		if (!m_pSprite)m_pSprite = GetGameObject()->GetComponent<SpriteComponent>();
 		if (!m_pSprite) throw std::runtime_error("PlayerMovementComponent::Initialize->No translation component found");
 	}
 }
@@ -52,7 +53,7 @@ void SpriteDirectionComponent::SetTranslationComponent(TranslationComponent* pCo
 {
 	m_pTrans = pComp;
 }
-void SpriteDirectionComponent::SetSpriteComponent(SpriteComponent* pComp)
+void SpriteDirectionComponent::SetSpriteComponent(RenderComponent* pComp)
 {
 	m_pSprite = pComp;
 }
